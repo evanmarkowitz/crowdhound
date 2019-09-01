@@ -12,7 +12,7 @@ notifications:
 deploy:
   provider: heroku
   api_key:
-    secure: process.env.HEROKU_PAPI_KEY
+    secure: amgTL/Cjk22jUljeKGLxVZqZxV+A9XTv9kiKaogPkvuN/UnHqNflrhC+u1Ig+Q+iw6HqebFFATqDy4sUV8pp6aOuSAQ6dGshQHmfM4FAEYjPMmLZN/tj0hQfabKLUlK6BCtWZxhnLCyBZOS/eDpftjtHATQ0ExXs2Kl/Lr3ECuiW91qFmgHJxBJKPQFyumaW0TnvyuWLj4TNHwhdR+9TDtdpK1XVBVwVHhk65qi1rCD/V/jrELJxlScaQawsvA+zvajYjwmnDncHaapo83ijbHGN8eHyMYWXBkHhkkZzoxkf3sY5C0PDc3v82DueQYKDihX1jYhvdKte1qkHadOWILgp46PefrseLDJfhi4Fxryd7QAj9HYPtV+fBzZSng3lMbOdvQ5J7FgPNq22khX0G5sE4Na+uArsc+ZCw98guNAVnjhe3q7Otgz7TRDdTryWG3sYZyrDZLCgf0QlLwVCtcw/Dbs+zY1HpFKQN3fo4s54GAS70AuenLLwZs+v3CDhuTtK96mjCLtTwtFOU65l1aUtfZM/10nnP5lF0AH+mZAOK1C8znYfeDXEbZmFkeTy+iw4ffe+sQ29wjUM23NOmFDTAWjrOWwVn5XS227M9/xuxcq3m5spo1uOPjUCK+4ZEkatO80ms/IphybFCeV0kiAVsHNtn1qtjSaGKw73maI=
     app: part-time-pups-fe
     on: 
       repo: evanmarkowitz/part-time-pups-fe
