@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
 import './FilterModal.css'
 
+
 class FilterModal extends Component {
   constructor() {
     super()
     this.state = {
-
+      distanceValue: 10,
     }
+  }
+
+  moveSlider = e => {
+    this.setState({distanceValue: e.target.value })
   }
   
   render() {
@@ -27,6 +32,7 @@ class FilterModal extends Component {
               <button>High</button>
             </section>
             <section className='column distance'>
+                <input type="range" min="1" max="100" value={this.state.distanceValue} class="slider" id="myRange" onChange={this.moveSlider} />
             </section>
           </div>
         </section>
