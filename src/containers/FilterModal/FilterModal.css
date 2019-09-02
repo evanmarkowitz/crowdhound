@@ -1,0 +1,58 @@
+.modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+}
+
+.modal-card {
+  position: fixed;
+  background-color: white;
+  border-radius: 5px;
+  padding: 15px;
+  z-index: 10;
+  width: 80%;
+  display: flex;
+}
+
+.filters {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20px;
+  border-right: 1px solid grey;
+}
+
+.modal-card button {
+  height: 25px;
+  margin: 10px 0px;
+  
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 180px;
+}
+
+.column button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vw;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0.6;
+}
