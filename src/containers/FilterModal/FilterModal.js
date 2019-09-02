@@ -36,7 +36,7 @@ class FilterModal extends Component {
               <div className='distance-box'>
                 <p>{this.state.distanceValue} miles</p>
               </div>
-              <input type="range" min="1" max="50" value={this.state.distanceValue} class="slider" id="myRange" onChange={this.moveSlider} />
+              <input type="range" min="1" max="50" value={this.state.distanceValue} className="slider" id="myRange" onChange={this.moveSlider} />
               <p id='zip-code'>Zip Code: 80211</p>
             </section>
           </div>
