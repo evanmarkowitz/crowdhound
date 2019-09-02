@@ -3,7 +3,7 @@ import './App.css';
 import Header from '../Header/Header';
 import Home from '../Home/Home';
 
-class App extends Component {
+export class App extends Component {
   render() {
     
     return (
