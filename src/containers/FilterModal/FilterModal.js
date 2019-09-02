@@ -33,12 +33,20 @@ class FilterModal extends Component {
             </section>
             <section className='column distance'>
               <h2>DISTANCE</h2>
-                <div className='distance-box'>
-                  <p>{this.state.distanceValue} miles</p>
-                </div>
-                <input type="range" min="1" max="50" value={this.state.distanceValue} class="slider" id="myRange" onChange={this.moveSlider} />
+              <div className='distance-box'>
+                <p>{this.state.distanceValue} miles</p>
+              </div>
+              <input type="range" min="1" max="50" value={this.state.distanceValue} class="slider" id="myRange" onChange={this.moveSlider} />
+              <p id='zip-code'>Zip Code: 80211</p>
             </section>
           </div>
+          <aside className='right-modal'>
+            <button id='find-button'>FIND</button>
+            <div className='user-section'>
+              <div id='user-image'></div>
+              <p>User Name</p>
+            </div>
+          </aside>
         </section>
         <section className='background' />
       </article>
