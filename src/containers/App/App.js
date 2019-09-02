@@ -1,28 +1,20 @@
-import React from 'react';
-import logo from '../../logo.svg';
-import FilterModal from '../FilterModal/FilterModal'
+import React, {Component} from 'react';
 import './App.css';
+import Header from '../Header/Header';
+import Home from '../Home/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <FilterModal />
-    </div>
-  );
+export class App extends Component {
+  render() {
+    
+    return (
+      <>
+      <Header />
+      <main className="app">
+        <Home />
+      </main>
+      </>
+    );
+  }
 }
 
 export default App;
