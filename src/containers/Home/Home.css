@@ -1,5 +1,39 @@
-.home {
-  border: 1px solid red;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.home-part-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 100vh;
-  width: 100vw;
+
+}
+
+.homepage-dogs-img {
+  height: 100%;
+}
+
+.home-text-container {
+  margin-left: 20px;
+}
+
+.home-text-title {
+  font-size: 64px;
+  width: 400px;
+  color: rgb(240, 128, 128)
+}
+
+.home-text-body {
+  width: 300px;
+  color: #595A5A
+}
+
+
+.home-carsouel {
+  background: lightgray;
+  height: 100vh;
 }
