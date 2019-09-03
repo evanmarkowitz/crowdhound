@@ -1,0 +1,25 @@
+.dog-profile-main {
+  display: flex;
+}
+
+.dog-image {
+  height: 85vh;
+  flex: 2;
+}
+
+.dog-info {
+  flex: 2;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.human-info {
+  flex: 2;
+}
+
+.dog-stats {
+  display: flex;
+  justify-content: space-between
+}
