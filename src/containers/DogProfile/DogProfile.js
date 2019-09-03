@@ -8,13 +8,9 @@ const DogProfile = () => {
 
   return(
     <main className='dog-profile-main'>
-      <section  className = 'dog-image' 
-      style={{backgroundImage: `url(${profilePic})`,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat'}}>
-      </section>
       <section className='dog-info'>
+        <img src={profilePic} alt='dog'></img>
+        <div>
           <article>
             <h2>Robert</h2>
             <div className='about-container'>
@@ -40,6 +36,7 @@ const DogProfile = () => {
               <p className='stat-answer'>1</p>
             </div>
           </article>
+        </div>
       </section>
       <section className='human-info'>
         <article className='user-wrapper'>
