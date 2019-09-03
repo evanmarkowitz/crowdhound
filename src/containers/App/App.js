@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import Home from '../Home/Home';
 import UserProfile from '../UserProfile/UserProfile';
 import DogProfile from '../DogProfile/DogProfile';
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 
 export class App extends Component {
