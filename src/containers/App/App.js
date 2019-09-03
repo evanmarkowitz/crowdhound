@@ -13,8 +13,8 @@ export class App extends Component {
       <>
       <Header />
       <main className="app">
-        <Home />
-        {/* <UserProfile /> */}
+        {/* <Home /> */}
+        <UserProfile />
         {/* <DogProfile /> */}
       </main>
       </>
