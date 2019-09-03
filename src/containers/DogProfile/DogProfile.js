@@ -55,9 +55,7 @@ const DogProfile = () => {
           <button className='chat-button'>Chat</button>
           <p id='zip-code'>Zip Code: <span>80211</span></p>
         </article>
-
       </section>
-
     </main>
   )
 }
