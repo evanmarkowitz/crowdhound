@@ -50,7 +50,7 @@ export class FilterModal extends Component {
             <button id='find-button' onClick={this.clickFinder}>FIND</button>
             <div className='user-section'>
               <div id='user-image'></div>
-              <p>User Name</p>
+              <p className='user-name'>User Name</p>
             </div>
           </aside>
         </section>
