@@ -5,23 +5,24 @@ import userImage from '../../images/bradly-cooper.jpg';
 
 
 const DogProfile = () => {
+  const profileImageStyle = {
+    backgroundImage: `url(${profilePic})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat'
+}
+
 
   return(
     <main className='dog-profile-main'>
-      <section  className = 'dog-image' 
-      style={{backgroundImage: `url(${profilePic})`,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat'}}>
-      </section>
-      <section className='dog-info'>
-          <article>
-            <h2>Robert</h2>
-            <div className='about-container'>
-              <h3>about:</h3>
-              <p className='about'>Doggo ipsum noodle horse floofs porgo shoober doggo, such treat adorable doggo vvv.  Vvv floofs tungg I am bekom fat pupperino heck wow very biscit tungg, many pats long bois dat tungg tho blep smol. Heckin angery woofer you are doin me a concern extremely cuuuuuute</p>
-            </div>
-          </article>
+      <section className='dog-info-wrapper'>
+        <div style={profileImageStyle} className='dog-image'></div>
+        <div className='dog-info'>
+          <h2>Robert</h2>
+          <div className='about-container'>
+            <h3>about:</h3>
+            <p className='about'>Doggo ipsum noodle horse floofs porgo shoober doggo, such treat adorable doggo vvv.  Vvv floofs tungg I am bekom fat pupperino heck wow very biscit tungg, many pats long bois dat tungg tho blep smol. Heckin angery woofer you are doin me a concern extremely cuuuuuute</p>
+          </div>
           <article className='dog-stats'>
             <div>
               <p className='stat-type'>Activity</p>
@@ -40,6 +41,7 @@ const DogProfile = () => {
               <p className='stat-answer'>1</p>
             </div>
           </article>
+        </div>
       </section>
       <section className='human-info'>
         <article className='user-wrapper'>
@@ -53,9 +55,7 @@ const DogProfile = () => {
           <button className='chat-button'>Chat</button>
           <p id='zip-code'>Zip Code: <span>80211</span></p>
         </article>
-
       </section>
-
     </main>
   )
 }
