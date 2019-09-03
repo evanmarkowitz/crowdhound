@@ -8,7 +8,7 @@ export class Header extends Component {
 
   toggleBurger = () => {
     this.props.toggleFilterModal(true)
-    console.log('okkk')
+
   }
   render() {
     return (
