@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import Home from '../Home/Home';
-import DogProfile from '../DogProfile/DogProfile'
 
 
 export class App extends Component {
@@ -13,7 +12,6 @@ export class App extends Component {
       <Header />
       <main className="app">
         <Home />
-        <DogProfile />
       </main>
       </>
     );
