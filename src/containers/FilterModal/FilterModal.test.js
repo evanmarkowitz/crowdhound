@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import FilterModal from './FilterModal'
+import {FilterModal} from './FilterModal'
 import React from 'react'
 
 describe('FilterModal', () => {

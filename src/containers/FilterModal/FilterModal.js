@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import './FilterModal.css'
+import { toggleFilterModal } from '../../actions';
+import { connect } from 'react-redux'
 
 
-class FilterModal extends Component {
+export class FilterModal extends Component {
   constructor() {
     super()
     this.state = {
@@ -12,6 +14,10 @@ class FilterModal extends Component {
 
   moveSlider = e => {
     this.setState({distanceValue: e.target.value })
+  }
+
+  clickFinder = () => {
+    this.props.toggleFilterModal(false)
   }
   
   render() {
@@ -41,17 +47,21 @@ class FilterModal extends Component {
             </section>
           </div>
           <aside className='right-modal'>
-            <button id='find-button'>FIND</button>
+            <button id='find-button' onClick={this.clickFinder}>FIND</button>
             <div className='user-section'>
               <div id='user-image'></div>
               <p>User Name</p>
             </div>
           </aside>
         </section>
-        <section className='background' />
+        <section className='background' onClick={() => this.props.toggleFilterModal(false)}/>
       </article>
     )
   }
 }
 
-export default FilterModal
+export const mapDispatchToProps = dispatch => ({
+  toggleFilterModal: boolean => dispatch(toggleFilterModal(boolean)),
+});
+
+export default connect(null, mapDispatchToProps)(FilterModal)
