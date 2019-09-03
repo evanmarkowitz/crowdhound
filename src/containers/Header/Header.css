@@ -5,7 +5,7 @@
   width: 355px;
   justify-content: space-around;
   background: rgb(243, 243, 243);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   margin-top: 20px;
