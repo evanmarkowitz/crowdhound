@@ -14,7 +14,8 @@
 }
 
 .homepage-dogs-img {
-  height: 100%;
+  height: calc(100% - 60px);
+  margin-top: 60px;
 }
 
 .home-text-container {
