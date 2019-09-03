@@ -6,12 +6,12 @@
 
 .dog-image {
   height: 100vh;
-  flex: 2;
+  flex: 3;
   align-self: flex-end;
 }
 
 .dog-info {
-  flex: 2;
+  flex: 3;
   padding: 25px;
   display: flex;
   flex-direction: column;
@@ -24,15 +24,18 @@
   font-size: 65px;
   margin-left: -65px;
   margin-bottom: 25px;
+  margin-top: 45px;
   display: inline-block;
-  padding: 15px;
+  padding: 18px;
   border-radius: 5px;
 } 
-/* 
-.about {
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
-} */
+
+.dog-stats,
+.about-container {
+  box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.2);
+  padding: 20px;
+  margin-bottom: 15px;
+}
 
 .human-info {
   flex: 2;
@@ -42,3 +45,43 @@
   display: flex;
   justify-content: space-between;
 }
+
+.stat-answer {
+  font-weight: bold;
+}
+
+.stat-type {
+  color: grey;
+}
+
+.human-info {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 15px;
+  padding: 25px;
+}
+
+.user-wrapper {
+  width: 80%;
+  height: 465px;
+  box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.user-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 3px solid #1dbbdf;
+}
+
+.chat-button {
+  height: 30px;
+  width: 80%;
+  font-size: 20px;
+}
+
