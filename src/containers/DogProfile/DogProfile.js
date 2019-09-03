@@ -14,10 +14,10 @@ const DogProfile = () => {
       backgroundRepeat: 'no-repeat'}}>
       </div>
       <div className='dog-info'>
-       
           <article>
-            <h2>Jev The Dog</h2>
-            <p>Doggo ipsum noodle horse floofs porgo shoober doggo, such treat adorable doggo vvv.  Vvv floofs tungg I am bekom fat pupperino heck wow very biscit tungg, many pats long bois dat tungg tho blep smol. Heckin angery woofer you are doin me a concern extremely cuuuuuute</p>
+            <h2>Robert</h2>
+            <h3>about:</h3>
+            <p className='about'>Doggo ipsum noodle horse floofs porgo shoober doggo, such treat adorable doggo vvv.  Vvv floofs tungg I am bekom fat pupperino heck wow very biscit tungg, many pats long bois dat tungg tho blep smol. Heckin angery woofer you are doin me a concern extremely cuuuuuute</p>
           </article>
           <article className='dog-stats'>
             <div>

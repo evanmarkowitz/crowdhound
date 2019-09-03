@@ -1,10 +1,13 @@
 .dog-profile-main {
+  height: 100vh;
   display: flex;
+
 }
 
 .dog-image {
-  height: 85vh;
+  height: 100vh;
   flex: 2;
+  align-self: flex-end;
 }
 
 .dog-info {
@@ -15,11 +18,27 @@
   justify-content: space-between;
 }
 
+.dog-info h2 {
+  color: white;
+  background-color: #1dbbdf;
+  font-size: 65px;
+  margin-left: -65px;
+  margin-bottom: 25px;
+  display: inline-block;
+  padding: 15px;
+  border-radius: 5px;
+} 
+/* 
+.about {
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+} */
+
 .human-info {
   flex: 2;
 }
 
 .dog-stats {
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
