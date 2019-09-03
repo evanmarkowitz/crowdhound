@@ -13,9 +13,9 @@ export class App extends Component {
       <>
       <Header />
       <main className="app">
-        <Home />
+        {/* <Home /> */}
         {/* <UserProfile /> */}
-        {/* <DogProfile /> */}
+        <DogProfile />
       </main>
       </>
     );
