@@ -1,44 +1,51 @@
 .dog-profile-main {
-  height: 100vh;
+  height: 90vh;
   display: flex;
-
+  padding: 35px;
+  margin-top: 60px;
 }
 
-.dog-image {
-  height: 100vh;
+.dog-info-wrapper {
   flex: 3;
-  align-self: flex-end;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dog-info-wrapper,
+.user-wrapper {
+  background-color: #F3F3F3;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.dog-info-wrapper h2 {
+  color: white;
+  background-color: #1dbbdf;
+  font-size: 65px;
+  justify-self: center;
+  padding: 12px;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+} 
+
+.dog-image {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  margin-right: 25px;
 }
 
 .dog-info {
-  flex: 3;
-  padding: 25px;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.dog-info h2 {
-  color: white;
-  background-color: #1dbbdf;
-  font-size: 65px;
-  margin-left: -65px;
-  margin-bottom: 25px;
-  margin-top: 45px;
-  display: inline-block;
-  padding: 18px;
-  border-radius: 5px;
-} 
-
-.dog-stats,
-.about-container {
-  box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.2);
-  padding: 20px;
-  margin-bottom: 15px;
-}
-
 .human-info {
-  flex: 2;
+  flex: 1;
 }
 
 .dog-stats {
@@ -58,14 +65,11 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-bottom: 15px;
-  padding: 25px;
 }
 
 .user-wrapper {
   width: 80%;
-  height: 465px;
-  box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.2);
+  height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,8 +77,8 @@
 }
 
 .user-image {
-  width: 200px;
-  height: 200px;
+  width: 175px;
+  height: 175px;
   border-radius: 50%;
   border: 3px solid #1dbbdf;
 }
