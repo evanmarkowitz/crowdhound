@@ -4,7 +4,7 @@ import { toggleFilterModal } from '../../actions';
 import { connect } from 'react-redux'
 
 
-class FilterModal extends Component {
+export class FilterModal extends Component {
   constructor() {
     super()
     this.state = {
