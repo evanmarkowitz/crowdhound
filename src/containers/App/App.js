@@ -4,6 +4,8 @@ import Header from '../Header/Header';
 import Home from '../Home/Home';
 import UserProfile from '../UserProfile/UserProfile';
 import DogProfile from '../DogProfile/DogProfile';
+import FilterModal from '../FilterModal/FilterModal'
+import { connect } from 'react-redux';
 import { Route, Switch, NavLink } from 'react-router-dom';
 
 
@@ -13,6 +15,7 @@ export class App extends Component {
     return (
       <main className="app">
       <Header />
+      {this.props.toggleFilterModal && <FilterModal />}
         <Switch>
         <Route exact path="/" render={() => (<Home />)} />
         <Route exact path="/userprofile" render={() => (<UserProfile />)} />
@@ -31,4 +34,9 @@ export class App extends Component {
   }
 }
 
-export default App;
+export const mapStateToProps = ({toggleFilterModal}) => ({
+  toggleFilterModal
+});
+
+
+export default connect(mapStateToProps, null)(App)

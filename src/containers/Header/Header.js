@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './Header.css';
 import logo from '../../images/crowd-hound-logo-2.png';
+import { connect } from 'react-redux';
+import { toggleFilterModal } from '../../actions';
 
-class Header extends Component {
+export class Header extends Component {
 
   toggleBurger = () => {
+    this.props.toggleFilterModal(true)
     console.log('okkk')
   }
   render() {
@@ -22,4 +25,8 @@ class Header extends Component {
   }
 }
 
-export default Header
+export const mapDispatchToProps = dispatch => ({
+  toggleFilterModal: boolean => dispatch(toggleFilterModal(boolean)),
+});
+
+export default connect(null, mapDispatchToProps)(Header)
