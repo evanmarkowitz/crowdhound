@@ -12,6 +12,9 @@ import { Route, Switch } from 'react-router-dom';
 
 export class App extends Component {
   render() {
+    const something = {
+      name: 'name'
+    }
     
     return (
       <main className="app">
@@ -19,7 +22,10 @@ export class App extends Component {
       {this.props.toggleFilterValue && <FilterModal />}
         <Switch>
         <Route exact path="/" render={() => (<Home />)} />
-        <Route exact path="/userprofile" render={() => (<UserProfile />)} />
+        <Route exact path="/userprofile/:id" render={({match}) => {
+          const  {id} = match.params
+          const userId = {id}
+          return <UserProfile {...userId}/>}} />
         <Route exact path="/dogprofile" render={() => (<DogProfile />)} />
         <Route exact path="/results" render={() => (<SearchResults />)} />
         <Route render={() => (

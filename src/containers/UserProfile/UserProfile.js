@@ -5,18 +5,28 @@ import dogFace1 from '../../images/dog-face-1.jpg';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
-function UserProfile() {
-
+function UserProfile(props) {
+  const id = parseInt(props.id)
   const { loading, error, data } = useQuery(gql`
     {
-      user(id: 1) {
+      user(id: ${id}) {
         id
         firstName
+        lastName
+        longDesc
+        
+        dogs {
+          name
+          photos
+        }
       }
     }
   `);
 
-    console.log(data)
+  if(loading) return <p>Loading....</p>;
+  if(error) return <p>Error :</p>;
+
+    console.log(data.user.photos)
     const profileImageStyle = {
       backgroundImage: `url(${x})`,
       backgroundPosition: "center 1px",
@@ -31,19 +41,17 @@ function UserProfile() {
       backgroundRepeat: "no-repeat"
     }
 
+    const {firstName, lastName, longDesc } = data.user
+
     return (
       <section className="user-profile">
         <section  className="profile-img" style={profileImageStyle} />
-          <h5 className="user-profile-name">Bradly Copper</h5>
+          <h5 className="user-profile-name">{firstName +" "+ lastName}</h5>
         <div className="user-profile-content-container">
             <div className="user-profile-content-info">
                 <h5 className="user-about-me-title">ABOUT ME</h5>
                 <p className="user-about-me-body">
-                  Lorem ipsum dolor sit amet, 
-                  consectetur adipiscing elit,
-                  sed do eiusmod tempor
-                  incididunt ut labore et dolore
-                  magna aliqua.
+                  {longDesc}
                 </p>
                 <h5 className="user-address-title">MY ADDRESS</h5>
                 <address className="user-address-body">
