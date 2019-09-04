@@ -1,6 +1,6 @@
-import React from './node_modules/react';
+import React from 'react';
 import {DogCard} from './DogCard';
-import { shallow } from './node_modules/enzyme';
+import { shallow } from 'enzyme';
 
 
 
