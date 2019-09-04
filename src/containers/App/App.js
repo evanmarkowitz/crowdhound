@@ -16,7 +16,7 @@ export class App extends Component {
     return (
       <main className="app">
       <Header />
-      {this.props.toggleFilterModal && <FilterModal />}
+      {this.props.toggleFilterValue && <FilterModal />}
         <Switch>
         <Route exact path="/" render={() => (<Home />)} />
         <Route exact path="/userprofile" render={() => (<UserProfile />)} />
@@ -36,8 +36,8 @@ export class App extends Component {
   }
 }
 
-export const mapStateToProps = ({toggleFilterModal}) => ({
-  toggleFilterModal
+export const mapStateToProps = ({toggleFilterValue}) => ({
+  toggleFilterValue
 });
 
 

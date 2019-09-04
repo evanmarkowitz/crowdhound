@@ -7,8 +7,7 @@ import { toggleFilterModal } from '../../actions';
 export class Header extends Component {
 
   toggleBurger = () => {
-    this.props.toggleFilterModal(true)
-
+    this.props.toggleFilterModal(!this.props.toggleFilterValue)
   }
   render() {
     return (
@@ -25,8 +24,12 @@ export class Header extends Component {
   }
 }
 
+export const mapStateToProps = state => ({
+  toggleFilterValue:  state.toggleFilterValue,
+})
+
 export const mapDispatchToProps = dispatch => ({
   toggleFilterModal: boolean => dispatch(toggleFilterModal(boolean)),
 });
 
-export default connect(null, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
