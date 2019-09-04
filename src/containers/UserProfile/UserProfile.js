@@ -1,12 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './UserProfile.css';
 import x from '../../images/bradly-cooper.jpg'
 import dogFace1 from '../../images/dog-face-1.jpg';
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
-class UserProfile extends Component {
+function UserProfile() {
 
- 
-  render() {
+  const { loading, error, data } = useQuery(gql`
+    {
+      user(id: 1) {
+        id
+        firstName
+      }
+    }
+  `);
+
+    console.log(data)
     const profileImageStyle = {
       backgroundImage: `url(${x})`,
       backgroundPosition: "center 1px",
@@ -53,7 +63,6 @@ class UserProfile extends Component {
         </div>
       </section>
     )
-  }
 }
 
 export default UserProfile
