@@ -9,6 +9,8 @@ export class FilterModal extends Component {
     super()
     this.state = {
       distanceValue: 10,
+      activityLevel: '',
+      size: ''
     }
   }
 
@@ -19,6 +21,11 @@ export class FilterModal extends Component {
   clickFinder = () => {
     this.props.toggleFilterModal(false)
   }
+
+  clickFilter = e => {
+    console.log(e.target)
+    this.setState({[e.target.name]: e.target.value})
+  }
   
   render() {
     return(
@@ -27,15 +34,24 @@ export class FilterModal extends Component {
           <div className='filters'>
             <section className='column dog-size'>
               <h2>DOG SIZE</h2>
-              <button><span className='size'>Small</span><span className='weight'>05-15lbs</span></button>
-              <button><span className='size'>Medium</span><span className='weight'>16-40lbs</span></button>
-              <button><span className='size'>Large</span><span className='weight'>41- 100lbs</span></button>
+              <button name='size' value='small' onClick={this.clickFilter}>
+                <span className='size' name='size' value='small'>Small</span>
+                <span className='weight' name='size' value='small'>05-15lbs</span>
+              </button>
+              <button name='size' value='medium' onClick={this.clickFilter}>
+                <span className='size' name='size' value='medium'>Medium</span>
+                <span className='weight' name='size' value='medium'>16-40lbs</span>
+              </button>
+              <button name='size' value='large' onClick={this.clickFilter}>
+                <span className='size' name='size' value='large'>Large</span>
+                <span className='weight' name='size' value='large'>41- 100lbs</span>
+              </button>
             </section>
             <section className='column activity'>
               <h2>ACTIVITY</h2>
-              <button>Low</button>
-              <button>Average</button>
-              <button>High</button>
+              <button name='activityLevel' value={0} onClick={this.clickFilter}>Low</button>
+              <button name='activityLevel' value={1} onClick={this.clickFilter}>Average</button>
+              <button name='activityLevel' value={2} onClick={this.clickFilter}>High</button>
             </section>
             <section className='column distance'>
               <h2>DISTANCE</h2>
