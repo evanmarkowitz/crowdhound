@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Home.css';
 import dogsHomePage from '../../images/dogs-homepage.jpg';
 
-class Header extends Component {
+export class Header extends Component {
   render() {
     return (
         <section className="home">
