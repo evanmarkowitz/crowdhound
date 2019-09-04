@@ -23,7 +23,11 @@ export class App extends Component {
           const  {id} = match.params
           const userId = {id}
           return <UserProfile {...userId}/>}} />
-        <Route exact path="/dogprofile" render={() => (<DogProfile />)} />
+        <Route exact path="/dogprofile/:id" render={({match}) => {
+          const  {id} = match.params
+          const dogId = {id}
+        return <DogProfile {...dogId} />
+        }} />
         <Route exact path="/results" render={() => (<SearchResults />)} />
         <Route render={() => (
                 <>

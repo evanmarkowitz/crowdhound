@@ -2,9 +2,41 @@ import React from 'react'
 import './DogProfile.css'
 import profilePic from '../../images/dalmation.jpg';
 import userImage from '../../images/bradly-cooper.jpg';
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
 
-const DogProfile = () => {
+const DogProfile = (props) => {
+    const dogId = parseInt(props.id)
+
+  const { loading, error, data } = useQuery(gql`
+    {
+      dog(id: ${dogId}) {
+        id
+        name
+        breed
+        longDesc
+        activityLevel
+        weight
+        age
+        photos {
+            sourceUrl
+          }
+        user {
+          id
+          firstName
+          lastName
+          photos {
+            sourceUrl
+          }
+        }
+      }
+    }
+  `);
+
+  console.log(data)
+
+
   const profileImageStyle = {
     backgroundImage: `url(${profilePic})`,
     backgroundPosition: 'center',
