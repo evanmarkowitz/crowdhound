@@ -12,9 +12,6 @@ import { Route, Switch } from 'react-router-dom';
 
 export class App extends Component {
   render() {
-    const something = {
-      name: 'name'
-    }
     
     return (
       <main className="app">
