@@ -1,11 +1,13 @@
-import React, { Component } from './node_modules/react'
+import React, { Component } from 'react';
+import './SearchResults.css';
+import DogCard from '../DogCard/DogCard';
 
 export class SearchResults extends Component {
   render() {
     return (
-      <div>
-        
-      </div>
+      <section className="search-results">
+        <DogCard />
+      </section>
     )
   }
 }

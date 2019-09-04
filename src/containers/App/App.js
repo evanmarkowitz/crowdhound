@@ -4,7 +4,8 @@ import Header from '../Header/Header';
 import Home from '../Home/Home';
 import UserProfile from '../UserProfile/UserProfile';
 import DogProfile from '../DogProfile/DogProfile';
-import FilterModal from '../FilterModal/FilterModal'
+import FilterModal from '../FilterModal/FilterModal';
+import SearchResults from '../SearchResults/SearchResults';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ export class App extends Component {
         <Route exact path="/" render={() => (<Home />)} />
         <Route exact path="/userprofile" render={() => (<UserProfile />)} />
         <Route exact path="/dogprofile" render={() => (<DogProfile />)} />
+        <Route exact path="/results" render={() => (<SearchResults />)} />
         <Route render={() => (
                 <>
                 <div className="page-not-found-container">
