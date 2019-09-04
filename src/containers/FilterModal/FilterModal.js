@@ -35,16 +35,13 @@ export class FilterModal extends Component {
             <section className='column dog-size'>
               <h2>DOG SIZE</h2>
               <button name='size' value='small' onClick={this.clickFilter}>
-                <span className='size' name='size' value='small'>Small</span>
-                <span className='weight' name='size' value='small'>05-15lbs</span>
+                Small:  0-15lbs
               </button>
               <button name='size' value='medium' onClick={this.clickFilter}>
-                <span className='size' name='size' value='medium'>Medium</span>
-                <span className='weight' name='size' value='medium'>16-40lbs</span>
+                Medium: 16-40lbs
               </button>
               <button name='size' value='large' onClick={this.clickFilter}>
-                <span className='size' name='size' value='large'>Large</span>
-                <span className='weight' name='size' value='large'>41- 100lbs</span>
+                Large:  41- 100lbs
               </button>
             </section>
             <section className='column activity'>
