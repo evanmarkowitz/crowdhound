@@ -23,7 +23,6 @@ export class FilterModal extends Component {
   }
 
   clickFilter = e => {
-    console.log(e.target)
     this.setState({[e.target.name]: e.target.value})
   }
   
