@@ -8,6 +8,7 @@ import { gql } from 'apollo-boost';
 
 
  function UserProfile(props) {
+   
   const id = parseInt(props.id)
   const { loading, error, data } = useQuery(gql`
     {
@@ -52,7 +53,7 @@ import { gql } from 'apollo-boost';
         backgroundSize: "150px auto",
         backgroundRepeat: "no-repeat"
       }
-      console.log(dogImage)
+
       return (
         <div className="user-profile-dog" key={dog.id}>
           <Link to={`/dogprofile/${dog.id}`} className="dog-profile-img" style={dogImageStyle}></Link>
