@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DogProfile should match the snapshot 1`] = `undefined`;
-
-exports[`UserProfile should match the snapshot 1`] = `undefined`;
+exports[`DogProfile should map the snapshot 1`] = `undefined`;

@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 
 
 
-describe.skip('UserProfile', () => {
+describe('UserProfile', () => {
   let wrapper;
   let mocks;
   beforeEach(() => {
@@ -26,13 +26,13 @@ describe.skip('UserProfile', () => {
     ];
     wrapper = shallow(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <UserProfile />
+        <UserProfile id={1}/>
       </MockedProvider>
     );
 
   })
 
-  it.skip('should map the snapshot', () => {
+  it('should map the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   })
 

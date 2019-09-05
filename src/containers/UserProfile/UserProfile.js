@@ -6,32 +6,34 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
-export let GET_USER_QUERY 
+export const GET_USER_QUERY = gql`
+  query getDog($id: Int) {
+    user(id: $id) {
+      id
+      firstName
+      lastName
+      longDesc
+      photos {
+        sourceUrl
+      }
+      dogs {
+        id
+        name
+        photos {
+          sourceUrl
+        }
+      }
+    }
+  
+}`
 
 export function UserProfile(props) {
    
   const id = parseInt(props.id)
   const { loading, error, data } = useQuery(
-    GET_USER_QUERY= gql`
-    {
-      
-      user(id: ${id}) {
-        id
-        firstName
-        lastName
-        longDesc
-        photos {
-          sourceUrl
-        }
-        dogs {
-          id
-          name
-          photos {
-            sourceUrl
-          }
-        }
-    }
-    `
+    GET_USER_QUERY,
+    { variables: { id } }
+  
   );
 
   if(loading) return <p>Loading....</p>;
@@ -69,7 +71,7 @@ export function UserProfile(props) {
 
     return (
       <section className="user-profile">
-        <section  className="profile-img" style={profileImageStyle} />
+        <section  className="profile-img" style={profileImageStyle}></section>
           <h5 className="user-profile-name">{firstName +" "+ lastName}</h5>
         <div className="user-profile-content-container">
             <div className="user-profile-content-info">
@@ -91,7 +93,9 @@ export function UserProfile(props) {
             </div>
         </div>
       </section>
+      
     )
 }
 
 // export default UserProfile
+

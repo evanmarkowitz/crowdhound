@@ -1,17 +1,62 @@
+// import React from 'react';
+// import DogProfile from './DogProfile';
+// import { shallow } from 'enzyme';
+
+
+
+// describe('DogProfile', () => {
+//   let wrapper;
+//   beforeEach(() => {
+//      wrapper = shallow(<DogProfile />);
+//   })
+
+//   it('should match the snapshot', () => {
+//     expect(wrapper).toMatchSnapshot();
+//   });
+
+// })
+
+
 import React from 'react';
-import DogProfile from './DogProfile';
+import {DogProfile, GET_DOG_QUERY} from './DogProfile';
+import { MockedProvider } from '@apollo/react-testing'
 import { shallow } from 'enzyme';
+
 
 
 
 describe('DogProfile', () => {
   let wrapper;
+  let mocks;
   beforeEach(() => {
-     wrapper = shallow(<DogProfile />);
+      mocks = [
+      {
+        request: {
+          query: GET_DOG_QUERY,
+
+        },
+        result: {
+          data: {
+            dog: { id: '1', name: 'Buck', breed: 'buck', longDesc: 'longDesc', activityLevel: 1, weight: 5, age: 5, photos: {sourceUrl: ''} },
+            user: { id: '2', firstName: 'buckdog', lastName: 'buck', photos: {sourceUrl: ''}}
+          },
+        },
+      },
+    ];
+    wrapper = shallow(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <DogProfile />
+      </MockedProvider>
+    );
+
   })
 
-  it('should match the snapshot', () => {
+  it('should map the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  });
+  })
+
 
 })
+
+
+
