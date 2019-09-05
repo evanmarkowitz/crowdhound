@@ -16,7 +16,11 @@
   margin-right: 15px;
   margin-bottom: 6px;
   margin-left: 20px;
+  display: inline-block;
+}
 
+.logo-inside {
+  height: 100%;
 }
 
 .burger-container {
