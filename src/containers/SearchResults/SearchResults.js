@@ -4,20 +4,24 @@ import DogCard from '../DogCard/DogCard';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
-
-function SearchResults() {
-
-  const { loading, error, data } = useQuery(gql`
-    {
-      dogs {
-        id
-        name
-        photos {
-          sourceUrl
-        }
+export const GET_ALL_DOG_QUERY = gql`
+  {
+    dogs {
+      id
+      name
+      photos {
+        sourceUrl
       }
     }
-  `);
+  }
+`;
+
+export function SearchResults() {
+
+  const { loading, error, data } = useQuery(
+    GET_ALL_DOG_QUERY,
+  )
+
 
   if(loading) return <p>Loading....</p>;
   if(error) return <p>Error :</p>;
@@ -34,4 +38,4 @@ function SearchResults() {
   
 }
 
-export default SearchResults;
+// export default SearchResults;
