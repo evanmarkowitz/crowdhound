@@ -3,6 +3,7 @@ import './Header.css';
 import logo from '../../images/crowd-hound-logo-2.png';
 import { connect } from 'react-redux';
 import { toggleFilterModal } from '../../actions';
+import { Link } from 'react-router-dom';
 
 export class Header extends Component {
 
@@ -18,7 +19,7 @@ export class Header extends Component {
             <div className="burger-line burger-line-2"></div>
             <div className="burger-line burger-line-3"></div>
         </section>
-        <img src={logo} alt="logo" className="logo" />
+        <Link to="/" className="logo"><img src={logo} alt="logo"  className="logo-inside"/></Link>
       </header>
     )
   }

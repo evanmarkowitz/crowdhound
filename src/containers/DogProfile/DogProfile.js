@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom';
 
 
 const DogProfile = (props) => {
-    const dogId = parseInt(props.id)
 
+  const dogId = parseInt(props.id)
+  
   const { loading, error, data } = useQuery(gql`
     {
       dog(id: ${dogId}) {
