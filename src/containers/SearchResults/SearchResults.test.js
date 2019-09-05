@@ -1,8 +1,8 @@
 import React from 'react';
 import {SearchResults, GET_ALL_DOG_QUERY} from './SearchResults';
-import {MockProvider} from '@apollo/react-testing'
-
+import { MockedProvider } from '@apollo/react-testing'
 import { shallow } from 'enzyme';
+
 
 
 
@@ -10,8 +10,6 @@ describe('SearchResults', () => {
   let wrapper;
   let mocks;
   beforeEach(() => {
-     
-
       mocks = [
       {
         request: {
@@ -26,15 +24,16 @@ describe('SearchResults', () => {
       },
     ];
     wrapper = shallow(
-      <MockProvider mocks={mocks} addTypename={false}>
+      <MockedProvider mocks={mocks} addTypename={false}>
         <SearchResults />
-      </MockProvider>
+      </MockedProvider>
     );
 
   })
 
-  it('should match the snapshot', () => {
+  it('should map the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  });
+  })
+
 
 })

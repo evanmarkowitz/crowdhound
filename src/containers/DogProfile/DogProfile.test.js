@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 
 
-describe('UserProfile', () => {
+describe('DogProfile', () => {
   let wrapper;
   beforeEach(() => {
      wrapper = shallow(<DogProfile />);

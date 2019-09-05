@@ -6,12 +6,15 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
+export let GET_USER_QUERY 
 
- function UserProfile(props) {
+export function UserProfile(props) {
    
   const id = parseInt(props.id)
-  const { loading, error, data } = useQuery(gql`
+  const { loading, error, data } = useQuery(
+    GET_USER_QUERY= gql`
     {
+      
       user(id: ${id}) {
         id
         firstName
@@ -27,9 +30,9 @@ import { gql } from 'apollo-boost';
             sourceUrl
           }
         }
-      }
     }
-  `);
+    `
+  );
 
   if(loading) return <p>Loading....</p>;
   if(error) return <p>Error :</p>;
@@ -91,4 +94,4 @@ import { gql } from 'apollo-boost';
     )
 }
 
-export default UserProfile
+// export default UserProfile
