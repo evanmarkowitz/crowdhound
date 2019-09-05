@@ -7,7 +7,7 @@ import { shallow } from 'enzyme';
 describe('DogCard', () => {
   let wrapper;
   beforeEach(() => {
-     wrapper = shallow(<DogCard />);
+     wrapper = shallow(<DogCard photos={''}/>);
   })
 
   it('should match the snapshot', () => {

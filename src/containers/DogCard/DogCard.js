@@ -11,8 +11,6 @@ export class DogCard extends Component {
     const {name, photos, id} = this.props
     const userImagePic = !photos[0] ? dogFace1 : photos[0].sourceUrl
 
-    console.log(userImagePic)
-
     const profileImageStyle = {
       backgroundImage: `url(${userImagePic})`,
       backgroundPosition: 'center',
