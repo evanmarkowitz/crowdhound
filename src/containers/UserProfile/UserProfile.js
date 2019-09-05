@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
 export const GET_USER_QUERY = gql`
-  query getDog($id: Int) {
+  query getUser($id: ID!) {
     user(id: $id) {
       id
       firstName
@@ -30,12 +30,12 @@ export const GET_USER_QUERY = gql`
 export function UserProfile(props) {
    
   const id = parseInt(props.id)
+  console.log(id)
   const { loading, error, data } = useQuery(
     GET_USER_QUERY,
     { variables: { id } }
-  
   );
-
+  console.log(data)
   if(loading) return <p>Loading....</p>;
   if(error) return <p>Error :</p>;
 

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 export let GET_DOG_QUERY = gql`
 
-  query getDog($id: Int) {
+  query getDog($id: ID!) {
   dog(id: $id) {
     id
     name
@@ -29,18 +29,20 @@ export let GET_DOG_QUERY = gql`
       }
     }
   }
-
 }
 `
 
 export const DogProfile = (props) => {
 
-  const dogId = parseInt(props.id)
+  const id = parseInt(props.id)
+
   
   const { loading, error, data } = useQuery(
     GET_DOG_QUERY,
-    { variables: { dogId } }
+    { variables: { id } }
+    
   );
+
 
   if(loading) return <p>Loading....</p>;
   if(error) return <p>Error :</p>;
