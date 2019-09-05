@@ -1,6 +1,7 @@
 import React from 'react';
 import './UserProfile.css';
 import dogFace1 from '../../images/dog-face-1.jpg';
+import userImage from '../../images/bradly-cooper.jpg';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
@@ -33,8 +34,10 @@ function UserProfile(props) {
 
   const {firstName, lastName, longDesc, photos, dogs} = data.user
 
+  const userImagePic = !photos[0] ? userImage : photos[0].sourceUrl
+
     const profileImageStyle = {
-      backgroundImage: `url(${photos[0].sourceUrl})`,
+      backgroundImage: `url(${userImagePic})`,
       backgroundPosition: "center 1px",
       backgroundSize: "150px auto",
       backgroundRepeat: "no-repeat"
@@ -57,9 +60,7 @@ function UserProfile(props) {
       )
     })
 
-    
-
-    
+  
 
     return (
       <section className="user-profile">
