@@ -22,7 +22,7 @@ export class FilterModal extends Component {
     this.props.toggleFilterModal(false)
   }
 
-  clickFilter = e => {
+  clickFilter = e => {  
     this.setState({[e.target.name]: e.target.value})
   }
 
