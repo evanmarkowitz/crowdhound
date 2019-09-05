@@ -2,6 +2,7 @@ import React from 'react';
 import './UserProfile.css';
 import dogFace1 from '../../images/dog-face-1.jpg';
 import userImage from '../../images/bradly-cooper.jpg';
+import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
@@ -54,7 +55,7 @@ function UserProfile(props) {
       console.log(dogImage)
       return (
         <div className="user-profile-dog" key={dog.id}>
-          <section  className="dog-profile-img" style={dogImageStyle} />
+          <Link to={`/dogprofile/${dog.id}`} className="dog-profile-img" style={dogImageStyle}></Link>
           <h5 className="dog-profile-name">{dog.name}</h5>
         </div>
       )
