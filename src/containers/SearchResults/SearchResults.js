@@ -27,7 +27,7 @@ export function SearchResults() {
   if(error) return <p>Error :</p>;
   
   const dog = data.dogs.map(dog => {
-    return <DogCard {...dog}/>
+    return <DogCard {...dog} key={dog.id}/>
   })
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import {SearchResults, GET_ALL_DOG_QUERY} from './SearchResults';
-import {MockProvider} from '@apollo/react-testing'
+import {MockedProvider} from '@apollo/react-testing'
 
 import { shallow } from 'enzyme';
 
@@ -20,15 +20,15 @@ describe('SearchResults', () => {
         },
         result: {
           data: {
-            dog: { id: '1', name: 'Buck', photos: {sourceUrl: ''} },
+            dog: { id: '1',  photos: {sourceUrl: ''} },
           },
         },
       },
     ];
     wrapper = shallow(
-      <MockProvider mocks={mocks} addTypename={false}>
+      <MockedProvider mocks={mocks} addTypename={false}>
         <SearchResults />
-      </MockProvider>
+      </MockedProvider>
     );
 
   })
