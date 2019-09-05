@@ -6,35 +6,43 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { Link } from 'react-router-dom';
 
+export let GET_DOG_QUERY = gql`
 
-const DogProfile = (props) => {
-
-  const dogId = parseInt(props.id)
-  
-  const { loading, error, data } = useQuery(gql`
-    {
-      dog(id: ${dogId}) {
-        id
-        name
-        breed
-        longDesc
-        activityLevel
-        weight
-        age
-        photos {
-            sourceUrl
-          }
-        user {
-          id
-          firstName
-          lastName
-          photos {
-            sourceUrl
-          }
-        }
+  query getDog($id: ID!) {
+  dog(id: $id) {
+    id
+    name
+    breed
+    longDesc
+    activityLevel
+    weight
+    age
+    photos {
+        sourceUrl
+      }
+    user {
+      id
+      firstName
+      lastName
+      photos {
+        sourceUrl
       }
     }
-  `);
+  }
+}
+`
+
+export const DogProfile = (props) => {
+
+  const id = parseInt(props.id)
+
+  
+  const { loading, error, data } = useQuery(
+    GET_DOG_QUERY,
+    { variables: { id } }
+    
+  );
+
 
   if(loading) return <p>Loading....</p>;
   if(error) return <p>Error :</p>;
