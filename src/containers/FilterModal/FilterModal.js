@@ -34,6 +34,15 @@ export class FilterModal extends Component {
       return {background: '#1dbcdf77'}
     }
   }
+
+  activeLevelBtnStyle = option => {
+    const { activityLevel } = this.state;
+    if (option === parseInt(activityLevel)) {
+      return {background: '#1dbbdf'}
+    } else {
+      return {background: '#1dbcdf77'}
+    }
+  }
   
   render() {
     return(
@@ -54,9 +63,9 @@ export class FilterModal extends Component {
             </section>
             <section className='column activity'>
               <h2>ACTIVITY</h2>
-              <button name='activityLevel' value={0} onClick={this.clickFilter} className="filter-btn">Low</button>
-              <button name='activityLevel' value={1} onClick={this.clickFilter} className="filter-btn">Average</button>
-              <button name='activityLevel' value={2} onClick={this.clickFilter} className="filter-btn">High</button>
+              <button style={this.activeLevelBtnStyle(0)} name='activityLevel' value={0} onClick={this.clickFilter} className="filter-btn">Low</button>
+              <button style={this.activeLevelBtnStyle(1)} name='activityLevel' value={1} onClick={this.clickFilter} className="filter-btn">Average</button>
+              <button style={this.activeLevelBtnStyle(2)} name='activityLevel' value={2} onClick={this.clickFilter} className="filter-btn">High</button>
             </section>
             <section className='column distance'>
               <h2>DISTANCE</h2>
