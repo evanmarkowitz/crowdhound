@@ -28,13 +28,10 @@ export function SearchResults() {
   console.log(distance, activityLevel, dogSize)
   
 
-  
-
 
   const { loading, error, data } = useQuery(
     GET_ALL_DOG_QUERY,
   )
-
 
   if(loading) return <p>Loading....</p>;
   if(error) return <p>Error :</p>;
