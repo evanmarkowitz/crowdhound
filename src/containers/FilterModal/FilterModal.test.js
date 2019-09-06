@@ -60,13 +60,6 @@ describe('FilterModal', () => {
     spy(1)
     expect(spy).toHaveBeenCalledWith(1)
 
-
-  //   const spy = jest.spyOn(wrapper.instance(), "getPalettes");
-  // wrapper.instance().forceUpdate();
-
-  // wrapper.instance().addAndUpdatePalette = jest.fn();
-  // wrapper.instance().addAndUpdatePalette();
-  // expect(spy).toHaveBeenCalled();
   })
 
 })
