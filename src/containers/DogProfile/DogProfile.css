@@ -5,6 +5,12 @@
   margin-top: 60px;
 }
 
+.loading{
+  justify-content: center;
+  margin-top: 60px;
+  font-size: 24px;
+}
+
 .dog-info-wrapper {
   flex: 3;
   padding: 25px;

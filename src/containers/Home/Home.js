@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
 import dogsHomePage from '../../images/dogs-homepage.jpg';
+import { DogCarousel } from '../DogCarousel/DogCarousel';
 
 export class Header extends Component {
   render() {
@@ -20,7 +21,7 @@ export class Header extends Component {
             <img src={dogsHomePage} className="homepage-dogs-img" alt="three dogs sitting together"/>
           </div>
            <section className="home-carsouel">
-
+           <DogCarousel/>
           </section>
         </section>
         

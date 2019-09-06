@@ -44,7 +44,7 @@ export const DogProfile = (props) => {
   );
 
 
-  if(loading) return <p>Loading....</p>;
+  if(loading) return <p className='loading'>Roof Roof hold on while we fetch this dog!</p>;
   if(error) return <p>Error :</p>;
 
   const {name, longDesc, breed, photos, activityLevel, weight, age, user} = data.dog;

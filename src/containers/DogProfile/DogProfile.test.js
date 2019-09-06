@@ -2,6 +2,8 @@ import React from 'react';
 import {DogProfile, GET_DOG_QUERY} from './DogProfile';
 import { MockedProvider } from '@apollo/react-testing'
 import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer'
+import { act } from 'react-dom/test-utils';
 
 
 
@@ -36,6 +38,31 @@ describe('DogProfile', () => {
     expect(wrapper).toMatchSnapshot();
   })
 
+  it('should render loading state initially', async () => {
+    const component = renderer.create(
+      <MockedProvider mocks={mocks}>
+        <DogProfile />
+      </MockedProvider>,
+    );
+    const tree = component.toJSON();
+    expect(tree.children).toContain('Roof Roof hold on while we fetch this dog!');
+  });
+
+  it.skip('should match the mock data', async () => {
+    const component = renderer.create(
+      <MockedProvider mocks={mocks.data} addTypename={false}>
+        <DogProfile name="Buck" />
+      </MockedProvider>,
+    );
+  
+    // await wait(0); // wait for response
+  
+    const p = component.root.findByType('p');
+    expect(p.children).toContain('Buck is a poodle');
+  })
+
+
+ 
 
 })
 
