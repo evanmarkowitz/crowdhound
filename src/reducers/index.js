@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
 import {toggleFilterModalReducer} from './toggleFilterModalReducer';
-import { filterCriteriaReducer } from './filterCriteriaReducer';
+import { distanceValueReducer } from './distanceValueReducer';
+import { activityLevelReducer } from './activityLevelReducer';
+import { dogSizeReducer } from './dogSizeReducer';
 
 export const rootReducer = combineReducers({
   toggleFilterValue: toggleFilterModalReducer,
-  filterCriteria: filterCriteriaReducer
+  distance: distanceValueReducer,
+  activityLevel: activityLevelReducer,
+  dogSize: dogSizeReducer,
 })

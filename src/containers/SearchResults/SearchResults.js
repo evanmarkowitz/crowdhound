@@ -3,6 +3,8 @@ import './SearchResults.css';
 import DogCard from '../DogCard/DogCard';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import { useSelector } from 'react-redux'
+
 
 export const GET_ALL_DOG_QUERY = gql`
   {
@@ -17,6 +19,17 @@ export const GET_ALL_DOG_QUERY = gql`
 `;
 
 export function SearchResults() {
+
+  const distance = useSelector(state => state.distance)
+  const activityLevel = useSelector(state => state.activityLevel)
+  const dogSize = useSelector(state => state.dogSize)
+
+
+  console.log(distance, activityLevel, dogSize)
+  
+
+  
+
 
   const { loading, error, data } = useQuery(
     GET_ALL_DOG_QUERY,

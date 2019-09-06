@@ -1,24 +1,15 @@
 import React, { Component } from 'react'
 import './FilterModal.css'
-import { toggleFilterModal, setFilterCriteria } from '../../actions';
+import { toggleFilterModal, setDistanceValue, setActivityLevel, setDogSize } from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
 export class FilterModal extends Component {
-  constructor() {
-    super()
-    this.state = {
-      distanceValue: 10,
-      activityLevel: 0,
-      size: 'small'
-    }
-  }
+
 
   moveSlider = e => {
-    this.setState({distanceValue: e.target.value })
-    const { activityLevel, size } = this.state;
-    this.props.handleUpdateCriteria({ distanceValue: e.target.value, activityLevel, size });
+    this.props.handleDistanceValue(parseInt(e.target.value));
   }
 
   clickFinder = () => {
@@ -27,18 +18,17 @@ export class FilterModal extends Component {
 
 
   clickFilter = e => {  
-    this.setState({[e.target.name]: e.target.value})
-    const { distanceValue, activityLevel, size } = this.state;
+
     if (e.target.name === 'activityLevel') {
-      this.props.handleUpdateCriteria({ distanceValue, activityLevel: e.target.value, size});
+      this.props.handleActivityLevel(parseInt(e.target.value));
     } else {
-      this.props.handleUpdateCriteria({ distanceValue, activityLevel, size: e.target.value});
+      this.props.handleDogSize(e.target.value);
     }
   }
 
   dogSizeBtnStyle = option => {
-    const { size } = this.state;
-    if (option === size) {
+    const { dogSize } = this.props;
+    if (option === dogSize) {
       return {background: '#1dbbdf'}
     } else {
       return {background: '#1dbcdf77'}
@@ -46,7 +36,7 @@ export class FilterModal extends Component {
   }
 
   activeLevelBtnStyle = option => {
-    const { activityLevel } = this.state;
+    const { activityLevel } = this.props;
     if (option === parseInt(activityLevel)) {
       return {background: '#1dbbdf'}
     } else {
@@ -55,6 +45,8 @@ export class FilterModal extends Component {
   }
   
   render() {
+
+
     return(
       <article className='modal-wrapper'>
         <section className='modal-card'>
@@ -80,9 +72,9 @@ export class FilterModal extends Component {
             <section className='column distance'>
               <h2>DISTANCE</h2>
               <div className='distance-box'>
-                <p>{this.state.distanceValue} miles</p>
+                <p>{this.props.distance} miles</p>
               </div>
-              <input type="range" min="1" max="50" value={this.state.distanceValue} className="slider" id="myRange" onChange={this.moveSlider} />
+              <input type="range" min="1" max="50" value={this.props.distance} className="slider" id="myRange" onChange={this.moveSlider} />
               <p id='zip-code'>Zip Code: 80211</p>
             </section>
           </div>
@@ -100,9 +92,17 @@ export class FilterModal extends Component {
   }
 }
 
+export const mapStateToProps = state => ({
+  distance: state.distance,
+  dogSize: state.dogSize,
+  activityLevel: state.activityLevel
+})
+
 export const mapDispatchToProps = dispatch => ({
   toggleFilterModal: boolean => dispatch(toggleFilterModal(boolean)),
-  handleUpdateCriteria: criteria => dispatch(setFilterCriteria(criteria))
+  handleDistanceValue: distance => dispatch(setDistanceValue(distance)),
+  handleActivityLevel: level => dispatch(setActivityLevel(level)),
+  handleDogSize: size => dispatch(setDogSize(size))
 });
 
-export default connect(null, mapDispatchToProps)(FilterModal)
+export default connect(mapStateToProps, mapDispatchToProps)(FilterModal)
