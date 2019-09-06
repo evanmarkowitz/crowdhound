@@ -8,16 +8,23 @@ import { Link } from 'react-router-dom';
 export class Header extends Component {
 
   toggleBurger = () => {
-    this.props.toggleFilterModal(!this.props.toggleFilterValue)
+    const {toggleFilterModal,  toggleFilterValue} = this.props
+    toggleFilterModal(!toggleFilterValue)
   }
+
+  activeBurgerStyle = () => {
+    const {toggleFilterValue} = this.props;
+    return toggleFilterValue ? {background: '#1dbbdf'} : {background: 'gray'}
+  }
+
   render() {
     return (
       <header className="header">
         <section className="burger-container" >
             <button className="burger-btn" onClick={this.toggleBurger}></button>
-            <div className="burger-line burger-line-1"></div>
-            <div className="burger-line burger-line-2"></div>
-            <div className="burger-line burger-line-3"></div>
+            <div style={this.activeBurgerStyle()} className="burger-line burger-line-1"></div>
+            <div style={this.activeBurgerStyle()} className="burger-line burger-line-2"></div>
+            <div style={this.activeBurgerStyle()} className="burger-line burger-line-3"></div>
         </section>
         <Link to="/" className="logo"><img src={logo} alt="logo"  className="logo-inside"/></Link>
       </header>

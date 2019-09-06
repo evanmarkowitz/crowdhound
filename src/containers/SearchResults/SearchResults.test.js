@@ -18,7 +18,7 @@ describe('SearchResults', () => {
         },
         result: {
           data: {
-            dog: { id: '1', name: 'Buck', photos: {sourceUrl: ''} },
+            dog: { id: '1',  photos: {sourceUrl: ''} },
           },
         },
       },

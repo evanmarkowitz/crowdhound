@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 
 export class DogCard extends Component {
 
-    
 
   render() {
     const {name, photos, id} = this.props
@@ -18,7 +17,7 @@ export class DogCard extends Component {
       backgroundRepeat: 'no-repeat'
   }
     return (
-      <Link to={`/dogprofile/${id}`}  className="dog-card">
+      <Link to={`/dogprofile/${id}`} className="dog-card">
         <div style={profileImageStyle} className='dog-card-img'></div>
         <div className="dog-card-info">
           <h5 className="dog-card-name">{name}</h5>
