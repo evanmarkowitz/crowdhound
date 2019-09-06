@@ -74,10 +74,10 @@ export const DogCarousel = () => {
           backgroundPosition: 'center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
-          height: '400px'
+          height: '400px', 
         }}> 
+        <p className='dog-desc'>{dog.name}</p>
         </div>
-        <p>{dog.name}</p>
       </div>
     </Link>
   })
