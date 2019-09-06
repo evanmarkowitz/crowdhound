@@ -1,6 +1,8 @@
-import { combineReducers } from 'redux'
-import {toggleFilterModalReducer} from './toggleFilterModalReducer'
+import { combineReducers } from 'redux';
+import {toggleFilterModalReducer} from './toggleFilterModalReducer';
+import { filterCriteriaReducer } from './filterCriteriaReducer';
 
 export const rootReducer = combineReducers({
-  toggleFilterValue: toggleFilterModalReducer
+  toggleFilterValue: toggleFilterModalReducer,
+  filterCriteria: filterCriteriaReducer
 })

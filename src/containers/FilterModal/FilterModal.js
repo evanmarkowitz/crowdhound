@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import './FilterModal.css'
-import { toggleFilterModal } from '../../actions';
-import { connect } from 'react-redux'
+import { toggleFilterModal, setFilterCriteria } from '../../actions';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 export class FilterModal extends Component {
@@ -10,20 +11,29 @@ export class FilterModal extends Component {
     this.state = {
       distanceValue: 10,
       activityLevel: 0,
-      size: ''
+      size: 'small'
     }
   }
 
   moveSlider = e => {
     this.setState({distanceValue: e.target.value })
+    const { activityLevel, size } = this.state;
+    this.props.handleUpdateCriteria({ distanceValue: e.target.value, activityLevel, size });
   }
 
   clickFinder = () => {
     this.props.toggleFilterModal(false)
   }
 
+
   clickFilter = e => {  
     this.setState({[e.target.name]: e.target.value})
+    const { distanceValue, activityLevel, size } = this.state;
+    if (e.target.name === 'activityLevel') {
+      this.props.handleUpdateCriteria({ distanceValue, activityLevel: e.target.value, size});
+    } else {
+      this.props.handleUpdateCriteria({ distanceValue, activityLevel, size: e.target.value});
+    }
   }
 
   dogSizeBtnStyle = option => {
@@ -77,7 +87,7 @@ export class FilterModal extends Component {
             </section>
           </div>
           <aside className='right-modal'>
-            <button id='find-button' onClick={this.clickFinder}>FIND</button>
+            <Link to="/results" id='find-button' onClick={this.clickFinder}>FIND</Link>
             <div className='user-section'>
               <div id='user-image'></div>
               <p className='user-name'>User Name</p>
@@ -92,6 +102,7 @@ export class FilterModal extends Component {
 
 export const mapDispatchToProps = dispatch => ({
   toggleFilterModal: boolean => dispatch(toggleFilterModal(boolean)),
+  handleUpdateCriteria: criteria => dispatch(setFilterCriteria(criteria))
 });
 
 export default connect(null, mapDispatchToProps)(FilterModal)
