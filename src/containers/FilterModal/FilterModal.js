@@ -9,7 +9,7 @@ export class FilterModal extends Component {
     super()
     this.state = {
       distanceValue: 10,
-      activityLevel: '',
+      activityLevel: 0,
       size: ''
     }
   }
@@ -51,7 +51,7 @@ export class FilterModal extends Component {
           <div className='filters'>
             <section className='column dog-size'>
               <h2>DOG SIZE</h2>
-              <button style={this.dogSizeBtnStyle('small')} name='size' value='small' onClick={this.clickFilter} className="filter-btn">
+              <button style={this.dogSizeBtnStyle('small')} id="small-size" name='size' value='small' onClick={this.clickFilter} className="filter-btn">
                 Small:  0-15lbs
               </button>
               <button style={this.dogSizeBtnStyle('medium')} name='size' value='medium' onClick={this.clickFilter} className="filter-btn">
