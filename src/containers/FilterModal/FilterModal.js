@@ -3,6 +3,7 @@ import './FilterModal.css'
 import { toggleFilterModal, setDistanceValue, setActivityLevel, setDogSize } from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import  LogIn  from '../LogIn/LogIn';
 
 
 export class FilterModal extends Component {
@@ -46,6 +47,13 @@ export class FilterModal extends Component {
   
   render() {
 
+    const userProfileStyle = {
+      backgroundImage: `url(${this.props.currentUser.photoURL})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat'
+  }
+
 
     return(
       <article className='modal-wrapper'>
@@ -81,8 +89,14 @@ export class FilterModal extends Component {
           <aside className='right-modal'>
             <Link to="/results" id='find-button' onClick={this.clickFinder}>FIND</Link>
             <div className='user-section'>
-              <div id='user-image'></div>
-              <p className='user-name'>User Name</p>
+              {
+                !this.props.userLoggedIn ?
+                  <LogIn /> :
+                  <>
+               <Link to={`/userprofile/${2}`} onClick={() => this.props.toggleFilterModal(false)}><div id='user-image' style={userProfileStyle} className='dog-card-img'></div></Link>
+               <p className='user-name'>{this.props.currentUser.name}</p>
+               </>
+              }
             </div>
           </aside>
         </section>
@@ -95,7 +109,9 @@ export class FilterModal extends Component {
 export const mapStateToProps = state => ({
   distance: state.distance,
   dogSize: state.dogSize,
-  activityLevel: state.activityLevel
+  activityLevel: state.activityLevel,
+  userLoggedIn: state.userLoggedIn,
+  currentUser: state.currentUser
 })
 
 export const mapDispatchToProps = dispatch => ({

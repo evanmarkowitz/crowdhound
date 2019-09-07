@@ -3,11 +3,6 @@ export const toggleFilterModal = boolean => ({
   boolean
 });
 
-// export const setFilterCriteria = criteria => ({
-//   type: 'SET_FILTER_CRITERIA',
-//   criteria
-// });
-
 export const setDistanceValue = distance => ({
   type: 'SET_DISTANCE_VALUE',
   distance
@@ -21,4 +16,14 @@ export const setActivityLevel = activeLevel => ({
 export const setDogSize = size => ({
   type: 'SET_DOG_SIZE',
   size
+});
+
+export const setUserLoggedIn = boolean => ({
+  type: 'SET_USER_LOGGED_IN',
+  boolean
+});
+
+export const setCurrentUser = user => ({
+  type: 'SET_CURRENT_USER',
+  user
 });
