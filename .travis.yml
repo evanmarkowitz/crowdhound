@@ -12,7 +12,7 @@ notifications:
 deploy: 
   provider: heroku
   api_key:
-    secure: REACT_APP_HEROKU_API_KEY
+    secure: wBFLp2P1HHOotETOARN5XU7HM+6wzqvAc0ny2zmyYCPNsvtQSKSdZK1W/B8ckXJw+IueSh9KJbnGYwpDQuvA2Di6wm53zo/yosWepkBpdzhn94sXuLBrZm+tgpt5+vN1jo8IHajf7UzWYZNRV3mbFahgLwBhbAzBZ319JO68K1Iobc9Jd8lOddSAkIP4x+c0+1QpSK5nN+ROqj0JgTMTJTOacwqNUJUJcx96dAhSz00+1vyd1CqebZb57miTP2dN6DkysTLPgU91eMLrZGJ4KJS30553YkRhxqvGYHDKBkq25sEuQbRAmXRa2b6WUABjMyG1MRXcKFvW9dkjN82Lk5U0M179r9ym/Hn7RxfuEcmQyy/1ViYAPoVkSfMxdgQ3UGkgnVFxmJhr/Pvi5+xRcyXgANbvCA0QJ722zBykZ9SbKNvzvSgZtfCSvaSkscq5qSwV0lJVOx6EFnITHygGFuwtkhy4RSG0F7sZu5lc+4GL3/tNZA/LmaWUvvdxUvKZBTnmJ36zdfaekn1Y+sO3HI51wup45CD0Bb00eU1MRj02CSOKjUA1s4K/rntd/QBEedk2FEn8wDFvT6tmWATrNlSxU21291UrxOAkawuC2KADu7HFgvHj1MgiQydYY54oaJNDcnGiDLmkCnC+gxmePH+EECY0CKY7UaC5UQHE4LQ=
     app: crowdhound
     on: 
       repo: evanmarkowitz/crowdhound
