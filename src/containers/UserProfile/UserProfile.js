@@ -1,10 +1,13 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './UserProfile.css';
 import dogFace1 from '../../images/dog-face-1.jpg';
 import userImage from '../../images/bradly-cooper.jpg';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import firebase from 'firebase';
+import { setUserLoggedIn, setCurrentUser } from '../../actions';
 
 export const GET_USER_QUERY = gql`
   query getUser($id: ID!) {
@@ -28,14 +31,18 @@ export const GET_USER_QUERY = gql`
 }`
 
 export function UserProfile(props) {
+
+  const dispatch = useDispatch()
+  const userLoggedIn = useSelector(state => state.userLoggedIn)
+
    
   const id = parseInt(props.id)
-  console.log(id)
+
   const { loading, error, data } = useQuery(
     GET_USER_QUERY,
     { variables: { id } }
   );
-  console.log(data)
+
   if(loading) return <p>Loading....</p>;
   if(error) return <p>Error :</p>;
 
@@ -49,6 +56,19 @@ export function UserProfile(props) {
       backgroundSize: "150px auto",
       backgroundRepeat: "no-repeat"
     }
+
+    
+
+    const hanldeLogOut = () => {
+      firebase.auth().signOut().then(function() {
+         dispatch(setUserLoggedIn(false))
+         dispatch(setCurrentUser({name: "", photoURL: ""}))
+      }).catch(function(error) {
+        console.log(error)
+      });
+    }
+
+  
 
     const dog = dogs.map(dog => {
       const dogImage = !dog.photos[0] ? dogFace1 : dog.photos[0].sourceUrl
@@ -84,6 +104,11 @@ export function UserProfile(props) {
                 1600 Amphitheatre Parkway Mountain View,<br/>
                 CA 94043
                 </address>
+                {
+                    userLoggedIn &&
+                    <button className="log-out" onClick={hanldeLogOut}>Log out</button>
+                }
+                
             </div>
             <div className="user-profile-content-dogs-title">
               <h5 className="user-about-me-title">DOGS</h5>
@@ -93,9 +118,5 @@ export function UserProfile(props) {
             </div>
         </div>
       </section>
-      
     )
 }
-
-// export default UserProfile
-

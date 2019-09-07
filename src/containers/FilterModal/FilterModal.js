@@ -1,34 +1,35 @@
 import React, { Component } from 'react'
 import './FilterModal.css'
-import { toggleFilterModal } from '../../actions';
-import { connect } from 'react-redux'
+import { toggleFilterModal, setDistanceValue, setActivityLevel, setDogSize } from '../../actions';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import  LogIn  from '../LogIn/LogIn';
 
 
 export class FilterModal extends Component {
-  constructor() {
-    super()
-    this.state = {
-      distanceValue: 10,
-      activityLevel: 0,
-      size: ''
-    }
-  }
+
 
   moveSlider = e => {
-    this.setState({distanceValue: e.target.value })
+    this.props.handleDistanceValue(parseInt(e.target.value));
   }
 
   clickFinder = () => {
     this.props.toggleFilterModal(false)
   }
 
+
   clickFilter = e => {  
-    this.setState({[e.target.name]: e.target.value})
+
+    if (e.target.name === 'activityLevel') {
+      this.props.handleActivityLevel(parseInt(e.target.value));
+    } else {
+      this.props.handleDogSize(e.target.value);
+    }
   }
 
   dogSizeBtnStyle = option => {
-    const { size } = this.state;
-    if (option === size) {
+    const { dogSize } = this.props;
+    if (option === dogSize) {
       return {background: '#1dbbdf'}
     } else {
       return {background: '#1dbcdf77'}
@@ -36,7 +37,7 @@ export class FilterModal extends Component {
   }
 
   activeLevelBtnStyle = option => {
-    const { activityLevel } = this.state;
+    const { activityLevel } = this.props;
     if (option === parseInt(activityLevel)) {
       return {background: '#1dbbdf'}
     } else {
@@ -45,6 +46,15 @@ export class FilterModal extends Component {
   }
   
   render() {
+
+    const userProfileStyle = {
+      backgroundImage: `url(${this.props.currentUser.photoURL})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat'
+  }
+
+
     return(
       <article className='modal-wrapper'>
         <section className='modal-card'>
@@ -70,17 +80,23 @@ export class FilterModal extends Component {
             <section className='column distance'>
               <h2>DISTANCE</h2>
               <div className='distance-box'>
-                <p>{this.state.distanceValue} miles</p>
+                <p>{this.props.distance} miles</p>
               </div>
-              <input type="range" min="1" max="50" value={this.state.distanceValue} className="slider" id="myRange" onChange={this.moveSlider} />
+              <input type="range" min="1" max="50" value={this.props.distance} className="slider" id="myRange" onChange={this.moveSlider} />
               <p id='zip-code'>Zip Code: 80211</p>
             </section>
           </div>
           <aside className='right-modal'>
-            <button id='find-button' onClick={this.clickFinder}>FIND</button>
+            <Link to="/results" id='find-button' onClick={this.clickFinder}>FIND</Link>
             <div className='user-section'>
-              <div id='user-image'></div>
-              <p className='user-name'>User Name</p>
+              {
+                !this.props.userLoggedIn ?
+                  <LogIn /> :
+                  <>
+               <Link to={`/userprofile/${2}`} onClick={() => this.props.toggleFilterModal(false)}><div id='user-image' style={userProfileStyle} className='dog-card-img'></div></Link>
+               <p className='user-name'>{this.props.currentUser.name}</p>
+               </>
+              }
             </div>
           </aside>
         </section>
@@ -90,8 +106,19 @@ export class FilterModal extends Component {
   }
 }
 
+export const mapStateToProps = state => ({
+  distance: state.distance,
+  dogSize: state.dogSize,
+  activityLevel: state.activityLevel,
+  userLoggedIn: state.userLoggedIn,
+  currentUser: state.currentUser
+})
+
 export const mapDispatchToProps = dispatch => ({
   toggleFilterModal: boolean => dispatch(toggleFilterModal(boolean)),
+  handleDistanceValue: distance => dispatch(setDistanceValue(distance)),
+  handleActivityLevel: level => dispatch(setActivityLevel(level)),
+  handleDogSize: size => dispatch(setDogSize(size))
 });
 
-export default connect(null, mapDispatchToProps)(FilterModal)
+export default connect(mapStateToProps, mapDispatchToProps)(FilterModal)

@@ -26,7 +26,7 @@ export class Header extends Component {
             <div style={this.activeBurgerStyle()} className="burger-line burger-line-2"></div>
             <div style={this.activeBurgerStyle()} className="burger-line burger-line-3"></div>
         </section>
-        <Link to="/" className="logo"><img src={logo} alt="logo"  className="logo-inside"/></Link>
+        <Link to="/" className="logo" onClick={() => this.props.toggleFilterModal(false)}><img src={logo} alt="logo"  className="logo-inside"/></Link>
       </header>
     )
   }
