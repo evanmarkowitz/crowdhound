@@ -8,12 +8,27 @@ import FilterModal from '../FilterModal/FilterModal';
 import { SearchResults } from '../SearchResults/SearchResults';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
+import firebase from 'firebase';
+import { setUserLoggedIn, setCurrentUser } from '../../actions';
+
+
 
 
 
 export class App extends Component {
 
 
+  componentDidMount () {
+
+    firebase.auth().onAuthStateChanged(user => {
+      console.log(user)
+      let name = user === null ? "" : user.displayName
+      let photoURL = user === null ? "" : user.photoURL
+      this.props.handleCurrentUser({name , photoURL})
+      this.props.handleUserLoggedIn(!!user)
+    })
+
+  }
 
 
   render() {
@@ -55,5 +70,10 @@ export const mapStateToProps = ({toggleFilterValue}) => ({
   toggleFilterValue
 });
 
+export const mapDispatchToProps = dispatch => ({
+  handleUserLoggedIn: boolean => dispatch(setUserLoggedIn(boolean)),
+  handleCurrentUser: user => dispatch(setCurrentUser(user))
+})
 
-export default connect(mapStateToProps, null)(App)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
