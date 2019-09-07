@@ -10,11 +10,18 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 
+
 export class App extends Component {
+
+
+
+
   render() {
-    
     return (
+      
       <main className="app">
+       {
+       <>
       <Header />
       {this.props.toggleFilterValue && <FilterModal />}
         <Switch>
@@ -38,6 +45,7 @@ export class App extends Component {
                 </>
             )}/>
         </Switch>
+        </>}
       </main>
     );
   }
