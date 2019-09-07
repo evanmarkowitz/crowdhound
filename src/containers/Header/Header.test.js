@@ -21,7 +21,16 @@ describe('Header', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should match the snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('toggleBurger should run toggleFilterModal function', () => {
+     props = {
+      toggleFilterModal: jest.fn(),
+      toggleFilterValue: false
+    }
+     wrapper = shallow(<Header {...props}/>);
     wrapper.instance().toggleBurger();
     expect(props.toggleFilterModal).toHaveBeenCalled()
   })
