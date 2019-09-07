@@ -74,7 +74,7 @@ export const DogCarousel = () => {
           backgroundPosition: 'center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
-          height: '400px', 
+          height: '350px', 
         }}> 
         <p className='dog-desc'>{dog.name}</p>
         </div>
@@ -85,6 +85,14 @@ export const DogCarousel = () => {
   return (
     <section className='slider-wrapper'>
       <h2>SMALL PUPS</h2>
+      <Slider {...settings} arrows={true}>
+        {dog}
+      </Slider>
+      <h2>MEDIUM PUPS</h2>
+      <Slider {...settings} arrows={true}>
+        {dog}
+      </Slider>
+      <h2>LARGE PUPS</h2>
       <Slider {...settings} arrows={true}>
         {dog}
       </Slider>
