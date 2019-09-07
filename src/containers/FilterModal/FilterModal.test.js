@@ -3,7 +3,7 @@ import { FilterModal, mapDispatchToProps } from './FilterModal'
 import React from 'react';
 import { toggleFilterModal } from '../../actions';
 
-describe.skip('FilterModal', () => {
+describe('FilterModal', () => {
   let wrapper;
   let props;
 

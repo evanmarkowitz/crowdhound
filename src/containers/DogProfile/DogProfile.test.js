@@ -3,7 +3,6 @@ import {DogProfile, GET_DOG_QUERY} from './DogProfile';
 import { MockedProvider } from '@apollo/react-testing'
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer'
-import { act } from 'react-dom/test-utils';
 
 
 

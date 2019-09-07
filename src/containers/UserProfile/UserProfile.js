@@ -57,7 +57,7 @@ export function UserProfile(props) {
       backgroundRepeat: "no-repeat"
     }
 
-    
+    console.log(data.user)
 
     const hanldeLogOut = () => {
       firebase.auth().signOut().then(function() {

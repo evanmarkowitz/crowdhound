@@ -1,8 +1,8 @@
 import React from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
+// import { useQuery } from '@apollo/react-hooks';
+// import { gql } from 'apollo-boost';
 
 
 firebase.initializeApp({
@@ -10,21 +10,22 @@ firebase.initializeApp({
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
 })
 
-export const AUTHENTICATE_USER = gql`
+// export const AUTHENTICATE_USER = gql`
 
-    mutation authenticateUser($apiKey: String!, $auth: AuthorizationInputType!) {
-      authenticate(apiKey: $apiKey, auth: $auth) {
-        currentUser {
-          id
-          firstName
-          lastName
-          email
-        }
-        new
-      }
+//     mutation authenticateUser($apiKey: String!, $auth: AuthorizationInputType!) {
+//       authenticate(apiKey: $apiKey, auth: $auth) {
+//         currentUser {
+//           id
+//           firstName
+//           lastName
+//           email
+//         }
+//         new
+//       }
 
-    }
+//     }
 
+//   `;
 
 
 
@@ -47,28 +48,27 @@ export const AUTHENTICATE_USER = gql`
   //     new
   //   }
   // }
-  `;
 
 
 
 export const LogIn = () => {
 
-  const auth = {
-    firstName: "Bob",
-    lastName: "Smith",
-    email: "email@example.com",
-    token: "token"
-  }
+  // const auth = {
+  //   firstName: "Bob",
+  //   lastName: "Smith",
+  //   email: "email@example.com",
+  //   token: "token"
+  // }
 
-  const { loading, error, data } = useQuery(
-    AUTHENTICATE_USER,
-    {variables: { apiKey: process.env.REACT_APP_USER_API_KEY, auth }}
-  )
+  // const { loading, error, data } = useQuery(
+  //   AUTHENTICATE_USER,
+  //   {variables: { apiKey: process.env.REACT_APP_USER_API_KEY, auth }}
+  // )
 
-  console.log(error, data)
+  // console.log(error, data)
 
-  if(loading) return <p>Loading....</p>;
-  if(error) return <p>Error :</p>;
+  // if(loading) return <p>Loading....</p>;
+  // if(error) return <p>Error :</p>;
 
 
 
