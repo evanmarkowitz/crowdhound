@@ -21,7 +21,7 @@ export const GET_ALL_DOG_QUERY = gql`
 `;
 
 function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { className, onClick } = props;
   return (
     <div
       className={className}
