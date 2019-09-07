@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
 
 firebase.initializeApp({
@@ -8,14 +10,9 @@ firebase.initializeApp({
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
 })
 
-class LogIn extends Component {
+const LogIn = () => {
 
-  state = {
-    isSignedIn: false,
-  }
-
-
-   uiConfig = {
+   const uiConfig = {
     signInFlow: 'popup',
     signInSuccessUrl: '/',
     signInOptions: [
@@ -23,17 +20,16 @@ class LogIn extends Component {
     ]
   };
 
-  render() {
 
     
     return (
         <StyledFirebaseAuth
-        uiConfig={this.uiConfig}
+        uiConfig={uiConfig}
         firebaseAuth={firebase.auth()}
        />
     
     )
-  }
+  
 }
 
 
