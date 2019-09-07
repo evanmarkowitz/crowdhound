@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import { setUserLoggedIn, setCurrentUser } from '../../actions';
-import { connect } from 'react-redux';
 
 
 firebase.initializeApp({
@@ -14,18 +12,6 @@ class LogIn extends Component {
 
   state = {
     isSignedIn: false,
-  }
-
-  componentDidMount () {
-
-    firebase.auth().onAuthStateChanged(user => {
-      console.log(user)
-      let name = user === null ? "" : user.displayName
-      let photoURL = user === null ? "" : user.photoURL
-      this.props.handleCurrentUser({name , photoURL})
-      this.props.handleUserLoggedIn(!!user)
-    })
-
   }
 
 
@@ -50,9 +36,6 @@ class LogIn extends Component {
   }
 }
 
-export const mapDispatchToProps = dispatch => ({
-  handleUserLoggedIn: boolean => dispatch(setUserLoggedIn(boolean)),
-  handleCurrentUser: user => dispatch(setCurrentUser(user))
-})
 
-export default  connect(null, mapDispatchToProps)(LogIn)
+
+export default LogIn
