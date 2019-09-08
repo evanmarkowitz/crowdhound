@@ -2,6 +2,11 @@ import React from 'react';
 import {UserProfile, GET_USER_QUERY} from './UserProfile';
 import { MockedProvider } from '@apollo/react-testing'
 import { shallow } from 'enzyme';
+import wait from 'waait'
+import renderer from 'react-test-renderer'
+
+
+
 
 
 
@@ -37,5 +42,9 @@ describe('UserProfile', () => {
     expect(wrapper).toMatchSnapshot();
   })
 
+  it('should render loading state initially', async () => {
+    await wait(2);
+    expect(wrapper).toMatchSnapshot();
+  });
 })
 

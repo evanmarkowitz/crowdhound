@@ -14,7 +14,6 @@ export const GET_USER_QUERY = gql`
     user(id: $id) {
       id
       firstName
-      lastName
       longDesc
       photos {
         sourceUrl
@@ -46,7 +45,7 @@ export function UserProfile(props) {
   if(loading) return <p>Loading....</p>;
   if(error) return <p>Error :</p>;
 
-  const {firstName, lastName, longDesc, photos, dogs} = data.user
+  const {firstName, longDesc, photos, dogs} = data.user
 
   const userImagePic = !photos[0] ? userImage : photos[0].sourceUrl
 
@@ -92,7 +91,7 @@ export function UserProfile(props) {
     return (
       <section className="user-profile">
         <section  className="profile-img" style={profileImageStyle}></section>
-          <h5 className="user-profile-name">{firstName +" "+ lastName}</h5>
+          <h5 className="user-profile-name">{firstName}</h5>
         <div className="user-profile-content-container">
             <div className="user-profile-content-info">
                 <h5 className="user-about-me-title">ABOUT ME</h5>

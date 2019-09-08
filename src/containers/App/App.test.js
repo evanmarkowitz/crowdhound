@@ -13,5 +13,9 @@ describe('App', () => {
   it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
+  it('should match the snapshot', () => {
+    wrapper = shallow(<App toggleFilterValue={true}/>);
+    expect(wrapper).toMatchSnapshot();
+  });
 
 })
