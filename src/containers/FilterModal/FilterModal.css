@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   margin-top: 60px;
+  overflow: scroll;
   
 }
 
@@ -166,5 +167,40 @@
   font-size: 14px;
 }
 
+@media only screen and (max-width: 1200px) {
+  .modal-wrapper {
+   width: 100%;
+  }
+
+  .modal-card {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    margin: 0;
+    overflow: scroll;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  .background {
+    display: none;
+  }
+
+  .filters {
+    flex-direction: column;
+    justify-content: flex-start;
+    border: none;
+  }
+
+  .right-modal {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-bottom: 45px;
+  }
+
+
+}
 
 
