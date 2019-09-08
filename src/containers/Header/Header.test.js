@@ -44,12 +44,11 @@ describe('Header', () => {
     expect(mockDispatch).toHaveBeenCalledWith(mockAction);
   })
 
-  it.skip('activeBurgerStyle should return the correct style', () => {
-    console.log('xxxx',props.toggleFilterValue)
-    const spy = jest.spyOn(wrapper.instance(), "activeBurgerStyle");
-    wrapper.instance().forceUpdate();
-    expect(spy).toHaveBeenCalledWith(1)
-
+  it('Link with class logo should run toggleFilterModal', () => {
+    wrapper.find('.logo').simulate('click');
+    expect(props.toggleFilterModal).toHaveBeenCalled();
   })
+
+
 
 })

@@ -93,14 +93,14 @@ export class FilterModal extends Component {
                 !this.props.userLoggedIn ?
                   <LogIn /> :
                   <>
-               <Link to={`/userprofile/${2}`} onClick={() => this.props.toggleFilterModal(false)}><div id='user-image' style={userProfileStyle} className='dog-card-img'></div></Link>
+               <Link to={`/userprofile/${2}`} className="go-to-user-profile" onClick={this.clickFinder}><div id='user-image' style={userProfileStyle} className='dog-card-img'></div></Link>
                <p className='user-name'>{this.props.currentUser.name}</p>
                </>
               }
             </div>
           </aside>
         </section>
-        <section className='background' onClick={() => this.props.toggleFilterModal(false)}/>
+        <section className='background' onClick={this.clickFinder}/>
       </article>
     )
   }
