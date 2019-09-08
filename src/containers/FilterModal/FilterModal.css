@@ -168,6 +168,25 @@
 }
 
 @media only screen and (max-width: 1200px) {
+  .modal-card {
+    flex-direction: column;
+  }
+
+  .filters {
+    border-right: none;
+    border-bottom: 1px solid grey;
+    padding-bottom: 5px;
+  }
+
+  .right-modal {
+    padding: 10px;
+  }
+
+
+}
+
+
+@media only screen and (max-width: 800px) {
   .modal-wrapper {
    width: 100%;
   }
