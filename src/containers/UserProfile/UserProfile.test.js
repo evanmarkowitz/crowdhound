@@ -6,6 +6,7 @@ import { shallow } from 'enzyme';
 
 
 
+
 describe('UserProfile', () => {
   let wrapper;
   let mocks;
@@ -35,7 +36,6 @@ describe('UserProfile', () => {
   it('should map the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   })
-
 
 })
 

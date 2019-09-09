@@ -38,3 +38,51 @@
   background: lightgray;
   height: 100vh;
 }
+
+@media only screen and (max-width: 1200px) {
+
+  .home-part-1 {
+    flex-direction: column;
+    margin-top: 60px;
+    justify-content: flex-start;
+    height: auto;
+  }
+
+  .home-text-title {
+    width: 100%;
+  }
+
+  .home-text-body {
+    width: 500px;
+  }
+  .homepage-dogs-img {
+    width: 100%;
+    margin-top: 10px;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+  .home-part-1 {
+    flex-direction: column;
+    margin-top: 60px;
+    justify-content: flex-start;
+    height: auto;
+  }
+
+  .home-text-title {
+    width: 100%;
+    font-size: 50px;
+  }
+
+  .home-text-body {
+    width: 100%;
+  }
+  
+  .homepage-dogs-img {
+    width: 100%;
+    margin-top: 10px;
+    height: auto;
+  }
+}

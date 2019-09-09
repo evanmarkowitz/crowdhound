@@ -7,6 +7,7 @@ import renderer from 'react-test-renderer'
 
 
 
+
 describe('DogProfile', () => {
   let wrapper;
   let mocks;

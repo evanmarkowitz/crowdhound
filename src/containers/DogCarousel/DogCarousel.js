@@ -49,10 +49,36 @@ export const DogCarousel = () => {
     speed: 500,
     centerMode: true,
     slidesToShow: 3,
-    adaptiveHeight: false,
+    adaptiveHeight: true,
     arrows: true,
     prevArrow: <SamplePrevArrow />,
-    nextArrow: <SampleNextArrow />
+    nextArrow: <SampleNextArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
     };
 
   const { loading, error, data } = useQuery(
@@ -67,7 +93,7 @@ export const DogCarousel = () => {
   const dog = data.dogs.map(dog => {
     const dogImage = !dog.photos[0] ? dogProfilePic : dog.photos[0].sourceUrl;
 
-    return  <Link to={`/dogprofile/${dog.id}`}>
+    return  <Link to={`/dogprofile/${dog.id}`} key={dog.id}>
       <div id='dog-div'>
         <div id='dog-container' style={{
           backgroundImage: `url(${dogImage})`,
