@@ -7,7 +7,7 @@ import { DogProfile } from '../DogProfile/DogProfile';
 import FilterModal from '../FilterModal/FilterModal';
 import { SearchResults } from '../SearchResults/SearchResults';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import firebase from 'firebase';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
 import { AddDog } from '../AddDog/AddDog';
@@ -17,6 +17,12 @@ import {mutation} from '../../api/apiCallsNew'
 
 
 export class App extends Component {
+  constructor() {
+    super()
+    this.state= {
+      newUser: false
+    }
+  }
 
 
   componentDidMount () {
@@ -51,6 +57,7 @@ export class App extends Component {
           console.log(result.data.authenticateUser.new)
           this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL})
           this.props.handleUserLoggedIn(!!user)
+          this.setState({newUser: result.data.authenticateUser.new}) 
         })
         .catch(console.log)
 
@@ -89,6 +96,7 @@ export class App extends Component {
             )}/>
         </Switch>
         </>}
+        {this.state.newUser && <Redirect to='/adduserdetail'/>}
       </main>
     );
   }
