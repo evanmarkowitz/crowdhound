@@ -27,7 +27,6 @@ export function SearchResults() {
   const weightRange = [1,10]
 
 
-  console.log(distance, activityLevelRange, weightRange)
 
   
 
@@ -37,7 +36,6 @@ export function SearchResults() {
     {variables: { activityLevelRange, weightRange }}
   )
 
-  console.log(error)
 
   if(loading) return <p>Loading....</p>;
   if(error) return <p>Error :</p>;

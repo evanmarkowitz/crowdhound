@@ -94,7 +94,7 @@ export class FilterModal extends Component {
                   <LogIn /> :
                   <>
                <Link to={`/userprofile/${2}`} className="go-to-user-profile" onClick={this.clickFinder}><div id='user-image' style={userProfileStyle} className='dog-card-img'></div></Link>
-               <p className='user-name'>{this.props.currentUser.name}</p>
+               <p className='user-name'>{this.props.currentUser.firstName + " " + this.props.currentUser.lastName}</p>
                </>
               }
             </div>

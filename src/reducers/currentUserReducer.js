@@ -1,4 +1,4 @@
-export const currentUserReducer = (state = {name: "", photoURL: ""}, action) => {
+export const currentUserReducer = (state = {firstName: "",lastName: "", email: "", photoURL: "", }, action) => {
   switch(action.type) {
     case 'SET_CURRENT_USER':
       return action.user

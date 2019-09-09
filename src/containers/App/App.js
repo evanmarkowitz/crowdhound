@@ -13,22 +13,30 @@ import { setUserLoggedIn, setCurrentUser } from '../../actions';
 import { AddDog } from '../AddDog/AddDog';
 import AddUserDetail from '../AddUserDetail/AddUserDetail';
 
+
+
 export class App extends Component {
 
 
   componentDidMount () {
-
     firebase.auth().onAuthStateChanged(user => {
-      console.log(user)
-      let name = user === null ? "" : user.displayName
-      let photoURL = user === null ? "" : user.photoURL
-      this.props.handleCurrentUser({name , photoURL})
-      this.props.handleUserLoggedIn(!!user)
+      this.setUserToReduxStore(user)
     })
-
   }
 
+  setUserToReduxStore = user => {
+    console.log('user from app', user)
+      let name = user === null ? "" : user.displayName
+      let nameArray =  name.split(" ")
+      let photoURL = user === null ? "" : user.photoURL
+      let email = user === null ? "" : user.email
 
+      this.props.handleCurrentUser({firstName: nameArray[0], lastName: nameArray[1], email, photoURL})
+      this.props.handleUserLoggedIn(!!user)
+
+    }
+
+  
   render() {
     return (
       
