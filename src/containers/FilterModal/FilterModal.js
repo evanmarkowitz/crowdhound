@@ -8,27 +8,38 @@ import  LogIn  from '../LogIn/LogIn';
 
 export class FilterModal extends Component {
 
-
-  moveSlider = e => {
-    this.props.handleDistanceValue(parseInt(e.target.value));
+  state = {
+    activityLevel: 0,
+    dogSize: 'small',
+    distance: 10
   }
+
+  componentDidMount () {
+    this.setState({activityLevel: this.props.activityLevel, dogSize: this.props.dogSize, distance: this.props.distance})
+  }
+  
 
   clickFinder = () => {
     this.props.toggleFilterModal(false)
+    this.props.handleDistanceValue(parseInt(this.state.distance));
+    this.props.handleActivityLevel(parseInt(this.state.activityLevel));
+    this.props.handleDogSize(this.state.dogSize);
   }
 
+  moveSlider = e => {
+    this.setState({distance: e.target.value})
+  }
 
-  clickFilter = e => {  
-
+  clickFilter = e => {
     if (e.target.name === 'activityLevel') {
-      this.props.handleActivityLevel(parseInt(e.target.value));
+      this.setState({activityLevel: e.target.value})
     } else {
-      this.props.handleDogSize(e.target.value);
+      this.setState({dogSize: e.target.value})
     }
   }
 
   dogSizeBtnStyle = option => {
-    const { dogSize } = this.props;
+    const { dogSize } = this.state;
     if (option === dogSize) {
       return {background: '#1dbbdf'}
     } else {
@@ -37,7 +48,7 @@ export class FilterModal extends Component {
   }
 
   activeLevelBtnStyle = option => {
-    const { activityLevel } = this.props;
+    const { activityLevel } = this.state;
     if (option === parseInt(activityLevel)) {
       return {background: '#1dbbdf'}
     } else {
@@ -80,9 +91,9 @@ export class FilterModal extends Component {
             <section className='column distance'>
               <h2>DISTANCE</h2>
               <div className='distance-box'>
-                <p>{this.props.distance} miles</p>
+                <p>{this.state.distance} miles</p>
               </div>
-              <input type="range" min="1" max="50" value={this.props.distance} className="slider" id="myRange" onChange={this.moveSlider} />
+              <input type="range" min="1" max="50" value={this.state.distance} className="slider" id="myRange" onChange={this.moveSlider} />
               <p id='zip-code'>Zip Code: 80211</p>
             </section>
           </div>

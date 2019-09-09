@@ -20,20 +20,19 @@ export const GET_FILTERED_DOGS_QUERY = gql`
 
 export function SearchResults() {
 
-  const distance = useSelector(state => state.distance)
-  // const activityLevel = useSelector(state => state.activityLevel)
-  const activityLevelRange = [1,3]
-  // const dogSize = useSelector(state => state.dogSize)
-  const weightRange = [1,10]
-
-
-
+  // const toggleFilterValue = useSelector(state => state.toggleFilterValue);
+  const activityLevel = useSelector(state => state.activityLevel)
+  const activityLevelRange = [activityLevel, activityLevel]
+  const dogSize = useSelector(state => state.dogSize)
+  const dogSizeConvert = {
+    small: [0, 15],
+    medium: [16, 40],
+    large: [41, 100]
+  }
   
-
-
   const { loading, error, data } = useQuery(
     GET_FILTERED_DOGS_QUERY,
-    {variables: { activityLevelRange, weightRange }}
+    {variables: { activityLevelRange, weightRange: dogSizeConvert[dogSize] }}
   )
 
 
@@ -52,4 +51,3 @@ export function SearchResults() {
   
 }
 
-// export default SearchResults;
