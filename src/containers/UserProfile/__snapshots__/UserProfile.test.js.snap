@@ -2,4 +2,4 @@
 
 exports[`UserProfile should map the snapshot 1`] = `ShallowWrapper {}`;
 
-exports[`UserProfile should use a default image if one is not provided 1`] = `ShallowWrapper {}`;
+exports[`UserProfile should render loading state initially 1`] = `ShallowWrapper {}`;

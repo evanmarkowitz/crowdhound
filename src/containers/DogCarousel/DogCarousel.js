@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 
+
 export const GET_ALL_DOG_QUERY = gql`
   {
     dogs {

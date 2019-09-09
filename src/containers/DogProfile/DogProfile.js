@@ -23,7 +23,6 @@ export let GET_DOG_QUERY = gql`
     user {
       id
       firstName
-      lastName
       photos {
         sourceUrl
       }
@@ -31,7 +30,7 @@ export let GET_DOG_QUERY = gql`
   }
 }
 `
-
+export let fixedAge = (age) => Math.floor(age)
 export const DogProfile = (props) => {
 
   const id = parseInt(props.id)
@@ -39,7 +38,7 @@ export const DogProfile = (props) => {
   
   const { loading, error, data } = useQuery(
     GET_DOG_QUERY,
-    { variables: { id } }
+    { variables: { id: id } }
     
   );
 
@@ -48,19 +47,18 @@ export const DogProfile = (props) => {
   if(error) return <p>Error :</p>;
 
   const {name, longDesc, breed, photos, activityLevel, weight, age, user} = data.dog;
-  const activities = ['Low', 'Average', 'High'];
-  const fixedAge = Math.floor(age)
-  const dogImage = !photos[0] ? dogProfilePic : photos[0].sourceUrl;
-  const userImagePic = !user.photos[0] ? userImage : user.photos[0].sourceUrl
 
+  // const activities = ['Low', 'Average', 'High'];
+  // const fixedAge = Math.floor(age)
+  // const dogImage = !photos[0] ? dogProfilePic : photos[0].sourceUrl;
+  // const userImagePic = !user.photos[0] ? userImage : user.photos[0].sourceUrl
 
   const profileImageStyle = {
-    backgroundImage: `url(${dogImage})`,
+    backgroundImage: `url(${!photos[0] ? dogProfilePic : photos[0].sourceUrl})`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat'
 }
-
 
   return(
     <main className='dog-profile-main'>
@@ -75,7 +73,7 @@ export const DogProfile = (props) => {
           <article className='dog-stats'>
             <div>
               <p className='stat-type'>Activity</p>
-              <p className='stat-answer'>{activities[activityLevel]}</p>
+              <p className='stat-answer'>{['Low', 'Average', 'High'][activityLevel]}</p>
             </div>
             <div>
               <p className='stat-type'>Breed</p>
@@ -87,7 +85,7 @@ export const DogProfile = (props) => {
             </div>
             <div>
               <p className='stat-type'>Age</p>
-              <p className='stat-answer'>{fixedAge}</p>
+              <p className='stat-answer'>{Math.floor(age)}</p>
             </div>
           </article>
         </div>
@@ -95,12 +93,12 @@ export const DogProfile = (props) => {
       <section className='human-info'>
         <article className='user-wrapper'>
           <Link to={`/userprofile/${user.id}`} className = 'user-image' 
-          style={{backgroundImage: `url(${userImagePic})`,
+          style={{backgroundImage: `url(${!user.photos[0] ? userImage : user.photos[0].sourceUrl})`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'}}>
           </Link>
-          <h3>{user.firstName+ " "+ user.lastName}</h3>
+          <h3>{user.firstName}</h3>
           <button className='chat-button'>Chat</button>
           <p id='zip-code'>Zip Code: <span>00000</span></p>
         </article>
