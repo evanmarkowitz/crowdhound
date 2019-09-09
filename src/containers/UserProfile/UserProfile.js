@@ -56,14 +56,13 @@ export function UserProfile(props) {
       backgroundRepeat: "no-repeat"
     }
 
-    console.log(data.user)
 
     const hanldeLogOut = () => {
       firebase.auth().signOut().then(function() {
          dispatch(setUserLoggedIn(false))
          dispatch(setCurrentUser({name: "", photoURL: ""}))
       }).catch(function(error) {
-        console.log(error)
+        // console.log(error)
       });
     }
 

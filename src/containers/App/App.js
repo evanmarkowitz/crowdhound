@@ -12,23 +12,51 @@ import firebase from 'firebase';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
 import { AddDog } from '../AddDog/AddDog';
 import AddUserDetail from '../AddUserDetail/AddUserDetail';
+import {mutation} from '../../api/apiCallsNew'
+
+
 
 export class App extends Component {
 
 
   componentDidMount () {
-
     firebase.auth().onAuthStateChanged(user => {
-      console.log(user)
-      let name = user === null ? "" : user.displayName
-      let photoURL = user === null ? "" : user.photoURL
-      this.props.handleCurrentUser({name , photoURL})
-      this.props.handleUserLoggedIn(!!user)
+      this.setUserToReduxStore(user)
     })
-
   }
 
+  setUserToReduxStore = user => {
 
+      let name = user === null ? "" : user.displayName
+      let nameArray =  name.split(" ")
+      let photoURL = user === null ? "" : user.photoURL
+      let email = user === null ? "" : user.email
+
+
+      let auth = `{
+        firstName: "${nameArray[0]}",
+        lastName: "${nameArray[1]}",
+        email: "${email}"
+      }`
+      let opts = {
+        method: 'POST',
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify({query: mutation(`"${process.env.REACT_APP_USER_API_KEY}"`, auth)})
+      }
+      fetch('http://staging-crowdhound-be.herokuapp.com/graphql', opts)
+        .then(res => res.json())
+        .then(data => data)
+        .then(result => {
+          const user = result.data.authenticateUser.currentUser
+          console.log(result.data.authenticateUser.new)
+          this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL})
+          this.props.handleUserLoggedIn(!!user)
+        })
+        .catch(console.log)
+
+    }
+
+  
   render() {
     return (
       
