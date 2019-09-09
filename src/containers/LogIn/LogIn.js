@@ -54,18 +54,20 @@ export const AUTHENTICATE_USER = gql`
 
 export const LogIn = () => {
 
-  useEffect(() => {
+   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
       setUserToReduxStore(user)
-      // console.log('user effect running...', user)
+      
+
+    // const { loading, error, data } = useMutation(
+    //     AUTHENTICATE_USER,
+    //     {variables: { apiKey: process.env.REACT_APP_USER_API_KEY, auth }}
+    //     )
+
     })
   });
 
-  let auth = {
-    firstName: "",
-    lastName: "",
-    email: "",
-  }
+  
   
 
   const setUserToReduxStore = user => {
@@ -73,23 +75,24 @@ export const LogIn = () => {
     let nameArray =  name.split(" ")
 
     let email = user === null ? "" : user.email
-    auth.firstName = nameArray[0];
-    auth.lastName = nameArray[1];
-    auth.email = email;
 
+    let auth = {
+      firstName: nameArray[0],
+      lastName: nameArray[1],
+      email: email
+    }
+    return auth
   }
+  
+  // console.log('user from login', auth)
 
-
-  const { loading, error, data } = useMutation(
-    AUTHENTICATE_USER,
-    {variables: { apiKey: process.env.REACT_APP_USER_API_KEY, auth }}
-    )
+  
     
-    console.log('login page',loading, error, data)
+  //   console.log('login page',loading, error, data)
  
 
-  if(loading) return <p>Loading....</p>;
-  if(error) return <p>Error :</p>;
+  // if(loading) return <p>Loading....</p>;
+  // if(error) return <p>Error :</p>;
 
 
 

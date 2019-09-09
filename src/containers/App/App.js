@@ -12,6 +12,7 @@ import firebase from 'firebase';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
 import { AddDog } from '../AddDog/AddDog';
 import AddUserDetail from '../AddUserDetail/AddUserDetail';
+import {mutation} from '../../api/apiCallsNew'
 
 
 
@@ -25,14 +26,27 @@ export class App extends Component {
   }
 
   setUserToReduxStore = user => {
-    console.log('user from app', user)
-      let name = user === null ? "" : user.displayName
+
+    let name = user === null ? "" : user.displayName
       let nameArray =  name.split(" ")
       let photoURL = user === null ? "" : user.photoURL
       let email = user === null ? "" : user.email
 
       this.props.handleCurrentUser({firstName: nameArray[0], lastName: nameArray[1], email, photoURL})
       this.props.handleUserLoggedIn(!!user)
+      let auth = `{
+        firstName: "${nameArray[0]}",
+        lastName: "${nameArray[1]}",
+        email: "${email}"
+      }`
+      let opts = {
+        method: 'POST',
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify({query: mutation(`"${process.env.REACT_APP_USER_API_KEY}"`, auth)})
+      }
+      fetch('http://staging-crowdhound-be.herokuapp.com/graphql', opts)
+        .then(res => res.json())
+        .then(console.log)
 
     }
 
