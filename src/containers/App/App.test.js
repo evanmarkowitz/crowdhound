@@ -6,8 +6,10 @@ import { shallow } from 'enzyme';
 
 describe('App', () => {
   let wrapper;
+  let firebase
   beforeEach(() => {
      wrapper = shallow(<App />);
+     firebase = jest.fn()
   })
 
   it('should match the snapshot', () => {
