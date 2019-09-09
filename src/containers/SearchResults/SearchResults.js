@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 export const GET_FILTERED_DOGS_QUERY = gql`
 
   query getFilteredDogs($activityLevelRange: [Int!], $weightRange: [Int!]) {
-    dogs(activityLevelRange: $activityLevelRange, weightRange: $weightRange) {
+    dogs(activityLevelRange: $activityLevelRange, weightRange: $weightRange, ) {
         id
         name
         photos {

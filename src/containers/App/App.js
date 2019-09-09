@@ -27,13 +27,12 @@ export class App extends Component {
 
   setUserToReduxStore = user => {
 
-    let name = user === null ? "" : user.displayName
+      let name = user === null ? "" : user.displayName
       let nameArray =  name.split(" ")
       let photoURL = user === null ? "" : user.photoURL
       let email = user === null ? "" : user.email
 
-      this.props.handleCurrentUser({firstName: nameArray[0], lastName: nameArray[1], email, photoURL})
-      this.props.handleUserLoggedIn(!!user)
+
       let auth = `{
         firstName: "${nameArray[0]}",
         lastName: "${nameArray[1]}",
@@ -46,7 +45,14 @@ export class App extends Component {
       }
       fetch('http://staging-crowdhound-be.herokuapp.com/graphql', opts)
         .then(res => res.json())
-        .then(console.log)
+        .then(data => data)
+        .then(result => {
+          const user = result.data.authenticateUser.currentUser
+          console.log(result.data.authenticateUser.new)
+          this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL})
+          this.props.handleUserLoggedIn(!!user)
+        })
+        .catch(console.log)
 
     }
 
