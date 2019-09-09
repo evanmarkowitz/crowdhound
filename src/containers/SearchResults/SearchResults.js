@@ -20,7 +20,7 @@ export const GET_FILTERED_DOGS_QUERY = gql`
 
 export function SearchResults() {
 
-  // const distance = useSelector(state => state.distance)
+  // const toggleFilterValue = useSelector(state => state.toggleFilterValue);
   const activityLevel = useSelector(state => state.activityLevel)
   const activityLevelRange = [activityLevel, activityLevel]
   const dogSize = useSelector(state => state.dogSize)
@@ -30,8 +30,6 @@ export function SearchResults() {
     large: [41, 100]
   }
   
-
-
   const { loading, error, data } = useQuery(
     GET_FILTERED_DOGS_QUERY,
     {variables: { activityLevelRange, weightRange: dogSizeConvert[dogSize] }}
@@ -53,4 +51,3 @@ export function SearchResults() {
   
 }
 
-// export default SearchResults;
