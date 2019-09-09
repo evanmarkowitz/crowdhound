@@ -1,14 +1,14 @@
 import { shallow } from 'enzyme';
-import { AddDog } from './AddDog'
+import { AddUserDetail } from './AddUserDetail'
 import React from 'react';
 
 
-describe('AddDog', () => {
+describe('AddUserDetail', () => {
   let wrapper;
 
   beforeEach(() => {
 
-    wrapper = shallow(<AddDog />)
+    wrapper = shallow(<AddUserDetail />)
   })
   
   it('should match the snapshot', () =>

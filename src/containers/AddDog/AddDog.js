@@ -25,7 +25,7 @@ export class AddDog extends Component {
           <label for="dog-weight-input" className="label">Weight</label>
           <input id="dog-weight-input" className="input" type="text" />
           <label for="dog-description-input" className="label">Description</label>
-          <input id="dog-description-input" className="input" type="text" />
+          <textarea id="dog-description-input" className="input"  type="text" ></textarea>
           <label for="dog-activity-level-input" className="label">Activity Level</label>
           <select id="dog-activity-level-input" className="input">
             <option vlaue="1">Low</option>

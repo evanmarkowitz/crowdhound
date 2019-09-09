@@ -1,18 +1,18 @@
-.add-dog {
+.add-user-detail {
   padding-top: 60px;
   height: calc(100vh - 60px);
 }
 
-.add-dog-form {
+.add-user-detail-form {
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-  width: 302px;
+  width: 345px;
   display: flex;
   flex-direction: column;
 }
 
-.add-dog-title {
+.add-user-detail-title {
   color: #f08080;
   font-size: 36px;
   text-align: center;
@@ -36,18 +36,40 @@
   padding-left: 7px;
 }
 
-#add-dog-btn {
+#add-user-detail-btn {
   margin-top: 40px;
   cursor: pointer;
   background: rgba(29, 188, 223, 0.253);
 }
 
-#add-dog-btn:hover {
+#user-detail-description-input {
+  resize: none;
+  height: 200px;
+  padding: 15px;
+}
+
+#add-user-detail-btn:hover {
   background: rgb(29, 187, 223);
   color: #fff;
 }
 
-#add-dog-btn:active {
+#add-user-detail-btn:active {
   background: rgb(21, 164, 196);
   color: #fff;
+}
+
+.address-container {
+  width: 300px;
+  height: 150px;
+}
+
+.address-input {
+  width: 100%;
+  height: 30px;
+  border-radius: 3px;
+  border: 1px solid rgb(29, 187, 223);
+  margin-top: 5px;
+  outline: none;
+  font-size: 14px;
+  padding-left: 7px;
 }

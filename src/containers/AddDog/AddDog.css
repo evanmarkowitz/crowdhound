@@ -42,6 +42,12 @@
   background: rgba(29, 188, 223, 0.253);
 }
 
+#dog-description-input {
+  resize: none;
+  height: 200px;
+  padding: 15px;
+}
+
 #add-dog-btn:hover {
   background: rgb(29, 187, 223);
   color: #fff;

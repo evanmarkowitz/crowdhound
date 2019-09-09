@@ -10,9 +10,8 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import firebase from 'firebase';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
-import { AddDog } from '../../components/AddDog/AddDog';
-
-
+import { AddDog } from '../AddDog/AddDog';
+import AddUserDetail from '../AddUserDetail/AddUserDetail';
 
 export class App extends Component {
 
@@ -51,6 +50,7 @@ export class App extends Component {
         }} />
         <Route exact path="/results" render={() => (<SearchResults />)} />
         <Route exact path="/addingdog" render={() => (<AddDog />)} />
+        <Route exact path="/adduserdetail" render={() => (<AddUserDetail />)} />
         <Route render={() => (
                 <>
                 <div className="page-not-found-container">
