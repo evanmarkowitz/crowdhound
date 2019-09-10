@@ -24,7 +24,6 @@ export class App extends Component {
   }
 
   componentDidMount() {
-  
     let userString = this.getCookie('user')
     console.log('string', userString !== 'noCookie')
     if (userString !== 'noCookie') {
@@ -35,9 +34,7 @@ export class App extends Component {
     this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoUrl: user.photoURL, token: token, isNew: false, id: parseInt(user.id)}
       ) 
     this.props.handleUserLoggedIn(true)
-    
     }
-
   }
 
   getCookie(c_name) {

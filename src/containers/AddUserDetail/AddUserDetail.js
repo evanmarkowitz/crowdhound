@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './AddUserDetail.css';
+import { addUserDetailsQuery } from '../../api/apiCallsNew'
 
 export class AddUserDetail extends Component {
 
@@ -10,13 +11,28 @@ export class AddUserDetail extends Component {
       description: '',
       street: '',
       city: '',
-      state: '',
+      st: '',
       zip: ''
     }
   }
   
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
+  }
+
+  sendUser = async () => {
+    const {firstName, lastName} = this.props
+    const {description, street, city, st, zip } = this.state
+    let opts = {
+      method: 'POST',
+      headers: { "Content-Type": "application/json"},
+      body: JSON.stringify({query: addUserDetailsQuery(
+        firstName, lastName, description, `"${street}"`, city, `"${st}"`, `"${zip}"`
+      )})
+    }
+    let res = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+    let response = await res.json()
+    await console.log(response)
   }
 
   render() {
@@ -49,7 +65,7 @@ export class AddUserDetail extends Component {
 
           <label className="label">Photo</label>
           <input id="user-detail-photo-input" className="input" type="file" />
-          <input type="button" className="input" value="Add" id="add-user-detail-btn" />
+          <input type="button" className="input" value="Add" id="add-user-detail-btn" onClick={this.sendUser}/>
         </form>
       </section>
     )
@@ -59,7 +75,8 @@ export class AddUserDetail extends Component {
 export const mapStateToProps = state => ({
   firstName: state.currentUser.firstName,
   lastName: state.currentUser.lastName,
-  email: state.currentUser.email
+  email: state.currentUser.email,
+  token: state.currentUser.token
 })
 
 
