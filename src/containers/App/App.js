@@ -28,7 +28,9 @@ export class App extends Component {
     
   }
 
-  callCookies = () => { let userString = this.getCookie('user')
+  callCookies = () => {
+    
+  let userString = this.getCookie('user')
    if (userString !== 'noCookie') {
    let tokenString = this.getCookie('token')
    
