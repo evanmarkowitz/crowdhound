@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './AddUserDetail.css';
+import { addUserDetailsQuery, createPhoto } from '../../api/apiCallsNew'
 
 export class AddUserDetail extends Component {
 
@@ -10,13 +11,46 @@ export class AddUserDetail extends Component {
       description: '',
       street: '',
       city: '',
-      state: '',
-      zip: ''
+      st: '',
+      zip: '',
+      photo: ''
     }
   }
   
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
+  }
+
+  addPhoto = (e) => {
+    this.setState({photo: e.target.files[0]})
+  }
+
+  sendUser = async () => {
+    const {firstName, lastName} = this.props
+    const {description, street, city, st, zip } = this.state
+    let opts = {
+      method: 'POST',
+      headers: { "Content-Type": "application/json"},
+      body: JSON.stringify({query: addUserDetailsQuery(
+        firstName, lastName, description, `"${street}"`, city, `"${st}"`, `"${zip}"`
+      )})
+    }
+    let res = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+
+    let photoOpts = {
+      method: 'POST',
+      headers: { "Content-Type": "application/json"},
+      body: JSON.stringify({query: createPhoto('User',  this.props.id, 'User Photo',this.state.photo)})
+    }
+    try {
+      let photos = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, photoOpts)
+      // let parsedPhotos = await photos.json()
+      await console.log(photos)
+    } catch(error) {
+      await console.log(error)
+    }
+    
+   
   }
 
   render() {
@@ -48,8 +82,8 @@ export class AddUserDetail extends Component {
 
 
           <label className="label">Photo</label>
-          <input id="user-detail-photo-input" className="input" type="file" />
-          <input type="button" className="input" value="Add" id="add-user-detail-btn" />
+          <input id="user-detail-photo-input" className="input" type="file" onChange={this.addPhoto} name='file'/>
+          <input type="button" className="input" value="Add" id="add-user-detail-btn" onClick={this.sendUser}/>
         </form>
       </section>
     )
@@ -59,7 +93,9 @@ export class AddUserDetail extends Component {
 export const mapStateToProps = state => ({
   firstName: state.currentUser.firstName,
   lastName: state.currentUser.lastName,
-  email: state.currentUser.email
+  email: state.currentUser.email,
+  token: state.currentUser.token,
+  id: state.currentUser.id
 })
 
 
