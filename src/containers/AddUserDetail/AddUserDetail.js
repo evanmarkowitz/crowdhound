@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './AddUserDetail.css';
 
 export class AddUserDetail extends Component {
 
-  //  loadImg = (e) => {
-  //   e.preventDefault();
-  //   if (chooseFile.files[0]){
-  //     reader.readAsDataURL(chooseFile.files[0]);
-  //     reader.onload = makeImg;
-  //   }
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      description: '',
+      street: '',
+      city: '',
+      state: '',
+      zip: ''
+    }
+  }
+  
+  handleChange = (e) => {
+    this.setState({[e.target.name]: e.target.value})
+  }
 
   render() {
     return (
@@ -17,20 +25,25 @@ export class AddUserDetail extends Component {
         <form className="add-user-detail-form">
           <h4 className="add-user-detail-title">Add your information</h4>
           <label for="user-detail-first-name-input" className="label">First Name</label>
-          <input id="user-detail-first-name-input" className="input" type="text" />
+          {/* <input id="user-detail-first-name-input" className="input" type="text" name='firstName' 
+          onChange={this.handleChange} value={this.state.firstName} /> */}
+          <p>{this.props.firstName}</p>
           <label for="user-detail-last-name-input" className="label">Last Name</label>
-          <input id="user-detail-last-name-input" className="input" type="text" />
+          {/* <input id="user-detail-last-name-input" className="input" type="text" /> */}
+          <p>{this.props.lastName}</p>
           <label for="user-detail-email-input" className="label">Email</label>
-          <input id="user-detail-email-input" className="input" type="email" />
+          {/* <input id="user-detail-email-input" className="input" type="email" /> */}
+          <p>{this.props.email}</p>
           <label for="user-detail-description-input" className="label">Description</label>
-          <textarea id="user-detail-description-input" className="input"  type="text" ></textarea>
+          <textarea id="user-detail-description-input" className="input"  type="text" value={this.state.description}
+          name='description' onChange={this.handleChange}></textarea>
 
           <label for="user-detail-address-input" className="label">Address</label>
           <div className="address-container">
-            <input className="address-input" type="text" placeholder="Street"/>
-            <input className="address-input" type="text" placeholder="City"/>
-            <input className="address-input" type="text" placeholder="State"/>
-            <input className="address-input" type="number"  max="5" placeholder="Zip"/>
+            <input className="address-input" type="text" placeholder="Street" value={this.state.street} name='street' onChange={this.handleChange}/>
+            <input className="address-input" type="text" placeholder="City" value={this.state.city} name='city' onChange={this.handleChange}/>
+            <input className="address-input" type="text" placeholder="State" value={this.state.st} name='st' onChange={this.handleChange}/>
+            <input className="address-input" type="number"  max="5" placeholder="Zip" value={this.state.zip} name='zip' onChange={this.handleChange}/>
           </div>
 
 
@@ -43,4 +56,11 @@ export class AddUserDetail extends Component {
   }
 }
 
-export default AddUserDetail;
+export const mapStateToProps = state => ({
+  firstName: state.currentUser.firstName,
+  lastName: state.currentUser.lastName,
+  email: state.currentUser.email
+})
+
+
+export default connect(mapStateToProps)(AddUserDetail)
