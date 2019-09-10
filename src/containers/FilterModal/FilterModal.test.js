@@ -34,7 +34,7 @@ describe('FilterModal', () => {
   it('moveSlider should call handleDistanceValue', () => {
     const event = {target: {value: 50}}
     wrapper.instance().moveSlider(event)
-    expect(props.handleDistanceValue).toHaveBeenCalled()
+    expect(wrapper.state().distance).toEqual(50)
   })
 
   it('clickFinder should run toggleFilterModal', () => {
@@ -42,16 +42,16 @@ describe('FilterModal', () => {
     expect(props.toggleFilterModal).toHaveBeenCalled();
   })
 
-  it('clickFilter should call handleActivityLevel if target name is activityLevel .', () => {
-    const event = {target: {name: 'activityLevel', value: 'small'}}
+  it('clickFilter should update activityLevel state if target name is activityLevel .', () => {
+    const event = {target: {name: 'activityLevel', value: 2}}
     wrapper.instance().clickFilter(event);
-    expect(props.handleActivityLevel).toHaveBeenCalled();
+    expect(wrapper.state().activityLevel).toEqual(2);
   })
 
-  it('clickFilter should call handleDogSize if target name is NOT activityLevel .', () => {
-    const event = {target: {name: 'size', value: 'small'}}
+  it('clickFilter should update state of dogSize if target name is NOT activityLevel .', () => {
+    const event = {target: {name: 'size', value: 'medium'}}
     wrapper.instance().clickFilter(event);
-    expect(props.handleDogSize).toHaveBeenCalled();
+    expect(wrapper.state().dogSize).toEqual('medium');
   })
 
   it('toggleFilterModal should be called by clicking on element with background className', () => {

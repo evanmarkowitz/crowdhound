@@ -24,20 +24,21 @@ export class App extends Component {
   }
 
   componentDidMount() {
-  
-    let userString = this.getCookie('user')
-    if (userString !== 'noCookie') {
-    let tokenString = this.getCookie('token')
+    this.callCookies()
     
-    let user = JSON.parse(userString)
-    let token = JSON.parse(tokenString)
-    this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoUrl: user.photoURL, token: token, isNew: false, id: parseInt(user.id)}
-      ) 
-    this.props.handleUserLoggedIn(true)
-    
-    }
-
   }
+
+  callCookies = () => { let userString = this.getCookie('user')
+   if (userString !== 'noCookie') {
+   let tokenString = this.getCookie('token')
+   
+   let user = JSON.parse(userString)
+   let token = JSON.parse(tokenString)
+   this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoUrl: user.photoURL, token: token, isNew: false, id: parseInt(user.id)}
+     ) 
+   this.props.handleUserLoggedIn(true)
+   
+   }}
 
   getCookie(c_name) {
       let i,x,y,ARRcookies=document.cookie.split(";");
