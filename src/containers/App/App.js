@@ -8,11 +8,10 @@ import FilterModal from '../FilterModal/FilterModal';
 import { SearchResults } from '../SearchResults/SearchResults';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import firebase from 'firebase';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
 import { AddDog } from '../AddDog/AddDog';
 import AddUserDetail from '../AddUserDetail/AddUserDetail';
-import {mutation} from '../../api/apiCallsNew'
+
 
 
 
@@ -25,8 +24,13 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    let user = this.getCookie('user')
-    console.log(user)
+    let userString = this.getCookie('user')
+    let tokenString = this.getCookie('token')
+    let user = JSON.parse(userString)
+    let token = JSON.parse(tokenString)
+    this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoUrl: user.photoURL, token: token, isNew: false}
+    )
+    this.props.handleUserLoggedIn(true)
   }
 
   getCookie(c_name) {
