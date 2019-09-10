@@ -62,7 +62,6 @@ const LogIn = (props) => {
       .then(data => data)
       .then(result => {
         const user = result.data.authenticateUser.currentUser
-        console.log(user.id)
         const token = result.data.authenticateUser.token
         props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL, token: token, isNew: result.data.authenticateUser.new, id: parseInt(user.id)})
         props.handleUserLoggedIn(!!user)

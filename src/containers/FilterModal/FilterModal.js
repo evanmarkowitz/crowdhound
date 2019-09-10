@@ -64,7 +64,7 @@ export class FilterModal extends Component {
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat'
   }
-
+  console.log(this.props.currentUser)
 
     return(
       <article className='modal-wrapper'>
@@ -104,7 +104,7 @@ export class FilterModal extends Component {
                 !this.props.userLoggedIn ?
                   <LogIn /> :
                   <>
-               <Link to={`/userprofile/${2}`} className="go-to-user-profile" onClick={this.clickFinder}><div id='user-image' style={userProfileStyle} className='dog-card-img'></div></Link>
+               <Link to={`/userprofile/${this.props.currentUser.id}`} className="go-to-user-profile" onClick={this.clickFinder}><div id='user-image' style={userProfileStyle} className='dog-card-img'></div></Link>
                <p className='user-name'>{this.props.currentUser.firstName + " " + this.props.currentUser.lastName}</p>
                </>
               }

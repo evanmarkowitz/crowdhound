@@ -32,7 +32,7 @@ export class App extends Component {
     
     let user = JSON.parse(userString)
     let token = JSON.parse(tokenString)
-    this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoUrl: user.photoURL, token: token, isNew: false}
+    this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoUrl: user.photoURL, token: token, isNew: false, id: parseInt(user.id)}
       ) 
     this.props.handleUserLoggedIn(true)
     
