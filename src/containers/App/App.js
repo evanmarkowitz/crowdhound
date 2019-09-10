@@ -25,43 +25,44 @@ export class App extends Component {
   }
 
 
-  componentDidMount () {
-    firebase.auth().onAuthStateChanged(user => {
-      this.setUserToReduxStore(user)
-    })
-  }
 
-  setUserToReduxStore = user => {
+  // componentDidMount () {
+  //   firebase.auth().onAuthStateChanged(user => {
+  //     this.setUserToReduxStore(user)
+  //   })
+  // }
 
-      let name = user === null ? "" : user.displayName
-      let nameArray =  name.split(" ")
-      let photoURL = user === null ? "" : user.photoURL
-      let email = user === null ? "" : user.email
+  // setUserToReduxStore = user => {
+
+  //     let name = user === null ? "" : user.displayName
+  //     let nameArray =  name.split(" ")
+  //     let photoURL = user === null ? "" : user.photoURL
+  //     let email = user === null ? "" : user.email
 
 
-      let auth = `{
-        firstName: "${nameArray[0]}",
-        lastName: "${nameArray[1]}",
-        email: "${email}"
-      }`
-      let opts = {
-        method: 'POST',
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify({query: mutation(`"${process.env.REACT_APP_USER_API_KEY}"`, auth)})
-      }
-      fetch('http://staging-crowdhound-be.herokuapp.com/graphql', opts)
-        .then(res => res.json())
-        .then(data => data)
-        .then(result => {
-          const user = result.data.authenticateUser.currentUser
-          console.log(result.data.authenticateUser.new)
-          this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL})
-          this.props.handleUserLoggedIn(!!user)
-          this.setState({newUser: result.data.authenticateUser.new}) 
-        })
-        .catch(console.log)
+  //     let auth = `{
+  //       firstName: "${nameArray[0]}",
+  //       lastName: "${nameArray[1]}",
+  //       email: "${email}"
+  //     }`
+  //     let opts = {
+  //       method: 'POST',
+  //       headers: { "Content-Type": "application/json"},
+  //       body: JSON.stringify({query: mutation(`"${process.env.REACT_APP_USER_API_KEY}"`, auth)})
+  //     }
+  //     fetch('http://staging-crowdhound-be.herokuapp.com/graphql', opts)
+  //       .then(res => res.json())
+  //       .then(data => data)
+  //       .then(result => {
+  //         const user = result.data.authenticateUser.currentUser
+  //         console.log(result.data.authenticateUser.token)
+  //         this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL, token: user.token})
+  //         this.props.handleUserLoggedIn(!!user)
+  //         this.setState({newUser: result.data.authenticateUser.new}) 
+  //       })
+  //       .catch(console.log)
 
-    }
+  //   }
 
   
   render() {
@@ -96,14 +97,15 @@ export class App extends Component {
             )}/>
         </Switch>
         </>}
-        {this.state.newUser && <Redirect to='/adduserdetail'/>}
+        {this.props.currentUser.isNew && <Redirect to='/adduserdetail'/>}
       </main>
     );
   }
 }
 
-export const mapStateToProps = ({toggleFilterValue}) => ({
-  toggleFilterValue
+export const mapStateToProps = ({toggleFilterValue, currentUser}) => ({
+  toggleFilterValue,
+  currentUser
 });
 
 export const mapDispatchToProps = dispatch => ({

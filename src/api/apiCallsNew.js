@@ -9,6 +9,7 @@ export const mutation = (apiKey, auth) => `
           email
         }
         new
+        token
       }
     }
   `
