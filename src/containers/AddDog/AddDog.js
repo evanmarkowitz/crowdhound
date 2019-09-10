@@ -3,6 +3,23 @@ import './AddDog.css';
 
 export class AddDog extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: '',
+      breed: '',
+      birthdate: '',
+      weight: '',
+      description: '',
+      activityLevel: '',
+      photo: ''
+    }
+  }
+
+  handleChange = (e) => {
+    this.setState({[e.target.name]: e.target.value})
+  }
+
   //  loadImg = (e) => {
   //   e.preventDefault();
   //   if (chooseFile.files[0]){
@@ -17,12 +34,12 @@ export class AddDog extends Component {
         <form className="add-dog-form">
           <h4 className="add-dog-title">Add your dog</h4>
           <label for="dog-name-input" className="label">Name</label>
-          <input id="dog-name-input" className="input" type="text" />
+          <input id="dog-name-input" className="input" type="text" name="name" onChange={this.handleChange}/>
           <label for="dog-breed-input" className="label">Breed</label>
-          <input id="dog-breed-input" className="input" type="text" />
+          <input id="dog-breed-input" className="input" type="text" name="breed" onChange={this.handleChange}/>
           <label for="dog-birthdate-input" className="label">Birthdate</label>
           <input id="dog-birthdate-input" className="input" type="date" />
-          <label for="dog-weight-input" className="label">Weight</label>
+          <label for="dog-weight-input" className="label">Weight (lbs)</label>
           <input id="dog-weight-input" className="input" type="text" />
           <label for="dog-description-input" className="label">Description</label>
           <textarea id="dog-description-input" className="input"  type="text" ></textarea>

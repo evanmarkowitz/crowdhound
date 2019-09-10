@@ -20,8 +20,7 @@ describe('App', () => {
   })
 
   it.skip('should match the snapshot', () => {
-    console.log(wrapper.degub())
-    // expect(wrapper).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
   it.skip('should match the snapshot', () => {
     wrapper = shallow(<App toggleFilterValue={true}/>);
