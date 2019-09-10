@@ -23,35 +23,45 @@ export class AddUserDetail extends Component {
 
   addPhoto = (e) => {
     this.setState({photo: e.target.files[0]})
+
+//     let file = e.target.files[0]
+//     var reader  = new FileReader();
+
+//   reader.addEventListener("load", function () {
+//     console.log(reader.result)
+//   }, false);
+
+//   if (file) {
+//     reader.readAsDataURL(file);
+//   }
   }
 
-  sendUser = async () => {
-    const {firstName, lastName} = this.props
-    const {description, street, city, st, zip } = this.state
-    let opts = {
-      method: 'POST',
-      headers: { "Content-Type": "application/json"},
-      body: JSON.stringify({query: addUserDetailsQuery(
-        firstName, lastName, description, `"${street}"`, city, `"${st}"`, `"${zip}"`
-      )})
-    }
-    let res = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+  // sendUser = async () => {
+  //   const {firstName, lastName} = this.props
+  //   const {description, street, city, st, zip } = this.state
+  //   let opts = {
+  //     method: 'POST',
+  //     headers: { "Content-Type": "application/json"},
+  //     body: JSON.stringify({query: addUserDetailsQuery(
+  //       firstName, lastName, description, `"${street}"`, city, `"${st}"`, `"${zip}"`
+  //     )})
+  //   }
+  //   let res = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
 
-    let photoOpts = {
-      method: 'POST',
-      headers: { "Content-Type": "application/json"},
-      body: JSON.stringify({query: createPhoto('User',  this.props.id, 'User Photo',this.state.photo)})
-    }
-    try {
-      let photos = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, photoOpts)
-      // let parsedPhotos = await photos.json()
-      await console.log(photos)
-    } catch(error) {
-      await console.log(error)
-    }
-    
+  //   let photoOpts = {
+  //     method: 'POST',
+  //     headers: { "Content-Type": "application/json"},
+  //     body: JSON.stringify({query: createPhoto('User',  this.props.id, 'User Photo',this.state.photo)})
+  //   }
+  //   try {
+  //     let photos = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, photoOpts)
+  //     // let parsedPhotos = await photos.json()
+  //     await console.log(photos)
+  //   } catch(error) {
+  //     await console.log(error)
+  //   } 
    
-  }
+  // }
 
   render() {
     return (

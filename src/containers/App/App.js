@@ -23,13 +23,13 @@ export class App extends Component {
     }
   }
 
+  
   componentDidMount() {
     this.callCookies()
-    
   }
 
+
   callCookies = () => {
-    
   let userString = this.getCookie('user')
    if (userString !== 'noCookie') {
    let tokenString = this.getCookie('token')
