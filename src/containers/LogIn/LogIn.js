@@ -39,7 +39,6 @@ const LogIn = (props) => {
 
 
     const setUserToReduxStore = user => {
-    console.log('workinggggg', user)
 
     let name = user === null ? "" : user.displayName
     let nameArray =  name.split(" ")

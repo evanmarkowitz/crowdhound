@@ -26,7 +26,6 @@ export class App extends Component {
   componentDidMount() {
   
     let userString = this.getCookie('user')
-    console.log('string', userString !== 'noCookie')
     if (userString !== 'noCookie') {
     let tokenString = this.getCookie('token')
     
