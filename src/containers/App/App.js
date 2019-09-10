@@ -8,11 +8,10 @@ import FilterModal from '../FilterModal/FilterModal';
 import { SearchResults } from '../SearchResults/SearchResults';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import firebase from 'firebase';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
 import { AddDog } from '../AddDog/AddDog';
 import AddUserDetail from '../AddUserDetail/AddUserDetail';
-import {mutation} from '../../api/apiCallsNew'
+
 
 
 
@@ -24,45 +23,40 @@ export class App extends Component {
     }
   }
 
+  componentDidMount() {
+  
+    let userString = this.getCookie('user')
+    console.log('string', userString !== 'noCookie')
+    if (userString !== 'noCookie') {
+    let tokenString = this.getCookie('token')
+    
+    let user = JSON.parse(userString)
+    let token = JSON.parse(tokenString)
+    this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoUrl: user.photoURL, token: token, isNew: false, id: parseInt(user.id)}
+      ) 
+    this.props.handleUserLoggedIn(true)
+    
+    }
 
+  }
 
-  // componentDidMount () {
-  //   firebase.auth().onAuthStateChanged(user => {
-  //     this.setUserToReduxStore(user)
-  //   })
-  // }
+  getCookie(c_name) {
+      let i,x,y,ARRcookies=document.cookie.split(";");
+      for (i=0; i<ARRcookies.length; i++)
+      {
+          x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+          y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+          x=x.replace(/^\s+|\s+$/g,"");
+          if (x==c_name && y ==='') {
+            return 'noCookie'
+          }
+          if (x==c_name)
+          {
+            return unescape(y);
+          }
+      }
+    }
 
-  // setUserToReduxStore = user => {
-
-  //     let name = user === null ? "" : user.displayName
-  //     let nameArray =  name.split(" ")
-  //     let photoURL = user === null ? "" : user.photoURL
-  //     let email = user === null ? "" : user.email
-
-
-  //     let auth = `{
-  //       firstName: "${nameArray[0]}",
-  //       lastName: "${nameArray[1]}",
-  //       email: "${email}"
-  //     }`
-  //     let opts = {
-  //       method: 'POST',
-  //       headers: { "Content-Type": "application/json"},
-  //       body: JSON.stringify({query: mutation(`"${process.env.REACT_APP_USER_API_KEY}"`, auth)})
-  //     }
-  //     fetch('http://staging-crowdhound-be.herokuapp.com/graphql', opts)
-  //       .then(res => res.json())
-  //       .then(data => data)
-  //       .then(result => {
-  //         const user = result.data.authenticateUser.currentUser
-  //         console.log(result.data.authenticateUser.token)
-  //         this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL, token: user.token})
-  //         this.props.handleUserLoggedIn(!!user)
-  //         this.setState({newUser: result.data.authenticateUser.new}) 
-  //       })
-  //       .catch(console.log)
-
-  //   }
 
   
   render() {
@@ -103,9 +97,11 @@ export class App extends Component {
   }
 }
 
-export const mapStateToProps = ({toggleFilterValue, currentUser}) => ({
+export const mapStateToProps = ({toggleFilterValue, currentUser, userLoggedIn}) => ({
   toggleFilterValue,
-  currentUser
+  currentUser,
+  userLoggedIn
+
 });
 
 export const mapDispatchToProps = dispatch => ({

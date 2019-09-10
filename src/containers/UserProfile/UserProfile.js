@@ -31,6 +31,14 @@ export const GET_USER_QUERY = gql`
 
 export function UserProfile(props) {
 
+  const setCookie = (c_name,value,exdays) =>
+  {
+     var exdate=new Date();
+     exdate.setDate(exdate.getDate() + exdays);
+     var c_value=escape(value) + ((exdays==null) ? "" : ("; expires="+exdate.toUTCString()));
+     document.cookie=c_name + "=" + c_value;
+  }
+
   const dispatch = useDispatch()
   const userLoggedIn = useSelector(state => state.userLoggedIn)
 
@@ -61,6 +69,7 @@ export function UserProfile(props) {
       firebase.auth().signOut().then(function() {
          dispatch(setUserLoggedIn(false))
          dispatch(setCurrentUser({name: "", photoURL: ""}))
+         setCookie('user','', 21)
       }).catch(function(error) {
         // console.log(error)
       });

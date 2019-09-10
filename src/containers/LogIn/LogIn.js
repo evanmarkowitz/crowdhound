@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import {mutation} from '../../api/apiCallsNew'
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
 import { connect } from 'react-redux';
-import {Redirect } from 'react-router-dom';
+
 
 
 
@@ -15,7 +15,13 @@ firebase.initializeApp({
 })
 
 const LogIn = (props) => {
-
+  const setCookie = (c_name,value,exdays) =>
+  {
+     var exdate=new Date();
+     exdate.setDate(exdate.getDate() + exdays);
+     var c_value=escape(value) + ((exdays==null) ? "" : ("; expires="+exdate.toUTCString()));
+     document.cookie=c_name + "=" + c_value;
+  }
 
 
     const runLogIn = () => {
@@ -24,6 +30,10 @@ const LogIn = (props) => {
     })
     console.log(props)
   }
+
+    // const saveCookies = (items) => {
+    //   let setCookie = cookie.serialize()
+    // }
   
 
 
@@ -52,10 +62,13 @@ const LogIn = (props) => {
       .then(data => data)
       .then(result => {
         const user = result.data.authenticateUser.currentUser
-        console.log(result.data.authenticateUser.token)
-        props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL, token: user.token, isNew: result.data.authenticateUser.new})
+        const token = result.data.authenticateUser.token
+        props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL, token: token, isNew: result.data.authenticateUser.new, id: parseInt(user.id)})
         props.handleUserLoggedIn(!!user)
-        // this.setState({newUser: result.data.authenticateUser.new}) 
+        let userString = JSON.stringify(user)
+        let tokenString = JSON.stringify(token)
+        setCookie('user', userString, 21)
+        setCookie('token', tokenString, 21)
       })
       .catch(console.log)
 
