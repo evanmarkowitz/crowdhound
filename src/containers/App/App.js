@@ -24,15 +24,20 @@ export class App extends Component {
   }
 
   componentDidMount() {
+  
     let userString = this.getCookie('user')
+    console.log('string', userString !== 'noCookie')
+    if (userString !== 'noCookie') {
     let tokenString = this.getCookie('token')
+    
     let user = JSON.parse(userString)
     let token = JSON.parse(tokenString)
     this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoUrl: user.photoURL, token: token, isNew: false}
-    ) 
-    if(user.firstName !== '') {
-      this.props.handleUserLoggedIn(true)
+      ) 
+    this.props.handleUserLoggedIn(true)
+    
     }
+
   }
 
   getCookie(c_name) {
@@ -42,6 +47,9 @@ export class App extends Component {
           x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
           y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
           x=x.replace(/^\s+|\s+$/g,"");
+          if (x==c_name && y ==='') {
+            return 'noCookie'
+          }
           if (x==c_name)
           {
             return unescape(y);
@@ -89,9 +97,11 @@ export class App extends Component {
   }
 }
 
-export const mapStateToProps = ({toggleFilterValue, currentUser}) => ({
+export const mapStateToProps = ({toggleFilterValue, currentUser, userLoggedIn}) => ({
   toggleFilterValue,
-  currentUser
+  currentUser,
+  userLoggedIn
+
 });
 
 export const mapDispatchToProps = dispatch => ({
