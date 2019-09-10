@@ -49,4 +49,23 @@ export const addUserDetailsQuery = (firstName, lastName, longDesc, streetAddress
   }
 `
 
+export const createPhoto = (photoableType, id, caption) => `
+mutation {
+  createPhoto(
+    photo: {
+      photoableType: "${photoableType}",
+      photoableId: ${id},
+      caption: "${caption}"
+    }
+  ) {
+    photo {
+      id
+      photoableId
+      photoableType
+      caption
+      sourceUrl
+    }
+  }
+}
+`
 
