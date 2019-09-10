@@ -5,6 +5,7 @@ import {mutation} from '../../api/apiCallsNew'
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
 import { connect } from 'react-redux';
 import {Redirect } from 'react-router-dom';
+// import CookieJar from 'CookieJar'
 
 
 
@@ -15,7 +16,13 @@ firebase.initializeApp({
 })
 
 const LogIn = (props) => {
-
+  const setCookie = (c_name,value,exdays) =>
+  {
+     var exdate=new Date();
+     exdate.setDate(exdate.getDate() + exdays);
+     var c_value=escape(value) + ((exdays==null) ? "" : ("; expires="+exdate.toUTCString()));
+     document.cookie=c_name + "=" + c_value;
+  }
 
 
     const runLogIn = () => {
@@ -24,6 +31,10 @@ const LogIn = (props) => {
     })
     console.log(props)
   }
+
+    // const saveCookies = (items) => {
+    //   let setCookie = cookie.serialize()
+    // }
   
 
 
@@ -55,6 +66,8 @@ const LogIn = (props) => {
         console.log(result.data.authenticateUser.token)
         props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL, token: user.token, isNew: result.data.authenticateUser.new})
         props.handleUserLoggedIn(!!user)
+        let userString = JSON.stringify(user)
+        setCookie('user', userString, 21)
         // this.setState({newUser: result.data.authenticateUser.new}) 
       })
       .catch(console.log)

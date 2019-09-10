@@ -6,6 +6,8 @@
     "@apollo/react-hooks": "^3.0.1",
     "@apollo/react-testing": "^3.0.1",
     "apollo-boost": "^0.4.4",
+    "cookie": "^0.4.0",
+    "cookiejar": "^2.1.2",
     "enzyme": "^3.10.0",
     "firebase": "^6.6.0",
     "graphql": "^14.5.4",
