@@ -22,7 +22,20 @@ export class AddUserDetail extends Component {
   }
 
   addPhoto = (e) => {
-    this.setState({photo: e.target.files[0]})
+    // this.setState({photo: e.target.files[0]})
+    // console.log(e.target.files[0])
+    let file = e.target.files[0]
+    var reader  = new FileReader();
+
+    reader.addEventListener("load", function () { 
+    console.log(reader.result) 
+     this.setState({photo: 'somehting'})
+  }, false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+
   }
 
   sendUser = async () => {
@@ -48,12 +61,12 @@ export class AddUserDetail extends Component {
       await console.log(photos)
     } catch(error) {
       await console.log(error)
-    }
-    
+    } 
    
   }
 
   render() {
+
     return (
       <section className="add-user-detail">
         <form className="add-user-detail-form">

@@ -46,5 +46,14 @@ describe('UserProfile', () => {
     await wait(2);
     expect(wrapper).toMatchSnapshot();
   });
+
+  it.skip('should run handleLogOut function', () => {
+    wrapper.instance().hanldeLogOut = jest.fn();
+    wrapper.instance().forceUpdate()
+    wrapper.find('.log-out').props('onClick')();
+
+    expect(wrapper.instance().hanldeLogOut).toHaveBeenCalled();
+
+  })
 })
 
