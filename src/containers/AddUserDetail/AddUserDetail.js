@@ -17,7 +17,6 @@ export class AddUserDetail extends Component {
       st: '',
       zip: '',
       photo: '', 
-      sucessMessage: ''
     }
   }
   
@@ -41,8 +40,10 @@ export class AddUserDetail extends Component {
       )})
     }
     try{
-      await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
-      this.setState({showLinks: true})
+      let response = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+      let parsedResponse = await response.json()
+      await console.log(parsedResponse)
+
     } catch(error) {
       this.setState({sucessMessage: error})
       console.log(error)
@@ -96,9 +97,9 @@ export class AddUserDetail extends Component {
           <ReactFileReader handleFiles={this.handleFiles} base64={true} multipleFiles={false}>
             <button id="user-detail-photo-input" className="input"  name='file' value='add-photo' type='button'>Add photo</button>
           </ReactFileReader>
-          <Link to={`/userprofile/${this.props.id}`}>
+          {/* <Link to={`/userprofile/${this.props.id}`}> */}
             <input type="button" className="input" value="Add" id="add-user-detail-btn" onClick={this.sendUser}/> 
-          </Link>
+          {/* </Link> */}
         </form>
       </section>
     )

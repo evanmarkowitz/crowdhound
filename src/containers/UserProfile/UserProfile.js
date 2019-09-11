@@ -55,8 +55,9 @@ export function UserProfile(props) {
 
   if(loading) return <p>Loading....</p>;
   if(error) return <p>Error :</p>;
+  console.log(data)
 
-  const {firstName, longDesc, photos, dogs} = data.user
+  const {firstName, longDesc, photos, dogs, address} = data.user
 
   const userImagePic = !photos[0] ? userImage : photos[0].sourceUrl
 
@@ -129,11 +130,6 @@ export function UserProfile(props) {
                 <p className="user-about-me-body">
                   {longDesc}
                 </p>
-                <h5 className="user-address-title">MY ADDRESS</h5>
-                <address className="user-address-body">
-                1600 Amphitheatre Parkway Mountain View,<br/>
-                CA 94043
-                </address>
                 {
                     userLoggedIn &&
                     <button className="log-out" onClick={hanldeLogOut}>Log out</button>
