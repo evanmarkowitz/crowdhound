@@ -38,7 +38,7 @@ export class AddUserDetail extends Component {
         firstName, lastName, description, `"${street}"`, city, `"${st}"`, `"${zip}"`
       )})
     }
-    let res = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+    await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
   }
   sendPhoto = async (file) => {
     let query = createPhoto('User',  this.props.id, 'User Photo')
@@ -50,9 +50,7 @@ export class AddUserDetail extends Component {
       })
     }
     try {
-      let res = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
-      // let response = await res.json()
-      await console.log(res)
+      await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
     } catch(error) {
       await console.log(error)
     }

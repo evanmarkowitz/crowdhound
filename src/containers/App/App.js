@@ -50,10 +50,10 @@ export class App extends Component {
           x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
           y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
           x=x.replace(/^\s+|\s+$/g,"");
-          if (x==c_name && y ==='') {
+          if (x===c_name && y ==='') {
             return 'noCookie'
           }
-          if (x==c_name)
+          if (x===c_name)
           {
             return unescape(y);
           }
