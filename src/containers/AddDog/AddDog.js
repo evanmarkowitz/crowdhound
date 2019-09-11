@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AddDog.css';
-import { addDogQuery, createDogPhoto } from '../../api/apiCallsNew'
+import { addDogQuery } from '../../api/apiCallsNew'
 
 
 export class AddDog extends Component {
@@ -31,7 +31,7 @@ export class AddDog extends Component {
         name, breed, birthdate, weight ,description, activityLevel
       )})
     }
-    let res = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+    await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
 
     // let photoOpts = {
     //   method: 'POST',
