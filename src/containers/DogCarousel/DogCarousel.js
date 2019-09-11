@@ -111,9 +111,7 @@ export const DogCarousel = () => {
 
   const dogsArray = sizes.map(size=> {
     return size.map(dog => {
-      console.log(dog.weight)
       const dogImage = !dog.photos[0] ? dogProfilePic : dog.photos[0].sourceUrl;
-  
       return  <Link to={`/dogprofile/${dog.id}`} key={dog.id}>
         <div id='dog-div'>
           <div id='dog-container' style={{

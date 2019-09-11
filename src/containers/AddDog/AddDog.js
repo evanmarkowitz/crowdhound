@@ -5,9 +5,6 @@ import ReactFileReader from 'react-file-reader';
 import { connect } from 'react-redux';
 import {Link } from 'react-router-dom'
 
-
-
-
 export class AddDog extends Component {
 
   constructor() {
@@ -43,9 +40,7 @@ export class AddDog extends Component {
     }
     try{
       let response = await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
-      await console.log(response)
       let parsedResponse = await response.json()
-      await console.log(parsedResponse)
       return parsedResponse.data.createDog.dog.id
   
     } catch(error) {
@@ -54,29 +49,37 @@ export class AddDog extends Component {
 
   }
 
-  sendPhoto = async (id, file) => {
-    let query = createPhoto('Dog',  id, 'Dog Photo')
+  sendPhoto = async (dogId, file) => {
+    let query = createPhoto('Dog',  dogId, 'Dog Photo')
     let photoOpts = {
       method: 'POST',
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify({
         file: file
       })
+
     }
     try {
-      await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
+      console.log('in send photo', dogId)
+      // console.log(file)
+      let response = await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
+      await console.log(response)
+      let parsedResponse = response.json()
+      await console.log(parsedResponse)
     } catch(error) {
       await console.log(error)
     }
   }
 
+  
+
   submitDog = async () => {
     try {
       let dogId = await this.sendDog()
-      await console.log(dogId)
-      // let addPhoto = await this.sendPhoto(dogId, this.state.photo)
+      await console.log('in submit dog', dogId)
+      let addPhoto = await this.sendPhoto(dogId, this.state.photo)
       // let parsedResponse = addPhoto.json()
-      // console.log(parsedResponse)
+      console.log(addPhoto)
     } catch(error){
       console.log(error)
     }

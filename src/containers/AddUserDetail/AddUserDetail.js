@@ -64,7 +64,6 @@ export class AddUserDetail extends Component {
     } catch(error) {
       await console.log(error)
     }
-
   }
 
   render() {
