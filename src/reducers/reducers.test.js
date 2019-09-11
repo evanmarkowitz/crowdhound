@@ -25,14 +25,14 @@ describe('Reducers', () => {
   describe('currentUserReducer', () => {
     it('should return state by default', () => {
       const result = currentUserReducer(undefined, [])
-      expect(result).toEqual({name: "", photoURL: ""})
+      expect(result).toEqual({firstName: "",lastName: "", email: "", photoURL: "", token: "", isNew: false, id: 0})
     })
 
     it('should return name and photoURL of current user', () => {
-      const mockUser = {Name: 'Lis', photoURL: 'url'};
+      const mockUser = {firstName: "Lis",lastName: "", email: "", photoURL: "", token: "", isNew: false, id: 0};
       const action = setCurrentUser(mockUser)
       const result = currentUserReducer(undefined, action);
-      expect(result).toEqual({Name: 'Lis', photoURL: 'url'})
+      expect(result).toEqual({firstName: "Lis",lastName: "", email: "", photoURL: "", token: "", isNew: false, id: 0})
     })
   })
 

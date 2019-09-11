@@ -69,3 +69,46 @@ mutation {
 }
 `
 
+export const addDogQuery = (name, breed, birthdate, weight ,description, activityLevel) => `
+  mutation {
+    addDog(
+      user: {
+        name: ${name},
+        breed: ${breed},
+        birthdate: ${birthdate},
+        weight: ${weight},
+        description: ${description},
+        activityLevel: ${activityLevel}
+      }
+    ) {
+      currentDog {
+        id
+        name
+        birthdate
+        weight
+        description
+        activityLevel
+      }
+    }
+  }
+`
+
+export const createDogPhoto = (photoableType, id, caption) => `
+mutation {
+  createPhoto(
+    photo: {
+      photoableType: "${photoableType}",
+      photoableId: ${id},
+      caption: "${caption}"
+    }
+  ) {
+    photo {
+      id
+      photoableId
+      photoableType
+      caption
+      sourceUrl
+    }
+  }
+}
+`
