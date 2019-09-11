@@ -56,9 +56,11 @@ export class AddUserDetail extends Component {
     } catch(error) {
       await console.log(error)
     }
+
   }
 
   render() {
+
     return (
       <section className="add-user-detail">
         <form className="add-user-detail-form">

@@ -64,7 +64,6 @@ export class FilterModal extends Component {
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat'
   }
-  console.log(this.props.currentUser)
 
     return(
       <article className='modal-wrapper'>
