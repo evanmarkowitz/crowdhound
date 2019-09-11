@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import Home from '../Home/Home';
-import { UserProfile } from '../UserProfile/UserProfile';
+import  UserProfile  from '../UserProfile/UserProfile';
 import { DogProfile } from '../DogProfile/DogProfile';
 import FilterModal from '../FilterModal/FilterModal';
 import { SearchResults } from '../SearchResults/SearchResults';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
-import { AddDog } from '../AddDog/AddDog';
+import  AddDog  from '../AddDog/AddDog';
 import AddUserDetail from '../AddUserDetail/AddUserDetail';
 
 

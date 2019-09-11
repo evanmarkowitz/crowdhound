@@ -8,6 +8,9 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import firebase from 'firebase';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
+import { connect } from 'react-redux';
+import { deleteDogQuery } from '../../api/apiCallsNew'
+
 
 export const GET_USER_QUERY = gql`
   query getUser($id: ID!) {
@@ -75,6 +78,25 @@ export function UserProfile(props) {
       });
     }
 
+    const deleteDog = async (id) => {
+      let opts = {
+        method: 'POST',
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify({query: deleteDogQuery(
+          id
+        )})
+      }
+      try{
+        let response = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${props.token}`, opts)
+        let parsedResponse = await response.json()
+        console.log(parsedResponse)
+    
+      } catch(error) {
+        console.log(error)
+      }
+
+    }
+
   
 
     const dog = dogs.map(dog => {
@@ -90,6 +112,7 @@ export function UserProfile(props) {
         <div className="user-profile-dog" key={dog.id}>
           <Link to={`/dogprofile/${dog.id}`} className="dog-profile-img" style={dogImageStyle}></Link>
           <h5 className="dog-profile-name">{dog.name}</h5>
+          <button onClick={() => deleteDog(dog.id)}>delete dog</button>
         </div>
       )
     })
@@ -127,3 +150,10 @@ export function UserProfile(props) {
       </section>
     )
 }
+
+export const mapStateToProps = state => ({
+  token: state.currentUser.token
+})
+
+
+export default connect(mapStateToProps)(UserProfile)
