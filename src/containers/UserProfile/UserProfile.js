@@ -117,13 +117,13 @@ export function UserProfile(props) {
         </div>
       )
     })
-
+    console.log(id)
+    console.log(props.currentId)
   
-
     return (
       <section className="user-profile">
         <section  className="profile-img" style={profileImageStyle}></section>
-          <h5 className="user-profile-name">{firstName}</h5>
+          <h5 className="user-profile-name">{id === props.currentId && 'Welcome, '}{firstName}</h5>
         <div className="user-profile-content-container">
             <div className="user-profile-content-info">
                 <h5 className="user-about-me-title">ABOUT ME</h5>
@@ -148,7 +148,8 @@ export function UserProfile(props) {
 }
 
 export const mapStateToProps = state => ({
-  token: state.currentUser.token
+  token: state.currentUser.token,
+  currentId: state.currentUser.id
 })
 
 
