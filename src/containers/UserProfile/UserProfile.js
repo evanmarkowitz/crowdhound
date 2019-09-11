@@ -9,7 +9,7 @@ import { gql } from 'apollo-boost';
 import firebase from 'firebase';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
 import { connect } from 'react-redux';
-import { deleteDogQuery } from '../../api/apiCallsNew'
+import { deleteDogQuery, logOutUserQuery } from '../../api/apiCallsNew'
 
 
 export const GET_USER_QUERY = gql`
@@ -74,10 +74,31 @@ export function UserProfile(props) {
          dispatch(setUserLoggedIn(false))
          dispatch(setCurrentUser({name: "", photoURL: ""}))
          setCookie('user','', 21)
+         logOutOfBackend()
       }).catch(function(error) {
         // console.log(error)
       });
     }
+
+    const logOutOfBackend = async () => {
+      let opts = {
+        method: 'POST',
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify({query: logOutUserQuery})
+      }
+      try{
+        let response = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${props.token}`, opts)
+        let parsedResponse = await response.json()
+        console.log(parsedResponse)
+    
+      } catch(error) {
+        console.log(error)
+      }
+
+    }
+
+
+
 
     const deleteDog = async (id) => {
       let opts = {

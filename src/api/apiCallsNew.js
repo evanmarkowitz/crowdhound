@@ -116,3 +116,14 @@ mutation {
   }
 }
 `
+
+export const logOutUserQuery = `
+
+mutation {
+  logOutUser
+  {
+    message
+  }
+}
+
+`
