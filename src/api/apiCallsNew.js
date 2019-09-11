@@ -127,3 +127,23 @@ mutation {
 }
 
 `
+
+export const getUserQuery = (id) => `
+  query {
+    user(id: ${id}) {
+      id
+      firstName
+      longDesc
+      photos {
+        sourceUrl
+      }
+      dogs {
+        id
+        name
+        photos {
+          sourceUrl
+        }
+      }
+    }
+  
+}`

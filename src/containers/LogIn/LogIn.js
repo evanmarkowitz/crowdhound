@@ -36,14 +36,14 @@ const LogIn = (props) => {
     // }
   
 
-
     const setUserToReduxStore = user => {
-
-    let name = user === null ? "" : user.displayName
-    let nameArray =  name.split(" ")
-    let photoURL = user === null ? "" : user.photoURL
-    let email = user === null ? "" : user.email
-
+      
+      let name = user === null ? "" : user.displayName
+      let nameArray =  name.split(" ")
+      let photoURL = user === null ? "" : user.photoURL
+      let email = user === null ? "" : user.email
+      
+      console.log('login is refreshed....')
 
     let auth = `{
       firstName: "${nameArray[0]}",

@@ -174,3 +174,17 @@
 .user-profile-content-dogs-title {
   position: relative;
 }
+
+.delete-dog-btn {
+  padding: 5px;
+  border-radius: 3px;
+  margin-top: 20px;
+  cursor: pointer;
+  outline: none;
+}
+
+.delete-dog-btn:hover {
+  background: rgb(155, 48, 48);
+  color: #fff;
+  border: 1px solid transparent;
+}

@@ -43,8 +43,9 @@ export class AddDog extends Component {
     }
     try{
       let response = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+      await console.log(response)
       let parsedResponse = await response.json()
-      console.log('token from adding dog',this.props.token)
+      await console.log(parsedResponse)
       return parsedResponse.data.createDog.dog.id
   
     } catch(error) {
@@ -70,15 +71,15 @@ export class AddDog extends Component {
   }
 
   submitDog = async () => {
-    // try {
+    try {
       let dogId = await this.sendDog()
-      await console.log('id', dogId)
-    //   let addPhoto = await this.sendPhoto(dogId, this.state.photo)
-    //   let parsedResponse = addPhoto.json()
-    //   console.log(parsedResponse)
-    // } catch(error){
-    //   console.log(error)
-    // }
+      await console.log(dogId)
+      // let addPhoto = await this.sendPhoto(dogId, this.state.photo)
+      // let parsedResponse = addPhoto.json()
+      // console.log(parsedResponse)
+    } catch(error){
+      console.log(error)
+    }
     
   }
 
@@ -108,7 +109,9 @@ export class AddDog extends Component {
           <ReactFileReader handleFiles={this.handleFiles} base64={true} multipleFiles={false}>
             <button id="dog-photo-input" className="input" type="button">Add photo</button>
           </ReactFileReader>
-          <input type="button" className="input" value="Add" id="add-dog-btn"  onClick={this.submitDog}/>
+          <Link to={`/userprofile/${this.props.currentId}`}>
+            <input type="button" className="input" value="Add" id="add-dog-btn"  onClick={this.submitDog}/>
+          </Link>
         </form>
       </section>
     )
@@ -116,7 +119,8 @@ export class AddDog extends Component {
 }
 
 export const mapStateToProps = state => ({
-  token: state.currentUser.token
+  token: state.currentUser.token,
+  currentId: state.currentUser.id
 })
 
 
