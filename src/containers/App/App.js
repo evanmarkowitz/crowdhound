@@ -9,7 +9,7 @@ import { SearchResults } from '../SearchResults/SearchResults';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
-import { AddDog } from '../AddDog/AddDog';
+import  AddDog  from '../AddDog/AddDog';
 import AddUserDetail from '../AddUserDetail/AddUserDetail';
 
 

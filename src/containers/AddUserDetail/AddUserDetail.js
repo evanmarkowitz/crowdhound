@@ -24,7 +24,6 @@ export class AddUserDetail extends Component {
 
 
   handleFiles = (files) => {
-    // console.log(files)
     this.sendPhoto(files.base64)
   }
 

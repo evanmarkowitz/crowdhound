@@ -69,25 +69,21 @@ mutation {
 }
 `
 
-export const addDogQuery = (name, breed, birthdate, weight ,description, activityLevel) => `
+export const addDogQuery = (name, activityLevel, breed, weight, birthdate) => `
   mutation {
-    addDog(
-      user: {
-        name: ${name},
-        breed: ${breed},
-        birthdate: ${birthdate},
+    createDog(
+      dog: {
+        name: "${name}",
+        activityLevel: ${activityLevel},
+        breed: "${breed}",
         weight: ${weight},
-        description: ${description},
-        activityLevel: ${activityLevel}
+        birthdate: "${birthdate}",
       }
     ) {
-      currentDog {
+      dog {
         id
         name
-        birthdate
-        weight
-        description
-        activityLevel
+        age
       }
     }
   }

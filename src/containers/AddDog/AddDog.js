@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import './AddDog.css';
-import { addDogQuery } from '../../api/apiCallsNew'
+import { addDogQuery, createPhoto } from '../../api/apiCallsNew'
+import ReactFileReader from 'react-file-reader';
+import { connect } from 'react-redux';
+
+
 
 
 export class AddDog extends Component {
 
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       name: '',
       breed: '',
       birthdate: '',
       weight: 0,
       description: '',
-      activityLevel: '',
+      activityLevel: 0,
       photo: ''
     }
   }
@@ -22,41 +26,45 @@ export class AddDog extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  sendUser = async () => {
-    const {name, breed, birthdate, weight ,description, activityLevel } = this.state
+  handleFiles = (files) => {
+    this.sendPhoto(files.base64)
+  }
+
+  sendDog = async () => {
+    const {name, breed, birthdate, weight, activityLevel } = this.state
     let opts = {
       method: 'POST',
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify({query: addDogQuery(
-        name, breed, birthdate, weight ,description, activityLevel
+        name, activityLevel, breed, weight, birthdate
       )})
     }
-    await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+    try{
+      let response = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+      let parsedResponse = await response.json()
+      await console.log(parsedResponse)
+    } catch(error) {
+      console.log(error)
+    }
 
-    // let photoOpts = {
-    //   method: 'POST',
-    //   headers: { "Content-Type": "application/json"},
-    //   body: JSON.stringify({query: createPhoto('User',  this.props.id, 'User Photo',this.state.photo)})
-    // }
-    // try {
-    //   let photos = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, photoOpts)
-    //   // let parsedPhotos = await photos.json()
-    //   await console.log(photos)
-    // } catch(error) {
-    //   await console.log(error)
-    // } 
-   
+  }
+  sendPhoto = async (file) => {
+    let query = createPhoto('Dog',  this.props.id, 'Dog Photo')
+    let photoOpts = {
+      method: 'POST',
+      headers: { "Content-Type": "application/json"},
+      body: JSON.stringify({
+        file: file
+      })
+    }
+    try {
+      await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
+    } catch(error) {
+      await console.log(error)
+    }
+
   }
 
-
-
-  //  loadImg = (e) => {
-  //   e.preventDefault();
-  //   if (chooseFile.files[0]){
-  //     reader.readAsDataURL(chooseFile.files[0]);
-  //     reader.onload = makeImg;
-  //   }
-  // }
 
   render() {
     return (
@@ -80,12 +88,19 @@ export class AddDog extends Component {
             <option vlaue="3">High</option>
           </select>
           <label for="dog-photo-input" className="label">Photo</label>
-          <input id="dog-photo-input" className="input" type="file" />
-          <input type="button" className="input" value="Add" id="add-dog-btn" />
+          <ReactFileReader handleFiles={this.handleFiles} base64={true} multipleFiles={false}>
+            <button id="dog-photo-input" className="input" type="button">Add photo</button>
+          </ReactFileReader>
+          <input type="button" className="input" value="Add" id="add-dog-btn"  onClick={this.sendDog}/>
         </form>
       </section>
     )
   }
 }
 
-export default AddDog;
+export const mapStateToProps = state => ({
+  token: state.currentUser.token
+})
+
+
+export default connect(mapStateToProps)(AddDog)
