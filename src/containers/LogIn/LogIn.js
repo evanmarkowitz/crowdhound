@@ -28,13 +28,7 @@ const LogIn = (props) => {
     firebase.auth().onAuthStateChanged(user => {
       setUserToReduxStore(user)
     })
-    console.log(props)
   }
-
-    // const saveCookies = (items) => {
-    //   let setCookie = cookie.serialize()
-    // }
-  
 
     const setUserToReduxStore = user => {
       
@@ -42,8 +36,6 @@ const LogIn = (props) => {
       let nameArray =  name.split(" ")
       let photoURL = user === null ? "" : user.photoURL
       let email = user === null ? "" : user.email
-      
-      console.log('login is refreshed....')
 
     let auth = `{
       firstName: "${nameArray[0]}",
@@ -55,7 +47,7 @@ const LogIn = (props) => {
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify({query: mutation(`"${process.env.REACT_APP_USER_API_KEY}"`, auth)})
     }
-    fetch('http://staging-crowdhound-be.herokuapp.com/graphql', opts)
+    fetch('https://staging-crowdhound-be.herokuapp.com/graphql', opts)
       .then(res => res.json())
       .then(data => data)
       .then(result => {

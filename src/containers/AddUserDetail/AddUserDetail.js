@@ -40,7 +40,7 @@ export class AddUserDetail extends Component {
       )})
     }
     try{
-      let response = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+      let response = await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
       let parsedResponse = await response.json()
       await console.log(parsedResponse)
 
@@ -60,7 +60,7 @@ export class AddUserDetail extends Component {
       })
     }
     try {
-      await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
+      await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
     } catch(error) {
       await console.log(error)
     }
