@@ -37,7 +37,6 @@ const LogIn = (props) => {
   
 
 
-
     const setUserToReduxStore = user => {
 
     let name = user === null ? "" : user.displayName
@@ -92,9 +91,6 @@ const LogIn = (props) => {
     )
   
 }
-
-
-
 
 
 export const mapDispatchToProps = dispatch => ({

@@ -31,8 +31,8 @@ export class App extends Component {
 
   callCookies = () => {
   let userString = this.getCookie('user')
-  console.log(userString)
-    if (userString !== 'noCookie' && userString !== undefined) {
+
+  if (userString !== 'noCookie' && userString !== undefined) {
     let tokenString = this.getCookie('token')
     
     let user = JSON.parse(userString)
