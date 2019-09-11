@@ -123,7 +123,7 @@ export class UserProfile extends Component {
         body: JSON.stringify({query: logOutUserQuery})
       }
       try{
-        let response = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+        let response = await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
         let parsedResponse = await response.json()
         console.log(parsedResponse)
     
@@ -145,7 +145,7 @@ export class UserProfile extends Component {
         )})
       }
       try{
-        let response = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+        let response = await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
         let parsedResponse = await response.json()
         this.getUser()
         console.log(parsedResponse)
