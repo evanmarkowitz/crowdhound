@@ -108,3 +108,11 @@ mutation {
   }
 }
 `
+
+export const deleteDogQuery = (id) => `
+mutation {
+  destroyDog(dogId: ${id}) {
+    message
+  }
+}
+`

@@ -3,6 +3,7 @@ import './AddDog.css';
 import { addDogQuery, createPhoto } from '../../api/apiCallsNew'
 import ReactFileReader from 'react-file-reader';
 import { connect } from 'react-redux';
+import {Link } from 'react-router-dom'
 
 
 
@@ -18,7 +19,8 @@ export class AddDog extends Component {
       weight: 0,
       description: '',
       activityLevel: 0,
-      photo: ''
+      photo: '', 
+      popUp: false
     }
   }
 
@@ -96,9 +98,9 @@ export class AddDog extends Component {
           <textarea id="dog-description-input" className="input"  type="text" name="description" onChange={this.handleChange}></textarea>
           <label for="dog-activity-level-input" className="label" >Activity Level</label>
           <select id="dog-activity-level-input" className="input" name="activityLevel" onChange={this.handleChange}>
-            <option vlaue="1">Low</option>
-            <option vlaue="2">Medium</option>
-            <option vlaue="3">High</option>
+            <option value={0}>Low</option>
+            <option value={1}>Medium</option>
+            <option value={2}>High</option>
           </select>
           <label for="dog-photo-input" className="label">Photo</label>
           <ReactFileReader handleFiles={this.handleFiles} base64={true} multipleFiles={false}>
