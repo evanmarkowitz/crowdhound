@@ -84,14 +84,11 @@ export class AddUserDetail extends Component {
             <input className="address-input" type="text" placeholder="State" value={this.state.st} name='st' onChange={this.handleChange}/>
             <input className="address-input" type="number"  max="5" placeholder="Zip" value={this.state.zip} name='zip' onChange={this.handleChange}/>
           </div>
-
-
           <label className="label">Photo</label>
           <ReactFileReader handleFiles={this.handleFiles} base64={true} multipleFiles={false}>
-            <input id="user-detail-photo-input" className="input" type="file" name='file'/>
-            {/* <button >Add photo</button> */}
+            <button id="user-detail-photo-input" className="input"  name='file' value='add-photo' type='button'>Add photo</button>
           </ReactFileReader>
-          <input type="button" className="input" value="Add" id="add-user-detail-btn" onClick={this.sendUser}/>
+          <input type="button" className="input" value="Add" id="add-user-detail-btn" onClick={this.sendUser}/> 
         </form>
       </section>
     )
