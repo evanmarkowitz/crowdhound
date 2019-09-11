@@ -27,7 +27,7 @@ export class AddDog extends Component {
   }
 
   handleFiles = (files) => {
-    this.sendPhoto(files.base64)
+    this.setState({photo: files.base64})
   }
 
   sendDog = async () => {
@@ -42,14 +42,15 @@ export class AddDog extends Component {
     try{
       let response = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
       let parsedResponse = await response.json()
-      await console.log(parsedResponse)
+      return parsedResponse.data.createDog.dog.id
+  
     } catch(error) {
       console.log(error)
     }
 
   }
-  sendPhoto = async (file) => {
-    let query = createPhoto('Dog',  this.props.id, 'Dog Photo')
+  sendPhoto = async (id, file) => {
+    let query = createPhoto('Dog',  id, 'Dog Photo')
     let photoOpts = {
       method: 'POST',
       headers: { "Content-Type": "application/json"},
@@ -62,7 +63,19 @@ export class AddDog extends Component {
     } catch(error) {
       await console.log(error)
     }
+  }
 
+  submitDog = async () => {
+    try {
+      let dogId = await this.sendDog()
+      await console.log('id', dogId)
+      let addPhoto = await this.sendPhoto(dogId, this.state.photo)
+      let parsedResponse = addPhoto.json()
+      console.log(parsedResponse)
+    } catch(error){
+      console.log(error)
+    }
+    
   }
 
 
@@ -91,7 +104,7 @@ export class AddDog extends Component {
           <ReactFileReader handleFiles={this.handleFiles} base64={true} multipleFiles={false}>
             <button id="dog-photo-input" className="input" type="button">Add photo</button>
           </ReactFileReader>
-          <input type="button" className="input" value="Add" id="add-dog-btn"  onClick={this.sendDog}/>
+          <input type="button" className="input" value="Add" id="add-dog-btn"  onClick={this.submitDog}/>
         </form>
       </section>
     )

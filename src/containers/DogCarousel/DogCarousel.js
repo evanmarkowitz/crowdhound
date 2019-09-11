@@ -115,14 +115,14 @@ export const DogCarousel = () => {
       <Slider {...settings} arrows={true}>
         {dog}
       </Slider>
-      <h2>MEDIUM PUPS</h2>
+      {/* <h2>MEDIUM PUPS</h2>
       <Slider {...settings} arrows={true}>
         {dog}
       </Slider>
       <h2>LARGE PUPS</h2>
       <Slider {...settings} arrows={true}>
         {dog}
-      </Slider>
+      </Slider> */}
     </section>
   );
 
