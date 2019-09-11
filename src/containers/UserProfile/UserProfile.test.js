@@ -14,24 +14,11 @@ import renderer from 'react-test-renderer'
 
 describe('UserProfile', () => {
   let wrapper;
-  let mocks;
-  beforeEach(() => {
-      mocks = [
-      {
-        request: {
-          query: GET_USER_QUERY,
 
-        },
-        result: {
-          data: {
-            user: { id: '1', firstName: 'Buck', lastName: 'buck', longDesc: 'longDesc', photos: {sourceUrl: ''} },
-            dogs: { id: '2', name: 'buckdog', photos: {sourceUrl: ''}}
-          },
-        },
-      },
-    ];
+  beforeEach(() => {
+  
     wrapper = shallow(
-      <MockedProvider mocks={mocks} addTypename={false}>
+      <MockedProvider>
         <UserProfile id={1}/>
       </MockedProvider>
     );
