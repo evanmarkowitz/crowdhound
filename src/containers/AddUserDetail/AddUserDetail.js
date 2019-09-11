@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import './AddUserDetail.css';
 import { addUserDetailsQuery, createPhoto } from '../../api/apiCallsNew'
 import ReactFileReader from 'react-file-reader';
+import { Link } from 'react-router-dom'
+
 
 export class AddUserDetail extends Component {
 
@@ -14,7 +16,8 @@ export class AddUserDetail extends Component {
       city: '',
       st: '',
       zip: '',
-      photo: ''
+      photo: '', 
+      sucessMessage: ''
     }
   }
   
@@ -37,7 +40,13 @@ export class AddUserDetail extends Component {
         firstName, lastName, description, `"${street}"`, city, `"${st}"`, `"${zip}"`
       )})
     }
-    await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+    try{
+      await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+      this.setState({showLinks: true})
+    } catch(error) {
+      this.setState({sucessMessage: error})
+      console.log(error)
+    }
   }
   
   sendPhoto = async (file) => {
@@ -76,7 +85,6 @@ export class AddUserDetail extends Component {
           <label for="user-detail-description-input" className="label">Description</label>
           <textarea id="user-detail-description-input" className="input"  type="text" value={this.state.description}
           name='description' onChange={this.handleChange}></textarea>
-
           <label for="user-detail-address-input" className="label">Address</label>
           <div className="address-container">
             <input className="address-input" type="text" placeholder="Street" value={this.state.street} name='street' onChange={this.handleChange}/>
@@ -88,7 +96,9 @@ export class AddUserDetail extends Component {
           <ReactFileReader handleFiles={this.handleFiles} base64={true} multipleFiles={false}>
             <button id="user-detail-photo-input" className="input"  name='file' value='add-photo' type='button'>Add photo</button>
           </ReactFileReader>
-          <input type="button" className="input" value="Add" id="add-user-detail-btn" onClick={this.sendUser}/> 
+          <Link to={`/userprofile/${this.props.id}`}>
+            <input type="button" className="input" value="Add" id="add-user-detail-btn" onClick={this.sendUser}/> 
+          </Link>
         </form>
       </section>
     )
