@@ -22,7 +22,7 @@ export const addUserDetailsQuery = (firstName, lastName, longDesc, streetAddress
         firstName: ${firstName},
         lastName: ${lastName},
         shortDesc: "",
-        longDesc: ${longDesc}
+        longDesc: "${longDesc}"
       },
       location: {
         streetAddress: ${streetAddress},
