@@ -24,8 +24,8 @@ export class AddUserDetail extends Component {
 
 
   handleFiles = (files) => {
-    console.log(files)
-    // this.sendPhoto(files.base64)
+    // console.log(files)
+    this.sendPhoto(files.base64)
   }
 
   sendUser = async () => {
