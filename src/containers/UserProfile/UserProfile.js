@@ -113,7 +113,7 @@ export function UserProfile(props) {
         <div className="user-profile-dog" key={dog.id}>
           <Link to={`/dogprofile/${dog.id}`} className="dog-profile-img" style={dogImageStyle}></Link>
           <h5 className="dog-profile-name">{dog.name}</h5>
-          <button onClick={() => deleteDog(dog.id)}>delete dog</button>
+          {id === props.currentId && <button onClick={() => deleteDog(dog.id)}>delete dog</button>}
         </div>
       )
     })
@@ -131,7 +131,7 @@ export function UserProfile(props) {
                   {longDesc}
                 </p>
                 {
-                    userLoggedIn &&
+                    (userLoggedIn && id === props.currentId) &&
                     <button className="log-out" onClick={hanldeLogOut}>Log out</button>
                 }
                 

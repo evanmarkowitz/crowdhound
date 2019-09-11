@@ -3,7 +3,7 @@ import './App.css';
 import Header from '../Header/Header';
 import Home from '../Home/Home';
 import  UserProfile  from '../UserProfile/UserProfile';
-import { DogProfile } from '../DogProfile/DogProfile';
+import  DogProfile  from '../DogProfile/DogProfile';
 import FilterModal from '../FilterModal/FilterModal';
 import { SearchResults } from '../SearchResults/SearchResults';
 import { connect } from 'react-redux';
