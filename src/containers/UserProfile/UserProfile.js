@@ -24,6 +24,7 @@ export class UserProfile extends Component {
   async componentDidMount() {
     try {
       let response = await this.getUser()
+      await console.log(response)
       let user = await response.json()
       await this.setState({user})
 
@@ -32,13 +33,13 @@ export class UserProfile extends Component {
     }
   }
 
-   setCookie = (c_name,value,exdays) =>
-  {
-     var exdate=new Date();
-     exdate.setDate(exdate.getDate() + exdays);
-     var c_value=escape(value) + ((exdays==null) ? "" : ("; expires="+exdate.toUTCString()));
-     document.cookie=c_name + "=" + c_value;
-  }
+  //  setCookie = (c_name,value,exdays) =>
+  // {
+  //    var exdate=new Date();
+  //    exdate.setDate(exdate.getDate() + exdays);
+  //    var c_value=escape(value) + ((exdays==null) ? "" : ("; expires="+exdate.toUTCString()));
+  //    document.cookie=c_name + "=" + c_value;
+  // }
 
    getUser = async () => {
     let opts = {

@@ -11,6 +11,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
 import  AddDog  from '../AddDog/AddDog';
 import AddUserDetail from '../AddUserDetail/AddUserDetail';
+import cookie from 'react-cookies'
 
 
 
@@ -24,8 +25,8 @@ export class App extends Component {
   }
 
   
-  componentDidMount() {
-    this.callCookies()
+  async componentDidMount() {
+    // this.callCookies()
   }
 
 
@@ -44,6 +45,7 @@ export class App extends Component {
   }
 
   getCookie(c_name) {
+    console.log(document.cookie)
       let i,x,y,ARRcookies=document.cookie.split(";");
       for (i=0; i<ARRcookies.length; i++)
       {

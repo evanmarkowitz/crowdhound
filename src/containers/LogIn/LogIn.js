@@ -56,10 +56,10 @@ const LogIn = (props) => {
         props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL, token: token, isNew: result.data.authenticateUser.new, id: parseInt(user.id)})
         props.handleUserLoggedIn(!!user)
 
-        let userString = JSON.stringify(user)
-        let tokenString = JSON.stringify(token)
-        setCookie('user', userString, 21)
-        setCookie('token', tokenString, 21)
+        // let userString = JSON.stringify(user)
+        // let tokenString = JSON.stringify(token)
+        // setCookie('user', userString, 21)
+        // setCookie('token', tokenString, 21)
       })
       .catch(console.log)
 
