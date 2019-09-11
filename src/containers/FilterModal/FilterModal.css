@@ -226,3 +226,18 @@
 }
 
 
+.go-to-user-profile {
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  color: #1dbbdf;
+  cursor: pointer;
+  /* border: 1px solid gray; */
+  border-radius: 5px;
+  padding: 6px;
+  background: rgb(248, 246, 246);
+}
+
+.go-to-user-profile:hover {
+  color: #219bb6;
+}
