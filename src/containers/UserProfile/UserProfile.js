@@ -57,7 +57,7 @@ export function UserProfile(props) {
   if(error) return <p>Error :</p>;
   console.log(data)
 
-  const {firstName, longDesc, photos, dogs, address} = data.user
+  const {firstName, longDesc, photos, dogs} = data.user
 
   const userImagePic = !photos[0] ? userImage : photos[0].sourceUrl
 
