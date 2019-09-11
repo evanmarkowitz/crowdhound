@@ -104,11 +104,11 @@ export class UserProfile extends Component {
 
 
      hanldeLogOut = () => {
+      this.props.handleUserLoggedIn(false)
+      this.setCookie('user','', 21)
+      this.logOutOfBackend()
       firebase.auth().signOut().then(function() {
-         this.props.handleUserLoggedIn(false)
-         this.props.handleCurrentUser({name: "", photoURL: ""})
-         this.setCookie('user','', 21)
-         this.logOutOfBackend()
+        
       }).catch(function(error) {
         // console.log(error)
       });
@@ -159,9 +159,6 @@ export class UserProfile extends Component {
    
 
     render() {
-      // console.log(this.props.userLoggedIn)
-      console.log(parseInt(this.props.id))
-      console.log(this.props.currentId)
 
     // const {firstName, longDesc, photos, dogs} = this.state.user
 
@@ -239,4 +236,4 @@ export const mapDispatchToProps = dispatch => ({
 })
 
 
-export default connect(mapStateToProps)(UserProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
