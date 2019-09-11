@@ -95,3 +95,55 @@
   font-size: 20px;
 }
 
+
+@media only screen and (max-width: 850px) {
+  .dog-profile-main {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .dog-image {
+    height: 500px;
+  }
+
+  .user-wrapper {
+    margin-top: 20px;
+    width: 250px
+  }
+}
+
+@media only screen and (max-width: 555px) {
+
+  .dog-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+  }
+
+  .dog-info-wrapper h2 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    height: 50px;
+    font-size: 25px;
+  }
+
+  .about {
+    margin-bottom: 25px;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+
+  .dog-info-wrapper {
+    height: 650px;
+  }
+
+}
+
+@media only screen and (max-width: 360px) {
+
+  .dog-info-wrapper {
+    height: 700px;
+  }
+
+}

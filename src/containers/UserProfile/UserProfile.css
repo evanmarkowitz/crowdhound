@@ -55,7 +55,8 @@
 .user-address-body {
   color: rgb(56, 51, 51);
   margin-top: 15px;
-  width: 400px;
+  width: 90%;
+
 }
 
 .user-address-title {
@@ -109,4 +110,47 @@
 .log-out:hover {
   background: #ffa07a;
   color: #fff;
+}
+
+@media only screen and (max-width: 850px) {
+
+  .user-profile {
+    height: auto;
+  }
+  .user-profile-content-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+  }
+
+  .user-profile-content-info {
+    width: 100%;
+    border: none;
+    text-align: center;
+  }
+
+.user-address-body {
+    width: 100%;
+  }
+
+  .user-about-me-body {
+    width: 70%;
+  }
+
+  .user-profile-content-info, .user-profile-content-dog, .user-profile-content-dogs-title {
+    width: 100%;
+    border: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .user-profile-dogs-container {
+    display: flex;
+    flex-direction: column;
+}
+  
 }
