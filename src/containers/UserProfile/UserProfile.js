@@ -1,36 +1,12 @@
 import React, { Component } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import './UserProfile.css';
 import dogFace1 from '../../images/dog-face-1.jpg';
 import userImage from '../../images/bradly-cooper.jpg';
 import { Link } from 'react-router-dom';
-// import { useQuery, RenderPromises } from '@apollo/react-hooks';
-// import { gql } from 'apollo-boost';
 import firebase from 'firebase';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
 import { connect } from 'react-redux';
 import { deleteDogQuery, logOutUserQuery, getUserQuery } from '../../api/apiCallsNew'
-
-
-// export const GET_USER_QUERY = gql`
-//   query getUser($id: ID!) {
-//     user(id: $id) {
-//       id
-//       firstName
-//       longDesc
-//       photos {
-//         sourceUrl
-//       }
-//       dogs {
-//         id
-//         name
-//         photos {
-//           sourceUrl
-//         }
-//       }
-//     }
-  
-// }`
 
 export class UserProfile extends Component {
   constructor() {
@@ -56,7 +32,6 @@ export class UserProfile extends Component {
     }
   }
 
-
    setCookie = (c_name,value,exdays) =>
   {
      var exdate=new Date();
@@ -65,20 +40,6 @@ export class UserProfile extends Component {
      document.cookie=c_name + "=" + c_value;
   }
 
-  // const dispatch = useDispatch()
-  // const userLoggedIn = useSelector(state => state.userLoggedIn)
-
-   
-  // const id = parseInt(props.id)
-
-  // const { loading, error, data } = useQuery(
-  //   GET_USER_QUERY,
-  //   { variables: { id } }
-  // );
-
-  // if(loading) return <p>Loading....</p>;
-  // if(error) return <p>Error :</p>;
-  // console.log(data)
    getUser = async () => {
     let opts = {
       method: 'POST',
@@ -86,7 +47,7 @@ export class UserProfile extends Component {
       body: JSON.stringify({query: getUserQuery(this.props.id)})
     }
     try{
-      let response = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
+      let response = await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
       let parsedResponse = await response.json()
       let user = parsedResponse.data.user
       this.setState({user})
