@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './AddUserDetail.css';
 import { addUserDetailsQuery, createPhoto } from '../../api/apiCallsNew'
+import ReactFileReader from 'react-file-reader';
 
 export class AddUserDetail extends Component {
 
@@ -21,8 +22,10 @@ export class AddUserDetail extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  addPhoto = (e) => {
-    this.setState({photo: e.target.files[0]})
+
+  handleFiles = (files) => {
+    console.log(files)
+    // this.sendPhoto(files.base64)
   }
 
   sendUser = async () => {
@@ -36,21 +39,23 @@ export class AddUserDetail extends Component {
       )})
     }
     let res = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
-
+  }
+  sendPhoto = async (file) => {
+    let query = createPhoto('User',  this.props.id, 'User Photo')
     let photoOpts = {
       method: 'POST',
       headers: { "Content-Type": "application/json"},
-      body: JSON.stringify({query: createPhoto('User',  this.props.id, 'User Photo',this.state.photo)})
+      body: JSON.stringify({
+        file: file
+      })
     }
     try {
-      let photos = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, photoOpts)
-      // let parsedPhotos = await photos.json()
-      await console.log(photos)
+      let res = await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
+      // let response = await res.json()
+      await console.log(res)
     } catch(error) {
       await console.log(error)
     }
-    
-   
   }
 
   render() {
@@ -82,7 +87,10 @@ export class AddUserDetail extends Component {
 
 
           <label className="label">Photo</label>
-          <input id="user-detail-photo-input" className="input" type="file" onChange={this.addPhoto} name='file'/>
+          <ReactFileReader handleFiles={this.handleFiles} base64={true} multipleFiles={false}>
+            <input id="user-detail-photo-input" className="input" type="file" name='file'/>
+            {/* <button >Add photo</button> */}
+          </ReactFileReader>
           <input type="button" className="input" value="Add" id="add-user-detail-btn" onClick={this.sendUser}/>
         </form>
       </section>
