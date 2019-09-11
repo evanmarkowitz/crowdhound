@@ -5,13 +5,21 @@ import {Link} from 'react-router-dom';
 
 export class DogCard extends Component {
 
+  userImagePic = () => {
+    const { photos } = this.props
+     if(!photos[0]) {
+        return dogFace1
+      } else {
+        return photos[0].sourceUrl
+      }
+    } 
+
 
   render() {
-    const {name, photos, id} = this.props
-    const userImagePic = !photos[0] ? dogFace1 : photos[0].sourceUrl
+    const {name, id} = this.props
 
     const profileImageStyle = {
-      backgroundImage: `url(${userImagePic})`,
+      backgroundImage: `url(${this.userImagePic()})`,
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat'
