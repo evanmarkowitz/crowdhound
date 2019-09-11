@@ -28,22 +28,14 @@ const LogIn = (props) => {
     firebase.auth().onAuthStateChanged(user => {
       setUserToReduxStore(user)
     })
-    console.log(props)
   }
 
-    // const saveCookies = (items) => {
-    //   let setCookie = cookie.serialize()
-    // }
-  
-
-
     const setUserToReduxStore = user => {
-
-    let name = user === null ? "" : user.displayName
-    let nameArray =  name.split(" ")
-    let photoURL = user === null ? "" : user.photoURL
-    let email = user === null ? "" : user.email
-
+      
+      let name = user === null ? "" : user.displayName
+      let nameArray =  name.split(" ")
+      let photoURL = user === null ? "" : user.photoURL
+      let email = user === null ? "" : user.email
 
     let auth = `{
       firstName: "${nameArray[0]}",
@@ -55,7 +47,7 @@ const LogIn = (props) => {
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify({query: mutation(`"${process.env.REACT_APP_USER_API_KEY}"`, auth)})
     }
-    fetch('http://staging-crowdhound-be.herokuapp.com/graphql', opts)
+    fetch('https://staging-crowdhound-be.herokuapp.com/graphql', opts)
       .then(res => res.json())
       .then(data => data)
       .then(result => {
@@ -63,6 +55,7 @@ const LogIn = (props) => {
         const token = result.data.authenticateUser.token
         props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL, token: token, isNew: result.data.authenticateUser.new, id: parseInt(user.id)})
         props.handleUserLoggedIn(!!user)
+
         let userString = JSON.stringify(user)
         let tokenString = JSON.stringify(token)
         setCookie('user', userString, 21)

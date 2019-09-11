@@ -5,6 +5,7 @@ import userImage from '../../images/bradly-cooper.jpg';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 export let GET_DOG_QUERY = gql`
 
@@ -41,6 +42,7 @@ export const DogProfile = (props) => {
     { variables: { id: id } }
     
   );
+  
 
 
   if(loading) return <p className='loading'>Roof Roof hold on while we fetch this dog!</p>;
@@ -60,6 +62,8 @@ export const DogProfile = (props) => {
     backgroundRepeat: 'no-repeat'
 }
 
+  console.log(props.currentId !== parseInt(user.id))
+  console.log(props.currentId)
   return(
     <main className='dog-profile-main'>
       <section className='dog-info-wrapper'>
@@ -99,7 +103,7 @@ export const DogProfile = (props) => {
           backgroundRepeat: 'no-repeat'}}>
           </Link>
           <h3>{user.firstName}</h3>
-          <button className='chat-button'>Chat</button>
+          {props.currentId !== parseInt(user.id) && <button className='chat-button'>Chat</button>}
           <p id='zip-code'>Zip Code: <span>00000</span></p>
         </article>
       </section>
@@ -107,4 +111,8 @@ export const DogProfile = (props) => {
   )
 }
 
-export default DogProfile
+export const mapStateToProps = state => ({
+  currentId: state.currentUser.id
+})
+
+export default connect(mapStateToProps, null)(DogProfile)

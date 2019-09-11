@@ -11,7 +11,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 const client = new ApolloClient({
-  uri: 'http://staging-crowdhound-be.herokuapp.com/graphql',
+  uri: 'https://staging-crowdhound-be.herokuapp.com/graphql',
 });
 
 

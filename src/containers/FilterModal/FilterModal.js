@@ -58,12 +58,7 @@ export class FilterModal extends Component {
   
   render() {
 
-    const userProfileStyle = {
-      backgroundImage: `url(${this.props.currentUser.photoURL})`,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat'
-  }
+
 
     return(
       <article className='modal-wrapper'>
@@ -98,16 +93,15 @@ export class FilterModal extends Component {
           </div>
           <aside className='right-modal'>
             <Link to="/results" id='find-button' onClick={this.clickFinder}>FIND</Link>
-            <div className='user-section'>
               {
                 !this.props.userLoggedIn ?
                   <LogIn /> :
                   <>
-               <Link to={`/userprofile/${this.props.currentUser.id}`} className="go-to-user-profile" onClick={this.clickFinder}><div id='user-image' style={userProfileStyle} className='dog-card-img'></div></Link>
-               <p className='user-name'>{this.props.currentUser.firstName + " " + this.props.currentUser.lastName}</p>
+               <Link to={`/userprofile/${this.props.currentUser.id}`} className="go-to-user-profile" onClick={this.clickFinder}><p >{this.props.currentUser.firstName + " " + this.props.currentUser.lastName}</p></Link>
+
+               
                </>
               }
-            </div>
           </aside>
         </section>
         <section className='background' onClick={this.clickFinder}/>

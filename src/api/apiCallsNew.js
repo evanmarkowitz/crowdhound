@@ -22,7 +22,7 @@ export const addUserDetailsQuery = (firstName, lastName, longDesc, streetAddress
         firstName: ${firstName},
         lastName: ${lastName},
         shortDesc: "",
-        longDesc: ${longDesc}
+        longDesc: "${longDesc}"
       },
       location: {
         streetAddress: ${streetAddress},
@@ -116,3 +116,34 @@ mutation {
   }
 }
 `
+
+export const logOutUserQuery = `
+
+mutation {
+  logOutUser
+  {
+    message
+  }
+}
+
+`
+
+export const getUserQuery = (id) => `
+  query {
+    user(id: ${id}) {
+      id
+      firstName
+      longDesc
+      photos {
+        sourceUrl
+      }
+      dogs {
+        id
+        name
+        photos {
+          sourceUrl
+        }
+      }
+    }
+  
+}`
