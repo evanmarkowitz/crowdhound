@@ -141,6 +141,7 @@ export function UserProfile(props) {
               <div className="user-profile-dogs-container">
                   {dog}
               </div>
+              <Link className="add-a-dog-link" to="/addingdog">Add a dog</Link>
             </div>
         </div>
       </section>
