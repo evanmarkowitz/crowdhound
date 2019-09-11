@@ -3,11 +3,12 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   margin-top: 60px;
   overflow: scroll;
+  z-index: 10;
 }
 
 .modal-card {

@@ -24,7 +24,6 @@ export class AddUserDetail extends Component {
 
 
   handleFiles = (files) => {
-    // console.log(files)
     this.sendPhoto(files.base64)
   }
 
@@ -40,6 +39,7 @@ export class AddUserDetail extends Component {
     }
     await fetch(`http://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
   }
+  
   sendPhoto = async (file) => {
     let query = createPhoto('User',  this.props.id, 'User Photo')
     let photoOpts = {

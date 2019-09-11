@@ -1,6 +1,7 @@
 import React from 'react';
-import {App} from './App';
+import { App, mapDispatchToProps } from './App';
 import { shallow } from 'enzyme';
+import { setUserLoggedIn, setCurrentUser } from '../../actions';
 
 
 describe('App', () => {
@@ -10,6 +11,7 @@ describe('App', () => {
   beforeEach(() => {
     props = {
       currentUser: {isNew: false},
+      handleCurrentUser: jest.fn(),
     }
     document = {
       cookie : 'test=isfun'
@@ -23,12 +25,33 @@ describe('App', () => {
     expect(wrapper).toMatchSnapshot();
   });
   it('should match the snapshot', () => {
-    wrapper = shallow(<App  {...props} toggleFilterValue={true}/>);
+    wrapper = shallow(<App {...props} toggleFilterValue={true}/>);
     expect(wrapper).toMatchSnapshot();
   });
 
-  it.skip('getCookie', () => {
-    expect(wrapper.instance().getCookie(test)).toEqual('isfun')
+  it('componentDidMount should invoke callCookies function', () => {
+    wrapper.instance().callCookies = jest.fn();
+    wrapper.instance().componentDidMount()
+    expect(wrapper.instance().callCookies).toHaveBeenCalled()
   })
+
+  it('should dispatch with a setUserLoggedIn action when handleUserLoggedIn is called', () => {
+    const mockDispatch = jest.fn();
+    const mockSelected = true;
+    const mockAction = setUserLoggedIn(mockSelected);
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.handleUserLoggedIn(true);
+    expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+  })
+
+  it('should dispatch with a setCurrentUser action when handleCurrentUser is called', () => {
+    const mockDispatch = jest.fn();
+    const mockSelected = {name: 'user'};
+    const mockAction = setCurrentUser(mockSelected);
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.handleCurrentUser({name: 'user'});
+    expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+  })
+
 
 })
