@@ -97,9 +97,9 @@ export class AddUserDetail extends Component {
           <ReactFileReader handleFiles={this.handleFiles} base64={true} multipleFiles={false}>
             <button id="user-detail-photo-input" className="input"  name='file' value='add-photo' type='button'>Add photo</button>
           </ReactFileReader>
-          {/* <Link to={`/userprofile/${this.props.id}`}> */}
+          <Link to={`/userprofile/${this.props.id}`}>
             <input type="button" className="input" value="Add" id="add-user-detail-btn" onClick={this.sendUser}/> 
-          {/* </Link> */}
+          </Link>
         </form>
       </section>
     )
