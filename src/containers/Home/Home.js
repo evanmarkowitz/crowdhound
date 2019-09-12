@@ -11,11 +11,7 @@ export class Header extends Component {
             <div className="home-text-container">
               <h2 className="home-text-title">FIND YOUR PACK</h2>
               <p className="home-text-body">
-                Lorem ipsum dolor sit amet, 
-                consectetur adipiscing elit,
-                sed do eiusmod tempor
-                incididunt ut labore et dolore
-                magna aliqua.
+              CrowdHound lets dog owners and enthusiasts find each other. You can see photos of the dogs and users, read each other's profiles, and filter by preferences (like dog age, weight and distance to you). When you find a profile you like, you can send them a message to connect.
               </p>
             </div>
             <img src={dogsHomePage} className="homepage-dogs-img" alt="three dogs sitting together"/>
