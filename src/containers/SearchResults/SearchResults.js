@@ -3,7 +3,6 @@ import './SearchResults.css';
 import DogCard from '../DogCard/DogCard';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
-import { useSelector } from 'react-redux'
 import { connect } from 'react-redux';
 
 
