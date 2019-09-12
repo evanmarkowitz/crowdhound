@@ -21,7 +21,7 @@ export const GET_FILTERED_DOGS_QUERY = gql`
   }`;
 
 export function SearchResults(props) {
-  
+  console.log(props.activityLevel)
   const activityLevelRange = [props.activityLevel, props.activityLevel]
   const dogSizeConvert = {
     small: [0, 15],
@@ -50,6 +50,7 @@ export function SearchResults(props) {
     )
   
 }
+
 
 export const mapStateToProps = state => ({
   activityLevel:  state.activityLevel,
