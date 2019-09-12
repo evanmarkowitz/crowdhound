@@ -60,10 +60,7 @@ export class AddDog extends Component {
 
     }
     try {
-      let response = await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
-      await console.log(response)
-      let parsedResponse = response.json()
-      await console.log(parsedResponse)
+       await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
     } catch(error) {
       await console.log(error)
     }

@@ -27,5 +27,20 @@ describe('AddUserDetail', () => {
     expect(wrapper.instance().sendPhoto).toHaveBeenCalled();
   })
 
+  it('submitDog should shoul call sendUser', () => {
+    const spy = jest.spyOn(wrapper.instance(), "sendUser");
+    wrapper.instance().forceUpdate()
+    wrapper.find('#add-user-detail-btn').simulate('click');
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalled()
+  })
+
+  it('submitDog should shoul call sendPhoto', async () =>  {
+    const spy = jest.spyOn(wrapper.instance(), "sendPhoto");
+    wrapper.instance().forceUpdate();
+    spy(1, 'photo')
+    expect(spy).toHaveBeenCalled()
+  })
+
 
 })
