@@ -1,9 +1,7 @@
 import React from 'react';
-import {UserProfile, GET_USER_QUERY} from './UserProfile';
-import { MockedProvider } from '@apollo/react-testing'
+import {UserProfile} from './UserProfile';
 import { shallow } from 'enzyme';
 import wait from 'waait'
-import renderer from 'react-test-renderer'
 
 
 
