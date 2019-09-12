@@ -69,7 +69,7 @@ mutation {
 }
 `
 
-export const addDogQuery = (name, activityLevel, breed, weight, birthdate) => `
+export const addDogQuery = (name, activityLevel, breed, weight, birthdate, longDesc) => `
   mutation {
     createDog(
       dog: {
@@ -78,6 +78,7 @@ export const addDogQuery = (name, activityLevel, breed, weight, birthdate) => `
         breed: "${breed}",
         weight: ${weight},
         birthdate: "${birthdate}",
+        longDesc: ${longDesc}
       }
     ) {
       dog {

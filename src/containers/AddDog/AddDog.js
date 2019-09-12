@@ -30,12 +30,12 @@ export class AddDog extends Component {
   }
 
   sendDog = async () => {
-    const {name, breed, birthdate, weight, activityLevel } = this.state
+    const {name, activityLevel, breed, weight, birthdate, longDesc } = this.state
     let opts = {
       method: 'POST',
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify({query: addDogQuery(
-        name, activityLevel, breed, weight, birthdate,
+        name, activityLevel, breed, weight, birthdate, `"${longDesc}"`
       )})
     }
     try{
@@ -60,8 +60,6 @@ export class AddDog extends Component {
 
     }
     try {
-      console.log('in send photo', dogId)
-      // console.log(file)
       let response = await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
       await console.log(response)
       let parsedResponse = response.json()
@@ -76,14 +74,10 @@ export class AddDog extends Component {
   submitDog = async () => {
     try {
       let dogId = await this.sendDog()
-      await console.log('in submit dog', dogId)
-      let addPhoto = await this.sendPhoto(dogId, this.state.photo)
-      // let parsedResponse = addPhoto.json()
-      console.log(addPhoto)
+      await this.sendPhoto(dogId, this.state.photo)
     } catch(error){
       console.log(error)
     }
-    
   }
 
 

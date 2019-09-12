@@ -113,5 +113,4 @@ export const mapStateToProps = state => ({
   id: state.currentUser.id
 })
 
-
 export default connect(mapStateToProps)(AddUserDetail)

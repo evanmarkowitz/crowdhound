@@ -100,7 +100,6 @@ export class UserProfile extends Component {
     }
 
     render() {
-
     // const {firstName, longDesc, photos, dogs} = this.state.user
 
     const userImagePic = !this.state.photos[0] ? userImage : this.state.photos[0].sourceUrl
