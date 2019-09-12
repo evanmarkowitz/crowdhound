@@ -73,14 +73,10 @@ export class AddUserDetail extends Component {
         <form className="add-user-detail-form">
           <h4 className="add-user-detail-title">Add your information</h4>
           <label for="user-detail-first-name-input" className="label">First Name</label>
-          {/* <input id="user-detail-first-name-input" className="input" type="text" name='firstName' 
-          onChange={this.handleChange} value={this.state.firstName} /> */}
           <p>{this.props.firstName}</p>
           <label for="user-detail-last-name-input" className="label">Last Name</label>
-          {/* <input id="user-detail-last-name-input" className="input" type="text" /> */}
           <p>{this.props.lastName}</p>
           <label for="user-detail-email-input" className="label">Email</label>
-          {/* <input id="user-detail-email-input" className="input" type="email" /> */}
           <p>{this.props.email}</p>
           <label for="user-detail-description-input" className="label">Description</label>
           <textarea id="user-detail-description-input" className="input"  type="text" value={this.state.description}

@@ -29,12 +29,6 @@ describe('App', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('componentDidMount should invoke callCookies function', () => {
-    wrapper.instance().callCookies = jest.fn();
-    wrapper.instance().componentDidMount()
-    expect(wrapper.instance().callCookies).toHaveBeenCalled()
-  })
-
   it('should dispatch with a setUserLoggedIn action when handleUserLoggedIn is called', () => {
     const mockDispatch = jest.fn();
     const mockSelected = true;

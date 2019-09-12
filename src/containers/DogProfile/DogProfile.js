@@ -50,11 +50,6 @@ export const DogProfile = (props) => {
 
   const {name, longDesc, breed, photos, activityLevel, weight, age, user} = data.dog;
 
-  // const activities = ['Low', 'Average', 'High'];
-  // const fixedAge = Math.floor(age)
-  // const dogImage = !photos[0] ? dogProfilePic : photos[0].sourceUrl;
-  // const userImagePic = !user.photos[0] ? userImage : user.photos[0].sourceUrl
-
   const profileImageStyle = {
     backgroundImage: `url(${!photos[0] ? dogProfilePic : photos[0].sourceUrl})`,
     backgroundPosition: 'center',

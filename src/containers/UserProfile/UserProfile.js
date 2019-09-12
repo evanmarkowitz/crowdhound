@@ -52,8 +52,6 @@ export class UserProfile extends Component {
      hanldeLogOut = () => {
       this.props.handleUserLoggedIn(false)
       this.props.handleCurrentUser({})
-      // this.setCookie('user','', 21)
-      // this.setCookie('token', '', 21)
       this.logOutOfBackend()
       firebase.auth().signOut().then(function() {
         
@@ -100,10 +98,8 @@ export class UserProfile extends Component {
     }
 
     render() {
-    // const {firstName, longDesc, photos, dogs} = this.state.user
 
     const userImagePic = !this.state.photos[0] ? userImage : this.state.photos[0].sourceUrl
-  //   const userImagePic = userImage
 
     const profileImageStyle = {
       backgroundImage: `url(${userImagePic})`,
@@ -177,12 +173,3 @@ export const mapDispatchToProps = dispatch => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
-
-
-  //  setCookie = (c_name,value,exdays) =>
-  // {
-  //    var exdate=new Date();
-  //    exdate.setDate(exdate.getDate() + exdays);
-  //    var c_value=escape(value) + ((exdays==null) ? "" : ("; expires="+exdate.toUTCString()));
-  //    document.cookie=c_name + "=" + c_value;
-  // }

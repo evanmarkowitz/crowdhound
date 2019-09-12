@@ -18,9 +18,9 @@ describe('UserProfile', () => {
   beforeEach(() => {
   
     wrapper = shallow(
-      <MockedProvider>
+     
         <UserProfile id={1}/>
-      </MockedProvider>
+     
     );
 
   })
@@ -38,7 +38,6 @@ describe('UserProfile', () => {
     wrapper.instance().hanldeLogOut = jest.fn();
     wrapper.instance().forceUpdate()
     wrapper.find('.log-out').props('onClick')();
-
     expect(wrapper.instance().hanldeLogOut).toHaveBeenCalled();
 
   })
