@@ -29,4 +29,7 @@ Open http://localhost:3000 to view it in the browser.
 
 ### Desktop Layout:
 
+<kbd>
 <img width="338" alt="Screen Shot 2019-09-12 at 7 01 58 AM" src="https://user-images.githubusercontent.com/45321668/64786790-7f263b00-d52c-11e9-9cad-51ea0ab48c9c.png">
+</kbd>
+
