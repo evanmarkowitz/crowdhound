@@ -1,7 +1,7 @@
 # CrowdHound
 
 ## Created By
-[Hindreen Abdullah](https://github.com/hndfaw), [Evan Markowitz](https://github.com/evanmarkowitz), [Alexandra Chakeres](https://github.com/chakeresa),  [Alexander Mathieu](https://github.com/alexander-mathieu/) 
+[Hindreen Abdullah](https://github.com/hndfaw) [Evan Markowitz](https://github.com/evanmarkowitz) [Alexandra Chakeres](https://github.com/chakeresa)  [Alexander Mathieu](https://github.com/alexander-mathieu/) 
 
 ## About
 
