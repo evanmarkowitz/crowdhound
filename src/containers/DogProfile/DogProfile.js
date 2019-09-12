@@ -62,8 +62,6 @@ export const DogProfile = (props) => {
     backgroundRepeat: 'no-repeat'
 }
 
-  console.log(props.currentId !== parseInt(user.id))
-  console.log(props.currentId)
   return(
     <main className='dog-profile-main'>
       <section className='dog-info-wrapper'>

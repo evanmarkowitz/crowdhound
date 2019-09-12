@@ -5,9 +5,6 @@ import ReactFileReader from 'react-file-reader';
 import { connect } from 'react-redux';
 import {Link } from 'react-router-dom'
 
-
-
-
 export class AddDog extends Component {
 
   constructor() {
@@ -33,19 +30,17 @@ export class AddDog extends Component {
   }
 
   sendDog = async () => {
-    const {name, breed, birthdate, weight, activityLevel } = this.state
+    const {name, activityLevel, breed, weight, birthdate, longDesc } = this.state
     let opts = {
       method: 'POST',
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify({query: addDogQuery(
-        name, activityLevel, breed, weight, birthdate,
+        name, activityLevel, breed, weight, birthdate, `"${longDesc}"`
       )})
     }
     try{
       let response = await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}`, opts)
-      await console.log(response)
       let parsedResponse = await response.json()
-      await console.log(parsedResponse)
       return parsedResponse.data.createDog.dog.id
   
     } catch(error) {
@@ -54,33 +49,35 @@ export class AddDog extends Component {
 
   }
 
-  sendPhoto = async (id, file) => {
-    let query = createPhoto('Dog',  id, 'Dog Photo')
+  sendPhoto = async (dogId, file) => {
+    let query = createPhoto('Dog',  dogId, 'Dog Photo')
     let photoOpts = {
       method: 'POST',
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify({
         file: file
       })
+
     }
     try {
-      await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
+      let response = await fetch(`https://staging-crowdhound-be.herokuapp.com/graphql?token=${this.props.token}&query=${query}`, photoOpts)
+      await console.log(response)
+      let parsedResponse = response.json()
+      await console.log(parsedResponse)
     } catch(error) {
       await console.log(error)
     }
   }
 
+  
+
   submitDog = async () => {
     try {
       let dogId = await this.sendDog()
-      await console.log(dogId)
-      // let addPhoto = await this.sendPhoto(dogId, this.state.photo)
-      // let parsedResponse = addPhoto.json()
-      // console.log(parsedResponse)
+      await this.sendPhoto(dogId, this.state.photo)
     } catch(error){
       console.log(error)
     }
-    
   }
 
 

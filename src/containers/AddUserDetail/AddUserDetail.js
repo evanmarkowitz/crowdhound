@@ -64,7 +64,6 @@ export class AddUserDetail extends Component {
     } catch(error) {
       await console.log(error)
     }
-
   }
 
   render() {
@@ -113,6 +112,5 @@ export const mapStateToProps = state => ({
   token: state.currentUser.token,
   id: state.currentUser.id
 })
-
 
 export default connect(mapStateToProps)(AddUserDetail)

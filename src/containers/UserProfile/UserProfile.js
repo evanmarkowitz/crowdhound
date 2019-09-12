@@ -23,21 +23,10 @@ export class UserProfile extends Component {
 
   async componentDidMount() {
     try {
-      let response = await this.getUser()
-      let user = await response.json()
-      await this.setState({user})
-
+       await this.getUser()
     } catch(error) {
       console.log(error)
     }
-  }
-
-   setCookie = (c_name,value,exdays) =>
-  {
-     var exdate=new Date();
-     exdate.setDate(exdate.getDate() + exdays);
-     var c_value=escape(value) + ((exdays==null) ? "" : ("; expires="+exdate.toUTCString()));
-     document.cookie=c_name + "=" + c_value;
   }
 
    getUser = async () => {
@@ -52,7 +41,6 @@ export class UserProfile extends Component {
       let user = parsedResponse.data.user
       this.setState({user})
       this.setState({firstName: user.firstName  })
-      this.setState({id: user.id})
       this.setState({dogs: user.dogs})
       this.setState({photos: user.photos})
       this.setState({longDesc: user.longDesc})
@@ -61,19 +49,16 @@ export class UserProfile extends Component {
     }
   }
 
-  
-
-
      hanldeLogOut = () => {
       this.props.handleUserLoggedIn(false)
       this.props.handleCurrentUser({})
-      this.setCookie('user','', 21)
-      this.setCookie('token', '', 21)
+      // this.setCookie('user','', 21)
+      // this.setCookie('token', '', 21)
       this.logOutOfBackend()
       firebase.auth().signOut().then(function() {
         
       }).catch(function(error) {
-        // console.log(error)
+        console.log(error)
       });
     }
 
@@ -93,9 +78,6 @@ export class UserProfile extends Component {
       }
 
     }
-
-
-
 
      deleteDog = async (id) => {
       let opts = {
@@ -117,12 +99,7 @@ export class UserProfile extends Component {
 
     }
 
-  
-
-   
-
     render() {
-
     // const {firstName, longDesc, photos, dogs} = this.state.user
 
     const userImagePic = !this.state.photos[0] ? userImage : this.state.photos[0].sourceUrl
@@ -200,3 +177,12 @@ export const mapDispatchToProps = dispatch => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
+
+
+  //  setCookie = (c_name,value,exdays) =>
+  // {
+  //    var exdate=new Date();
+  //    exdate.setDate(exdate.getDate() + exdays);
+  //    var c_value=escape(value) + ((exdays==null) ? "" : ("; expires="+exdate.toUTCString()));
+  //    document.cookie=c_name + "=" + c_value;
+  // }

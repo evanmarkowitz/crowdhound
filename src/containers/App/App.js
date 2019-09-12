@@ -11,6 +11,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { setUserLoggedIn, setCurrentUser } from '../../actions';
 import  AddDog  from '../AddDog/AddDog';
 import AddUserDetail from '../AddUserDetail/AddUserDetail';
+import cookie from 'react-cookies'
 
 
 
@@ -24,41 +25,42 @@ export class App extends Component {
   }
 
   
-  componentDidMount() {
-    this.callCookies()
-  }
+  // async componentDidMount() {
+  //   // this.callCookies()
+  // }
 
 
-  callCookies = () => {
-  let userString = this.getCookie('user')
+  // callCookies = () => {
+  // let userString = this.getCookie('user')
 
-  if (userString !== 'noCookie' && userString !== undefined) {
-    let tokenString = this.getCookie('token')
+  // if (userString !== 'noCookie' && userString !== undefined) {
+  //   let tokenString = this.getCookie('token')
     
-    let user = JSON.parse(userString)
-    let token = JSON.parse(tokenString)
-    this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoUrl: user.photoURL, token: token, isNew: false, id: parseInt(user.id)}
-      ) 
-    this.props.handleUserLoggedIn(true)
-    }
-  }
+  //   let user = JSON.parse(userString)
+  //   let token = JSON.parse(tokenString)
+  //   this.props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoUrl: user.photoURL, token: token, isNew: false, id: parseInt(user.id)}
+  //     ) 
+  //   this.props.handleUserLoggedIn(true)
+  //   }
+  // }
 
-  getCookie(c_name) {
-      let i,x,y,ARRcookies=document.cookie.split(";");
-      for (i=0; i<ARRcookies.length; i++)
-      {
-          x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-          y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-          x=x.replace(/^\s+|\s+$/g,"");
-          if (x===c_name && y ==='') {
-            return 'noCookie'
-          }
-          if (x===c_name)
-          {
-            return unescape(y);
-          }
-      }
-    }
+  // getCookie(c_name) {
+  //   console.log(document.cookie)
+  //     let i,x,y,ARRcookies=document.cookie.split(";");
+  //     for (i=0; i<ARRcookies.length; i++)
+  //     {
+  //         x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+  //         y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+  //         x=x.replace(/^\s+|\s+$/g,"");
+  //         if (x===c_name && y ==='') {
+  //           return 'noCookie'
+  //         }
+  //         if (x===c_name)
+  //         {
+  //           return unescape(y);
+  //         }
+  //     }
+  //   }
 
 
   
