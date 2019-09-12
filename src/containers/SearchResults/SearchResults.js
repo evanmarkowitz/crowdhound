@@ -4,6 +4,8 @@ import DogCard from '../DogCard/DogCard';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { useSelector } from 'react-redux'
+import { connect } from 'react-redux';
+
 
 
 export const GET_FILTERED_DOGS_QUERY = gql`
@@ -18,26 +20,24 @@ export const GET_FILTERED_DOGS_QUERY = gql`
     }
   }`;
 
-export function SearchResults() {
-
-  // const toggleFilterValue = useSelector(state => state.toggleFilterValue);
-  const activityLevel = useSelector(state => state.activityLevel)
-  const activityLevelRange = [activityLevel, activityLevel]
-  const dogSize = useSelector(state => state.dogSize)
+export function SearchResults(props) {
+  
+  const activityLevelRange = [props.activityLevel, props.activityLevel]
   const dogSizeConvert = {
     small: [0, 15],
     medium: [16, 40],
     large: [41, 100]
   }
-  
+
   const { loading, error, data } = useQuery(
     GET_FILTERED_DOGS_QUERY,
-    {variables: { activityLevelRange, weightRange: dogSizeConvert[dogSize] }}
+    {variables: { activityLevelRange, weightRange: dogSizeConvert[props.dogSize] }}
   )
 
 
   if(loading) return <p>Loading....</p>;
   if(error) return <p>Error :</p>;
+
   
   const dog = data.dogs.map(dog => {
     return <DogCard {...dog} key={dog.id}/>
@@ -50,4 +50,11 @@ export function SearchResults() {
     )
   
 }
+
+export const mapStateToProps = state => ({
+  activityLevel:  state.activityLevel,
+  dogSize: state.dogSize
+})
+
+export default connect(mapStateToProps)(SearchResults)
 
