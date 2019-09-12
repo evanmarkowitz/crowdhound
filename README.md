@@ -59,24 +59,31 @@ Open http://localhost:3000 to view it in the browser.
 
 ### Desktop Layout:
 
+#### Home Page
 <kbd>
 <img width="1425" alt="Screen Shot 2019-09-12 at 6 58 48 AM" src="https://user-images.githubusercontent.com/45321668/64787436-e7c1e780-d52d-11e9-8231-11bbd9c7f593.png">
 </kbd>
 
+#### Home Page Carousel
 <kbd>
 <img width="1425" alt="Screen Shot 2019-09-12 at 6 59 07 AM" src="https://user-images.githubusercontent.com/45321668/64787437-e7c1e780-d52d-11e9-9b67-226f93710b50.png">
 </kbd>
 
+### Filtering Modal
+<kbd>
+<img width="1425" alt="Screen Shot 2019-09-12 at 6 59 19 AM" src="https://user-images.githubusercontent.com/45321668/64787441-e85a7e00-d52d-11e9-8c8f-c80fc5b94e34.png">
+</kbd>
+
+### User Profile
 <kbd>
 <img width="1440" alt="Screen Shot 2019-09-12 at 7 00 05 AM" src="https://user-images.githubusercontent.com/45321668/64787438-e85a7e00-d52d-11e9-8d4e-ac65d5c72fec.png">
 </kbd>
 
+### Dog Profile
 <img width="1440" alt="Screen Shot 2019-09-12 at 6 59 53 AM" src="https://user-images.githubusercontent.com/45321668/64787439-e85a7e00-d52d-11e9-8095-7e44e7a64daf.png">
 </kbd>
 
-<kbd>
-<img width="1425" alt="Screen Shot 2019-09-12 at 6 59 19 AM" src="https://user-images.githubusercontent.com/45321668/64787441-e85a7e00-d52d-11e9-8c8f-c80fc5b94e34.png">
-</kbd>
+
 
 
 
