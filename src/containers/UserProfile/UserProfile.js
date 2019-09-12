@@ -52,8 +52,6 @@ export class UserProfile extends Component {
      hanldeLogOut = () => {
       this.props.handleUserLoggedIn(false)
       this.props.handleCurrentUser({})
-      // this.setCookie('user','', 21)
-      // this.setCookie('token', '', 21)
       this.logOutOfBackend()
       firebase.auth().signOut().then(function() {
         
