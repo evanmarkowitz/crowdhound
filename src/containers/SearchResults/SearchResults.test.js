@@ -26,7 +26,7 @@ describe('SearchResults', () => {
       },
     ];
     wrapper = shallow(
-      <MockedProvider mocks={mocks} addTypename={false}>
+      <MockedProvider mocks={mocks} addTypename={false} activityLevel={1}>
         <SearchResults />
       </MockedProvider>
     );
@@ -37,7 +37,7 @@ describe('SearchResults', () => {
     expect(wrapper).toMatchSnapshot();
   })
 
-  it.skip('should render loading state initially', () => {
+  it('should render loading state initially', () => {
     const component = renderer.create(
       <MockedProvider mocks={[]}>
         <SearchResults />
@@ -46,6 +46,4 @@ describe('SearchResults', () => {
     const tree = component.toJSON();
     expect(tree.children).toContain('Loading....');
   });
-
-
 })
