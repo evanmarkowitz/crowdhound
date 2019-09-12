@@ -41,19 +41,23 @@ Open http://localhost:3000 to view it in the browser.
 <img width="338" alt="Screen Shot 2019-09-12 at 7 01 22 AM" src="https://user-images.githubusercontent.com/45321668/64786988-fbb91980-d52c-11e9-8f90-4d799e108e56.png">
 </kbd>
 
-###
+### Filtering Modal
 <kbd>
 <img width="338" alt="Screen Shot 2019-09-12 at 7 01 30 AM" src="https://user-images.githubusercontent.com/45321668/64786979-f8be2900-d52c-11e9-882d-3bdd1f895a25.png">
 </kbd>
 
+### User Profile
 <kbd>
 <img width="338" alt="Screen Shot 2019-09-12 at 7 01 58 AM" src="https://user-images.githubusercontent.com/45321668/64786790-7f263b00-d52c-11e9-9cad-51ea0ab48c9c.png">
 </kbd>
 
+### Dog Profile
 <kbd>
 <img width="338" alt="Screen Shot 2019-09-12 at 7 01 44 AM" src="https://user-images.githubusercontent.com/45321668/64786974-f65bcf00-d52c-11e9-9acf-94fc936f75c0.png">
 </kbd>
 
+
+## Dog Profile
 
 
 
