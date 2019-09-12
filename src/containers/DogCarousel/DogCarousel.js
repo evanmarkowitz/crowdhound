@@ -89,22 +89,10 @@ export const DogCarousel = () => {
   if(loading) return <p>Loading....</p>;
   if(error) return <p>Error :</p>;
   
-  const smallDogs = data.dogs.filter(dog => {
-    if(dog.weight < 15) {
-      return dog
-    }
-  })
-  const mediumDog = data.dogs.filter(dog => {
-    if(dog.weight > 16 && dog.weight < 40) {
-      return dog
-    }
-  })
-
-  const largeDog = data.dogs.filter(dog => {
-    if(dog.weight > 40) {
-      return dog
-    }
-  })
+  const smallDogs = data.dogs.filter(dog => dog.weight < 15)
+  const mediumDog = data.dogs.filter(dog => dog.weight > 16 && dog.weight < 40)
+  const largeDog = data.dogs.filter(dog => dog.weight > 40) 
+  
 
   const sizes = [smallDogs, mediumDog, largeDog]
 
