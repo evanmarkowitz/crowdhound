@@ -17,7 +17,6 @@ export class FilterModal extends Component {
   componentDidMount () {
     this.setState({activityLevel: this.props.activityLevel, dogSize: this.props.dogSize, distance: this.props.distance})
   }
-  
 
   clickFinder = () => {
     this.props.toggleFilterModal(false)
@@ -57,8 +56,6 @@ export class FilterModal extends Component {
   }
   
   render() {
-
-
 
     return(
       <article className='modal-wrapper'>

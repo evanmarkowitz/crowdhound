@@ -15,15 +15,7 @@ firebase.initializeApp({
 })
 
 const LogIn = (props) => {
-  const setCookie = (c_name,value,exdays) =>
-  {
-     var exdate=new Date();
-     exdate.setDate(exdate.getDate() + exdays);
-     var c_value=escape(value) + ((exdays==null) ? "" : ("; expires="+exdate.toUTCString()));
-     document.cookie=c_name + "=" + c_value;
-  }
-
-
+  
     const runLogIn = () => {
     firebase.auth().onAuthStateChanged(user => {
       setUserToReduxStore(user)
@@ -55,11 +47,6 @@ const LogIn = (props) => {
         const token = result.data.authenticateUser.token
         props.handleCurrentUser({firstName: user.firstName, lastName: user.lastName, email: user.email, photoURL, token: token, isNew: result.data.authenticateUser.new, id: parseInt(user.id)})
         props.handleUserLoggedIn(!!user)
-
-        // let userString = JSON.stringify(user)
-        // let tokenString = JSON.stringify(token)
-        // setCookie('user', userString, 21)
-        // setCookie('token', tokenString, 21)
       })
       .catch(console.log)
 

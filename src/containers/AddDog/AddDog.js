@@ -69,8 +69,6 @@ export class AddDog extends Component {
     }
   }
 
-  
-
   submitDog = async () => {
     try {
       let dogId = await this.sendDog()
